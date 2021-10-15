@@ -1,0 +1,164 @@
+<div class="m-5">
+  <form #f="ngForm">
+      <mat-tab-group>
+        <mat-tab label="Controle Reprodução">
+        <div class="row">
+            <div class="col-md-3">
+                <text-input
+                    label="Responsável"
+                    [(ngModel)]="controle.responsavel"
+                    name="controle.responsavel"
+                ></text-input>
+            </div>
+
+            <div class="col-md-3">
+                <text-input-autocomplete
+                #equip
+                [value]="controle.macho"
+                label="Macho"
+                colecao="{{animal_collection}}"
+                selectLabel="nome"
+                (valor)="controle.macho = $event; equip.realizarFiltragem($event.id)"
+                [filtro]="['sexo', '==', 'Macho']"
+                ></text-input-autocomplete>
+            </div>
+              
+            <div class="col-md-3">
+              <text-input-autocomplete
+               label="Femêa"
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="controle.femea = $event; equip.realizarFiltragem($event.id)"
+              [value]="controle.femea"
+              [filtro]="['sexo', '==', 'Fêmea']"
+              ></text-input-autocomplete>
+            </div>
+
+            <div class="col-md-3">
+              <date-input
+                label="Data da reprodução"
+                (valor)="controle.data = $event"
+                [value]="controle.data"
+                name="data"
+              ></date-input>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <select-input
+              #equip
+              label="Metódo de concepção"
+              [itens]="['MN-Monta Natural', 'IA-Inseminação Artificial', 'IA(Sêmen congelado)', 'ICSi']"
+              (valor)="controle.metodoConcepcao = $event"
+              [value]="controle.metodoConcepcao" 
+              ></select-input>
+            </div>
+
+            <div class="col-md-3">
+              <select-input
+                #equip
+                label="Situação"
+                [itens]="situacoes"
+                (valor)="controle.situacao = $event"
+                [value]="controle.situacao" 
+              ></select-input>
+            </div>
+
+            <div class="col-md-3">
+              <text-input
+                  label="Observações"
+                  [(ngModel)]="controle.observacoes"
+                  name="observacoes"
+              ></text-input>
+            </div>
+
+            <div class="col-md-3">
+              <number-input
+                label="Número CC"
+                [(ngModel)]="controle.numeroCC"
+                name="numeroCC"
+              ></number-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <mat-checkbox name="bloquearEdicao"[(ngModel)]="controle.bloquearEdicao" class="example-margin">Bloquear Edição</mat-checkbox>
+            </div>
+            
+            <div class="col-md-3">
+              <mat-checkbox name="comunicada"[(ngModel)]="controle.comunicada" class="example-margin">Reprodução Comunicada</mat-checkbox>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Transferência de Embrião">
+          <div class="row">
+            <div class="col-md-3">
+              <text-input
+              label="Responsável"
+              [(ngModel)]="controle.transferenciaEmbriao.responsavel"
+              name="transferenciaEmbriao.responsavel"
+              ></text-input>
+            </div>
+            
+            <div class="col-md-3">
+              <text-input-autocomplete
+              label="Receptora"
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="controle.transferenciaEmbriao.receptora = $event; equip.realizarFiltragem($event.id)"
+              [value]="controle.transferenciaEmbriao.receptora"
+              [filtro]="['sexo', '==', 'Fêmea']"
+              ></text-input-autocomplete>
+            </div>
+
+            <div class="col-md-3">
+             <date-input
+              label="Data da Transferência"
+              (valor)="controle.transferenciaEmbriao.data = $event"
+              [value]="controle.transferenciaEmbriao.data"
+              name="data">
+             </date-input>
+           </div>
+
+           <div class="col-md-3">
+            <select-input
+            #equip
+            label="Tipo de registro"
+            [itens]="situacoes"
+            (valor)="controle.transferenciaEmbriao.estado = $event"
+            [value]="controle.transferenciaEmbriao.estado" 
+            ></select-input>
+           </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <text-input
+              label="Anotações"
+              [(ngModel)]="controle.transferenciaEmbriao.anotacoes"
+              name="anotacoes"
+              ></text-input>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Partos">
+          <list [cabecalhos]="['Editar','Nome', 'Responsável', 'Metódo de Concepção', 'Transferência de Embrião', 'Data', 'Parto', 'Sexo']"
+          [valores]="partos"
+          [campos]="['nome', 'responsavel', 'metodoConcepcao', 'transferenciaEmbriao', 'data', 'parto', 'sexo']"
+          (editFunction)="editParto()"
+          (deleteFunction)="deleteParto()"
+          ></list>
+
+          <div style="text-align: center" *ngIf="partos.length < 1">
+            <button (click)="adicionarParto() " class="btn btn-primary">Adicionar Parto</button>
+        </div>
+        </mat-tab>
+      </mat-tab-group>
+    </form>
+
+    <p *ngIf="this.controle.ultimaEdicao">Ultima Edição {{this.controle.ultimaEdicao}}</p>
+    <div class="text-center m-3">
+      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    </div>
+</div>

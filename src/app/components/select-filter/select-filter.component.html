@@ -1,0 +1,15 @@
+<div class="row">
+        <button *ngIf="usagem != 'nLimpar'" mat-button matPrefix mat-icon-button (click)="clearFunc()">
+            <mat-icon>clear</mat-icon>
+        </button>   
+
+        <select-input
+        name='a'
+        #equip
+        label="{{label}}"
+        [itens]="itens"
+        (valor)="filtrarFunc.emit($event); valor.emit($event)"
+        [value]="value"
+        [(ngModel)]="value"
+        ></select-input>
+</div>

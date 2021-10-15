@@ -1,0 +1,135 @@
+<div class="m-5">
+    <form #f="ngForm">
+      <div class="row">
+        <div class="col-md-4">
+          <text-input-autocomplete
+          #equip
+          label="Animal"
+          colecao="{{ animal_collection }}"
+          selectLabel="nome"
+          (valor)="registro.animal = $event; equip.realizarFiltragem($event.id)"
+          [value]="registro.animal"
+          [filtro]="['referencia', '!=', true]"
+          ></text-input-autocomplete>
+        </div>
+          
+        <div class="col-md-4">
+            <text-input
+            #equip
+            label="Responsável"
+            [(ngModel)]="registro.responsavel" 
+            name="responsavel"
+            ></text-input>
+        </div>
+
+        <div class="col-md-4">
+            <date-input
+            label="Data de Sáida"
+            (valor)="registro.data = $event"
+            [value]="registro.data"
+            name="data">
+            </date-input>
+        </div>
+
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+            <select-input
+            #equip
+            label="Situação"
+            [itens]="situacoes"
+            (valor)="registro.situacao = $event"
+            [value]="registro.situacao" 
+            ></select-input>
+        </div>
+
+        <div class="col-md-4">
+            <select-input
+            #equip
+            label="Doença"
+            [itens]="doencas"
+            (valor)="registro.doenca = $event"
+            [value]="registro.doenca" 
+            ></select-input>
+        </div>
+
+        <div class="col-md-4">
+            <text-input
+            #equip
+            label="Motivo"
+            [(ngModel)]="registro.motivo" 
+            name="motivo"
+            ></text-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <text-input
+            label="Anamnese"
+            [(ngModel)]="registro.anamnese"
+            name="anamnese"
+          ></text-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <text-input
+            label="Exame Clínico"
+            [(ngModel)]="registro.exameClinico"
+            name="exameClinico"
+          ></text-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <text-input
+            label="Diagnóstico"
+            [(ngModel)]="registro.diagnostico"
+            name="diagnostico"
+          ></text-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <text-input
+            label="Prescrição/Tratamento"
+            [(ngModel)]="registro.prescricao_tratamento"
+            name="prescricao_tratamento"
+          ></text-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <text-input
+            label="Materiais Utilizados"
+            [(ngModel)]="registro.materiaisUtilizados"
+            name="materiaisUtilizados"
+          ></text-input>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <text-input
+            label="Conclusão/Evolução"
+            [(ngModel)]="registro.conclusao_evolucao"
+            name="conclusao_evolucao"
+          ></text-input>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <mat-checkbox name="bloquearEdicao"[(ngModel)]="registro.bloquearEdicao" class="example-margin">Bloquear Edição</mat-checkbox>
+      </div>
+    </form>
+    <p *ngIf="this.registro.ultimaEdicao">Ultima Edição {{this.registro.ultimaEdicao}}</p>
+    <div class="text-center m-4">
+      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    </div>
+</div>

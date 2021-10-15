@@ -1,0 +1,195 @@
+<div class="m-5">
+  <form #f="ngForm">
+    <div class="row">
+      <div class="col-md-3">
+        <date-input
+        label="Data da medida"
+        (valor)="dado.data = $event"
+        [value]="dado.data"
+        name="data">
+        </date-input>
+      </div>
+
+      <div class="col-md-3">
+        <text-input-autocomplete
+        #equip
+        [value]="dado.animal"
+        label="Animal"
+        colecao="{{animal_collection}}"
+        selectLabel="nome"
+        (valor)="dado.animal = $event; equip.realizarFiltragem($event.id)"
+        ></text-input-autocomplete>
+      </div>
+          
+        <div class="col-md-3">
+          <text-input
+            label="Responsável"
+            [(ngModel)]="dado.responsavel"
+            name="responsavel"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+          <number-input
+          label="Peso"
+          [(ngModel)]="dado.peso"
+          name="peso"
+          ></number-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          A
+          <number-input
+          label="Altura na Cernelha"
+          [(ngModel)]="dado.cernelha"
+          name="cernelha"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          B
+          <number-input
+          label="Altura na Garupa"
+          [(ngModel)]="dado.alturaGarupa"
+          name="alturaGarupa"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          C
+          <number-input
+          label="Distância Codilho-Solo"
+          [(ngModel)]="dado.codilhoSolo"
+          name="codilhoSolo"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          D
+          <number-input
+          label="Perímetro Torácico"
+          [(ngModel)]="dado.toracico"
+          name="toracico"
+          ></number-input>
+        </div>
+        
+        <div class="col-md-2">
+          E
+          <number-input
+          label="Comprimento da Cabeca"
+          [(ngModel)]="dado.comprimentoCabeca"
+          name="comprimentoCabeca"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          F
+          <number-input
+          label="Comprimento do Pescoco"
+          [(ngModel)]="dado.pescoco"
+          name="pescoco"
+          ></number-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          G
+          <number-input
+          label="Comprimento da Espádua"
+          [(ngModel)]="dado.espadua"
+          name="espadua"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          H
+          <number-input
+          label="Comprimento Dorso-Lombo"
+          [(ngModel)]="dado.dorsoLombo"
+          name="dorsoLombo"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          I
+          <number-input
+          label="Comprimento da Garupa"
+          [(ngModel)]="dado.comprimentoGarupa"
+          name="comprimentoGarupa"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          J
+          <number-input
+          label="Comprimento do Corpo"
+          [(ngModel)]="dado.corpo"
+          name="corpo"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          K
+          <number-input
+          label="Perímetro do Antebraço"
+          [(ngModel)]="dado.antebraco"
+          name="antebraco"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          L
+          <number-input
+          label="Perímetro do Joelho"
+          [(ngModel)]="dado.joelho"
+          name="joelho"
+          ></number-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          M
+          <number-input
+          label="Perímetro da Canela"
+          [(ngModel)]="dado.canela"
+          name="canela"
+          ></number-input>
+        </div>
+
+        
+        <div class="col-md-2">
+          N
+          <number-input
+          label="Largura da Cabeça"
+          [(ngModel)]="dado.larguraCabeca"
+          name="larguraCabeca"
+          ></number-input>
+        </div>
+
+        <div class="col-md-2">
+          O
+          <number-input
+          label="Perímetro da Anca"
+          [(ngModel)]="dado.anca"
+          name="anca"
+          ></number-input>
+        </div>
+
+        <div class="col-md-6">
+          <text-input
+            label="Obervações"
+            [(ngModel)]="dado.observacoes"
+            name="observacoes"
+          ></text-input>
+        </div>
+      </div>
+    </form>
+    <p *ngIf="this.dado.ultimaEdicao">Ultima Edição {{this.dado.ultimaEdicao}}</p>
+    <div class="text-center m-4">
+      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    </div>
+</div>

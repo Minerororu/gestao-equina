@@ -1,0 +1,401 @@
+<div class="m-5">
+  <form #f="ngForm">
+  <mat-tab-group>
+    <mat-tab label="Cadastro">
+      <cadastro-animal
+      [animal]="animal"
+      (set)="set($event)">
+      </cadastro-animal>
+    </mat-tab>
+
+    <mat-tab label="Associação">
+      <div class="row">
+        <div class="col-md-3">
+          <date-input
+            label="Data de Coleta"
+            (valor)="animal.exameDna.dataColeta = $event"
+            [value]="animal.exameDna.dataColeta"
+            name="dataColeta">
+          </date-input>
+        </div>
+
+        <div class="col-md-3">
+          <text-input
+            label="Responsável Técnico"
+            [(ngModel)]="animal.exameDna.responsavel"
+            name="responsavel"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+          <text-input
+            label="Número da Ordem Para o Exame de DNA"
+            [(ngModel)]="animal.exameDna.ordem"
+            name="ordem"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+          <select-input
+          #equip
+          label="Tipo de registro"
+          [itens]="tipos"
+          (valor)="animal.registroAssociacao.tipo = $event"
+          [value]="animal.registroAssociacao.tipo" 
+          ></select-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <number-input
+          label="Numero de registro"
+          [(ngModel)]="animal.registroAssociacao.numero"
+          name="numeroRegistro"
+          ></number-input>
+        </div>
+
+        <div class="col-md-3">
+          <text-input
+            label="Livro de Registro"
+            [(ngModel)]="animal.registroAssociacao.livro"
+            name="livro"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+          <number-input
+          label="Numero de chip"
+          [(ngModel)]="animal.registroAssociacao.numeroChip"
+          name="numeroChip"
+          ></number-input>
+        </div>
+
+        <div class="col-md-3">
+          <number-input
+          label="Grau de pureza"
+          [(ngModel)]="animal.registroAssociacao.grauPureza"
+          name="grauPureza"
+          ></number-input>
+        </div>
+
+      </div>
+    </mat-tab>
+    <mat-tab label="Complemento">
+      <div class="row">
+        <div class="col-md-3">
+          <text-input
+          label="Classificação do Animal"
+          [(ngModel)]="animal.classificacao"
+          name="classificacao"
+          ></text-input>
+        </div>
+        <div class="col-md-3">
+          <select-input
+          #equip
+          label="Método de concepção"
+          [itens]="metodosConcepcao"
+          (valor)="animal.metodoConcepcao = $event"
+          [value]="animal.metodoConcepcao" 
+          ></select-input>
+        </div>
+        
+        <div class="col-md-3">
+          <date-input
+          label="Data de Desmame"
+          (valor)="animal.dataDesmame = $event"
+          [value]="animal.dataDesmame"
+          name="dataDesmame">
+        </date-input>
+      </div>
+
+        <div class="col-md-3">
+          <mat-checkbox (change)="set(this.animal.transferenciaEmbriao)" name="transferenciaEmbriao"[(ngModel)]="animal.transferenciaEmbriao" class="example-margin">Transferência de embrião</mat-checkbox>
+        </div>
+    </div>
+    <div style="text-align: center;">
+      <h1 >DOCUMENTOS</h1>
+    </div>
+    <div class="row">
+      
+      <div class="col-md-3">
+        <date-input
+          label="Passaporte Expira em"
+          (valor)="animal.passaporteValidade = $event"
+          [value]="animal.passaporteValidade"
+          name="passaporteValidade">
+       </date-input>
+      </div>
+
+      
+      <div class="col-md-3">
+        <number-input
+          label="Número de passaporte"
+          [(ngModel)]="animal.passaporte"
+          name="passaporte"
+        ></number-input>
+      </div>
+      
+      <div class="col-md-3">
+        <date-input
+          label="Seguro Expira em"
+          (valor)="animal.seguroValidade = $event"
+          [value]="animal.seguroValidade"
+          name="seguroValidade">
+        </date-input>
+      </div>
+      
+  <div class="col-md-3">
+    <mat-checkbox (change)="set(this.animal.segurado)" [(ngModel)]="animal.segurado " name="segurado" class="example-margin">Animal segurado</mat-checkbox>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <text-input
+          label="Obervações"
+          [(ngModel)]="animal.observacoes"
+          name="observacoes"
+        ></text-input>
+      </div>
+    </div> 
+    </mat-tab>
+    <mat-tab label="Genealogia">
+      <table cellspacing="10px" cellpadding="5px">
+        <tbody><tr>
+           <td rowspan="4" class="col-md-3"> 
+             <div>
+               <text-input-autocomplete
+               label="Pai"  
+               colecao="{{ animal_collection }}"
+               selectLabel="nome"
+               (valor)="animal.pai = $event; equip.realizarFiltragem($event.id); "
+               [value]="animal.pai"
+               [filtro]="['sexo', '==', 'Macho']"
+               ></text-input-autocomplete>      
+              </div>             
+            </td>
+            <td rowspan="2" class="col-md-3">
+             <div *ngIf="this.animal.pai">
+              <text-input-autocomplete
+              label="Avô Pat."  
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="animal.pai.pai = $event; equip.realizarFiltragem($event.id)"
+              [value]="animal.pai.pai"
+              [filtro]="['sexo', '==', 'Macho']"
+              ></text-input-autocomplete>
+             </div>
+           </td> 
+
+           <td style="height: 50px;" class="col-md-3" *ngIf="this.animal.pai">
+            <div *ngIf="this.animal.pai.pai">
+              <text-input-autocomplete
+              label="Bisavô pat pat"  
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="animal.pai.pai.pai = $event; equip.realizarFiltragem($event.id)"
+              [value]="animal.pai.pai.pai"
+              [filtro]="['sexo', '==', 'Macho']"
+              ></text-input-autocomplete>
+            </div>
+          </td>
+        </tr> 
+        <tr>
+          <td style="height: 50px;" class="col-md-3"*ngIf="this.animal.pai">
+           <div *ngIf="this.animal.pai.pai">
+             <text-input-autocomplete
+             label="Bisavó pat pat"  
+             colecao="{{ animal_collection }}"
+             selectLabel="nome"
+             (valor)="animal.pai.pai.mae = $event; equip.realizarFiltragem($event.id)"
+             [value]="animal.pai.pai.mae"
+             [filtro]="['sexo', '==', 'Fêmea']"
+             ></text-input-autocomplete>
+           </div>
+          </td>
+        </tr>
+         <tr>
+           <td rowspan="2" class="col-md-3">
+            <div *ngIf="this.animal.pai">
+              <text-input-autocomplete
+              label="Avó Pat."  
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="animal.pai.mae = $event; equip.realizarFiltragem($event.id)"
+              [value]="animal.pai.mae"
+              [filtro]="['sexo', '==', 'Fêmea']"
+              ></text-input-autocomplete>
+            </div>
+           </td>
+
+           <td style="height: 50px;" class="col-md-3" *ngIf="this.animal.pai">
+            <div *ngIf="this.animal.pai.mae">
+              <text-input-autocomplete
+              label="Bisavô pat mat"  
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="animal.pai.mae.pai = $event; equip.realizarFiltragem($event.id)"
+              [value]="animal.pai.mae.pai"
+              [filtro]="['sexo', '==', 'Macho']"
+              ></text-input-autocomplete>
+            </div>
+           </td>
+        </tr> 
+        <tr>
+           <td style="height: 50px;" class="col-md-3" *ngIf="this.animal.pai"> 
+            <div *ngIf="this.animal.pai.mae">
+              <text-input-autocomplete
+              label="Bisavó pat mat"  
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="animal.pai.mae.mae = $event; equip.realizarFiltragem($event.id)"
+              [value]="animal.pai.mae.mae"
+              [filtro]="['sexo', '==', 'Fêmea']"
+              ></text-input-autocomplete>
+            </div>
+           </td> 
+        </tr>
+     </tbody></table>
+
+     <table cellspacing="10px" cellpadding="5px">
+      <tbody><tr>
+         <td rowspan="4" class="col-md-3"> 
+           <div>
+             <text-input-autocomplete
+             label="Mãe"  
+             colecao="{{ animal_collection }}"
+             selectLabel="nome"
+             (valor)="animal.mae = $event; equip.realizarFiltragem($event.id); "
+             [value]="animal.mae"
+             [filtro]="['sexo', '==', 'Fêmea']"
+             ></text-input-autocomplete>      
+            </div>             
+          </td>
+          <td rowspan="2" class="col-md-3">
+           <div *ngIf="this.animal.mae">
+            <text-input-autocomplete
+            label="Avô Mat."  
+            colecao="{{ animal_collection }}"
+            selectLabel="nome"
+            (valor)="animal.mae.pai = $event; equip.realizarFiltragem($event.id)"
+            [value]="animal.mae.pai"
+            [filtro]="['sexo', '==', 'Macho']"
+            ></text-input-autocomplete>
+           </div>
+         </td> 
+  
+         <td style="height: 50px;" class="col-md-3" *ngIf="this.animal.mae">
+          <div *ngIf="this.animal.mae.pai">
+            <text-input-autocomplete
+            label="Bisavô pat pat"  
+            colecao="{{ animal_collection }}"
+            selectLabel="nome"
+            (valor)="animal.mae.pai.pai = $event; equip.realizarFiltragem($event.id)"
+            [value]="animal.mae.pai.pai"
+            [filtro]="['sexo', '==', 'Macho']"
+            ></text-input-autocomplete>
+          </div>
+         </td>
+      </tr> 
+      <tr>
+         <td style="height: 50px;" class="col-md-3" *ngIf="this.animal.mae">
+          <div *ngIf="this.animal.mae.pai">
+            <text-input-autocomplete
+            label="Bisavó pat pat"  
+            colecao="{{ animal_collection }}"
+            selectLabel="nome"
+            (valor)="animal.mae.pai.mae = $event; equip.realizarFiltragem($event.id)"
+            [value]="animal.mae.pai.mae"
+            [filtro]="['sexo', '==', 'Fêmea']"
+            ></text-input-autocomplete>
+          </div>
+         </td>
+      </tr>
+       <tr>
+         <td rowspan="2" class="col-md-3">
+          <div *ngIf="this.animal.mae">
+            <text-input-autocomplete
+            label="Avó Mat."  
+            colecao="{{ animal_collection }}"
+            selectLabel="nome"
+            (valor)="animal.mae.mae = $event; equip.realizarFiltragem($event.id)"
+            [value]="animal.mae.mae"
+            [filtro]="['sexo', '==', 'Fêmea']"
+            ></text-input-autocomplete>
+          </div>
+         </td>
+  
+         <td style="height: 50px;" class="col-md-3" *ngIf="this.animal.mae">
+          <div *ngIf="this.animal.mae.mae">
+            <text-input-autocomplete
+            label="Bisavô pat mat"  
+            colecao="{{ animal_collection }}"
+            selectLabel="nome"
+            (valor)="animal.mae.mae.pai = $event; equip.realizarFiltragem($event.id)"
+            [value]="animal.mae.mae.pai"
+            [filtro]="['sexo', '==', 'Macho']"
+            ></text-input-autocomplete>
+          </div>
+         </td>
+      </tr> 
+      <tr>
+         <td style="height: 50px;" class="col-md-3" *ngIf="this.animal.mae"> 
+          <div *ngIf="this.animal.mae.mae">
+            <text-input-autocomplete
+            label="Bisavó pat mat"  
+            colecao="{{ animal_collection }}"
+            selectLabel="nome"
+            (valor)="animal.mae.mae.mae = $event; equip.realizarFiltragem($event.id)"
+            [value]="animal.mae.mae.mae"
+            [filtro]="['sexo', '==', 'Fêmea']"
+            ></text-input-autocomplete>
+          </div>
+         </td> 
+      </tr>
+   </tbody></table>
+    </mat-tab>
+    <mat-tab label="Dados de venda">
+      <div class="row">
+        <div class="col-md-3">
+          <select-input
+          #equip
+          label="Animal está a venda"
+          [itens]="opcoesVenda"
+          (valor)="animal.aVenda = $event; animal.aVenda == 'Sim' ? venda = true : '' "
+          [value]="animal.aVenda" 
+          ></select-input>
+        </div>
+
+        <div class="col-md-3" *ngIf="animal.aVenda">
+          <text-input
+          label="Descrição do Negócio"
+          [(ngModel)]="animal.descricaoNegocio"
+          name="descricaoNegocio"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3" *ngIf="animal.aVenda">
+          <number-input
+          label="Preço"
+          [(ngModel)]="animal.preco"
+          name="preco"
+          ></number-input>
+        </div>
+
+        <div class="col-md-3" *ngIf="animal.aVenda">
+          <number-input
+          label="Numero de parcelas"
+          [(ngModel)]="animal.parcelas"
+          name="parcelas"
+          ></number-input>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  </form>
+  <p *ngIf="this.animal.ultimaEdicao">Ultima Edição {{this.animal.ultimaEdicao}}</p>
+    <div class="text-center m-3">
+      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    </div>
+</div>

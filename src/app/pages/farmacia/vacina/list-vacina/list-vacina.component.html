@@ -1,0 +1,11 @@
+<list
+    [cabecalhos]="['Editar', 'Vacina', 'Período']"
+    [valores]="vacinas"
+    [campos]="['vacina', 'periodo']"
+    (editFunction)="edit($event)"
+    (deleteFunction)="delete($event)"
+></list>
+
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">Adicionar Examinação</button>
+</div>

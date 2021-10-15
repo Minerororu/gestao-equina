@@ -1,0 +1,285 @@
+<div mat-dialog-content>
+        <h2>{{ data.title }}</h2>
+
+        <div *ngIf="data.formularioSemen">
+            <form #f="ngForm">
+                <div class="row">
+                 <text-input class="mx-3"
+                          label="Responsável"
+                          [(ngModel)]="dose.responsavel"
+                          name="responsavel"
+                      ></text-input>
+          
+                    
+                        <date-input  class="mx-3"
+                          label="Data da dose"
+                          (valor)="dose.data = $event"
+                          [value]="dose.data"
+                          name="data"
+                        ></date-input>
+                </div>
+                <div class="row">
+                        <number-input  class="mx-3"
+                            label="Volume Ejaculado"
+                            [(ngModel)]="dose.volumeEjaculado"
+                            name="volumeEjaculado"
+                        ></number-input>                      
+                     
+                        <text-input class="mx-3"
+                            label="Coloração"
+                            [(ngModel)]="dose.coloracao"
+                            name="coloracao"
+                        ></text-input>
+                </div>
+                <div class="row">
+                        
+                            <text-input class="mx-3"
+                                label="Espermática"
+                                [(ngModel)]="dose.espermatica"
+                                name="espermatica"
+                            ></text-input>
+          
+                        
+                            <text-input class="mx-3"
+                                label="Concentração"
+                                [(ngModel)]="dose.concentracao"
+                                name="concentracao"
+                            ></text-input>
+                </div>
+
+                <div class="row">
+                        
+                            <text-input class="mx-3"
+                                label="Vigor"
+                                [(ngModel)]="dose.vigor"
+                                name="vigor"
+                            ></text-input>
+        
+                        
+                            <number-input  class="mx-3"
+                                label="Espermatozoides Totais"
+                                [(ngModel)]="dose.espermatozoidesTotais"
+                                name="espermatozoidesTotais"
+                            ></number-input>
+                </div>
+                <div class="row">
+                        
+                            <text-input class="mx-3"
+                                label="Diluente Utilizado"
+                                [(ngModel)]="dose.diluenteUtilizado"
+                                name="diluenteUtilizado"
+                            ></text-input>
+                        
+                        
+                            <text-input class="mx-3"
+                                label="Diluição"
+                                [(ngModel)]="dose.diluicao"
+                                name="diluicao"
+                            ></text-input>
+                </div>
+                <div class="row">
+                    <number-input  class="mx-3"
+                        label="Doses Do Dia"
+                        [(ngModel)]="dose.dosesDoDia"
+                        name="dosesDoDia"
+                    ></number-input>
+                        
+                    <select-input  class="mx-3"
+                        #equip
+                        label="Tranporte"
+                        [itens]="['Avião', 'Motoboy', 'Automóvel', 'Transportadora', 'Retirado pelo cliente']"
+                        (valor)="dose.tranporte = $event"
+                        [value]="dose.tranporte" 
+                    ></select-input> 
+                </div>
+                        <mat-checkbox name="congelamento"[(ngModel)]="dose.congelamento" class="example-margin">Congelamento</mat-checkbox>
+                    
+                    <h3>DADOS DE INSEMINAÇÃO</h3>
+                        <div class="row">
+                         <text-input-autocomplete  class="mx-3"
+                            label="Égua"
+                            colecao="{{ animal_collection }}"
+                            selectLabel="nome"
+                            (valor)="dose.dadosInseminacao.egua = $event; equip.realizarFiltragem($event.id)"
+                            [value]="dose?.dadosInseminacao?.egua"
+                            [filtro]="['sexo', '==', 'Fêmea']"
+                            ></text-input-autocomplete>
+                        
+                            <text-input class="mx-3"
+                                label="Registro da Égua"
+                                [(ngModel)]="dose.dadosInseminacao.registroEgua"
+                                name="registroEgua"
+                            ></text-input>        
+                        </div>
+                        <div class="row">
+                            <date-input  class="mx-3"
+                            label="Data da Insêminacao"
+                            (valor)="dose.dadosInseminacao.data = $event"
+                            [value]="dose.dadosInseminacao.data"
+                            name="data">
+                            </date-input>
+                        
+                            <select-input  class="mx-3"
+                            #equip
+                            label="Status Inseminação"
+                            [itens]="['Aguardando Confirmação', 'Preenhez Confirmada', 'Não Confirmada']"
+                            (valor)="dose.dadosInseminacao.statusInseminacao = $event"
+                            [value]="dose?.dadosInseminacao?.statusInseminacao" 
+                            ></select-input>         
+                        </div>
+                        <div class="row">
+                            <number-input  class="mx-3"
+                            label="Número CC"
+                            [(ngModel)]="dose.dadosInseminacao.numeroCC"
+                            name="numeroCC"
+                            ></number-input>        
+                        
+                            <mat-checkbox name="comunicada"[(ngModel)]="dose.dadosInseminacao.comunicada" class="example-margin">Comunicada</mat-checkbox>        
+                        </div>
+
+                        <div class="col-md-12">
+                            <text-input
+                                label="Observações"
+                                [(ngModel)]="dose.observacoes"
+                                name="observacoes"
+                            ></text-input>
+                        </div>
+                </form>
+            <p *ngIf="this.dose.ultimaEdicao">Ultima Edição {{this.dose.ultimaEdicao}}</p>
+        </div>
+
+        <div *ngIf="data.formularioParto">
+            <form #f="ngForm" >
+                <div class="row"  >
+                    <text-input class="mx-3"
+                    label="Responsável"
+                    [(ngModel)]="parto.responsavel"
+                    name="responsavel"
+                    style="width: 100%;"
+                    ></text-input>
+                </div>
+
+                <div class="row"  >
+                    <select-input  class="mx-3"
+                    label="Metódo de Concepção"
+                    [itens]="['MN-Monta Natural', 'IA-Inseminação Artificial', 'IA(Sêmen congelado)', 'ICSi']"
+                    (valor)="parto.metodoConcepcao = $event"
+                    [value]="parto.metodoConcepcao"
+                    name="metodoConcepcao"
+                    style="width: 100%;"
+                    ></select-input> 
+                </div>
+
+                <div class="row">
+                    <text-input class="mx-3"
+                    label="Nome"
+                    [(ngModel)]="parto.nome"
+                    name="nome"
+                    style="width: 100%;"
+                    ></text-input>
+                </div>
+
+                <div class="row">
+                    <date-input  class="mx-3"
+                      label="Data do parto"
+                      (valor)="parto.data = $event"
+                      [value]="parto.data"
+                      name="data"
+                    ></date-input>
+                </div>
+
+                <div class="row">
+                    <select-input  class="mx-3"
+                    label="Parto"
+                    [itens]="['Normal', 'Com Intervenção', 'Cesariana']"
+                    (valor)="parto.parto = $event"
+                    [value]="parto.parto"
+                    name="parto"
+                    style="width: 100%;"
+                    ></select-input> 
+                </div>
+
+                <div class="row">
+                    <select-input  class="mx-3"
+                        label="Sexo"
+                        [itens]="['Macho', 'Fêmea']"
+                        (valor)="parto.sexo = $event"
+                        [value]="parto.sexo"
+                        name="sexo"
+                        style="width: 100%;"
+                    ></select-input> 
+                </div>
+
+                <div class="row">
+                    <text-input  class="mx-3"
+                    label="Numéro de Controle do Criador"
+                    [(ngModel)]="parto.numControleCriador"
+                    name="numControleCriador"
+                    style="width: 100%;"
+                    ></text-input>
+                </div>
+
+                <div class="row">
+                    <text-input class="mx-3"
+                    label="Pelagem"
+                    [(ngModel)]="parto.pelagem"
+                    name="pelagem"
+                    style="width: 100%;"
+                    ></text-input>
+                </div>
+
+                <div class="row">
+                    <text-input class="mx-3"
+                    label="Anotações"
+                    [(ngModel)]="parto.anotacoes"
+                    name="anotacoes"
+                    style="width: 100%;"
+                    ></text-input>
+                </div>
+
+                <div class="row">
+                    <mat-checkbox name="transferenciaEmbriao"[(ngModel)]="parto.transferenciaEmbriao" class="example-margin">Transferência Embrião</mat-checkbox>
+                </div>
+
+                <div class="row">
+                    <mat-checkbox name="comunicada"[(ngModel)]="parto.comunicada" class="example-margin">Comunicada</mat-checkbox>
+                </div>
+            </form>
+        </div>
+
+        <div *ngIf="data.formularioCentroCusto">
+            <form #f="ngForm">
+                <div class="row">
+                    <text-input-autocomplete class="col-md-12"
+                    #equip
+                    [value]="centroCusto"
+                    label="Centro De Custo"
+                    colecao="{{ centro_de_custo_collection }}"
+                    selectLabel="nome"
+                    (valor)="centroCusto = $event; equip.realizarFiltragem($event.id)"
+                    ></text-input-autocomplete>
+                </div>
+            </form>
+        </div>
+
+        <div *ngIf="data.formularioGrupoFinanceiro">
+            <form>
+                <text-input-autocomplete class="col-md-12"
+                #equip
+                [value]="grupoFinanceiro"
+                label="Grupo financeiro"
+                colecao="{{ grupo_financeiro_collection }}"
+                selectLabel="nome"
+                (valor)="grupoFinanceiro = $event; equip.realizarFiltragem($event.id)"
+                ></text-input-autocomplete>
+            </form>
+        </div>
+
+        <div class="row">
+            <button mat-button (click)="onNoClick()">Cancelar</button>
+            <button *ngIf="data.formularioSemen" mat-button [mat-dialog-close]="dose">Ok</button>
+            <button *ngIf="data.formularioParto" mat-button [mat-dialog-close]="parto">Ok</button>
+            <button *ngIf="data.formularioCentroCusto" mat-button [mat-dialog-close]="centroCusto">Ok</button>
+            <button *ngIf="data.formularioGrupoFinanceiro" mat-button [mat-dialog-close]="grupoFinanceiro">Ok</button>
+        </div>
+</div>    

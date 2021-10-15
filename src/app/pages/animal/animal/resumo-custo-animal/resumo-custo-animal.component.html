@@ -1,0 +1,24 @@
+<div class="m-5">
+    <div class="col-md-3">
+        <select-filter
+        label="Filtro por registro"
+        [itens]="['Débito', 'Crédito', 'Todos']"
+        (filtrarFunc)="filtrarLancamentos($event)"
+        [value]="filtroValue"
+        (valor)="filtroValue = $event"
+        (limparFiltro)="limparFiltro()"></select-filter>
+    </div>
+
+    <div>
+        <list 
+        [cabecalhos]="['Data','Operação', 'Animal', 'Centro de Custo', 'Valor do Documento']"
+        [valores]="lancamentosFiltrados" 
+        [campos]="['data', 'operacao' ,['animal', 'nome'], ['centroDeCusto', 'nome'],'valorDocumento']"
+        usagem="nEditarNDeletar"
+        ></list>
+    </div>
+    
+    <div class="divChart" style="margin-left: 250px; margin-right: 250px">
+        <canvas id="myChart1"></canvas>
+    </div>
+</div>

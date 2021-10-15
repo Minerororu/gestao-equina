@@ -1,0 +1,50 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th *ngFor="let cabecalho of cabecalhos; let i = index" scope="col">
+                {{ cabecalho }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let valor of valores; let i = index">
+            <td *ngIf="usagem !='nEditarNDeletar'">
+                <mat-icon title="Deletar" style="cursor: pointer" (click)="deleteFunction.emit(valor)">delete</mat-icon>
+                <mat-icon title="Editar" style="cursor: pointer" (click)="editFunction.emit(valor)" *ngIf="usagem != 'nEditar'">edit</mat-icon>
+                <mat-icon *ngIf="usagem == 'animal'" title="Relatorio Crescimento" style="cursor: pointer" (click)="resumoFunction.emit(valor)">expand</mat-icon>
+                <mat-icon *ngIf="usagem == 'animal'" title="Relatorio Custo" style="cursor: pointer" (click)="resumoFunction2.emit(valor)">paid</mat-icon>
+            </td>
+
+            <td *ngFor="let campo of campos; let j = index" (click)="clickFunction.emit(valor)">
+                <!--
+                    if(!verificaArray(campo)){
+                        if(valor[campo] == true){
+                            sim
+                        }else if(valor[campo] == false){
+                            não
+                        }else{
+                            valor[campo]
+                        }
+                    }else{
+                        if(valor[campo[0]]){
+                            valor[campo[0]][campo[1]]
+                        }
+                    }
+                -->
+                {{
+                    !verificaArray(campo)
+                        ? valor[campo] === true
+                            ? 'Sim'
+                            : valor[campo] === false 
+                                ? 'Não' 
+                                : valor[campo] 
+                                    ? valor[campo]
+                                    : ''
+                        : valor[campo[0]]
+                        ? valor[campo[0]][campo[1]]
+                        : ''
+                }}
+            </td>
+        </tr>
+    </tbody>
+</table>

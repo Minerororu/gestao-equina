@@ -1,0 +1,124 @@
+<div class="m-5">
+    <form #f="ngForm">
+        <mat-tab-group>
+            <mat-tab label="Cadastro">
+          <div class="row">
+              <div class="col-md-3">
+                <text-input-autocomplete
+                    #equip
+                    label="Animal"  
+                    colecao="{{ animal_collection }}"
+                    selectLabel="nome"
+                    (valor)="controle.animal = $event; equip.realizarFiltragem($event.id); "
+                    [value]="controle.animal"
+                    [filtro]="['referencia', '!=', true]"
+                ></text-input-autocomplete>      
+              </div>
+  
+              <div class="col-md-3">
+                <date-input
+                  label="Data de Início"
+                  (valor)="controle.dataInicio = $event"
+                  [value]="controle.dataInicio"
+                  name="dataInicio"
+                ></date-input>
+              </div>
+
+              <div class="col-md-3">
+                <text-input
+                    label="Responsável"
+                    [(ngModel)]="controle.responsavel"
+                    name="responsavel"
+                ></text-input>
+              </div>
+
+              <div class="col-md-3">
+                <mat-checkbox name="bloquearEdicao"[(ngModel)]="controle.bloquearEdicao" class="example-margin">Bloquear Edição</mat-checkbox>
+              </div>
+            </div>            
+
+            <div class="row">
+                <div class="col-md-12">
+                <text-input
+                    label="Observações"
+                    [(ngModel)]="controle.observacoes"
+                    name="observacoes"
+                ></text-input>
+                </div>
+            </div>
+        </mat-tab>
+    
+        <mat-tab label="Dados do controle">
+            <div class="row">
+                <div class="col-md-3">
+                    <date-input
+                      label="Data"
+                      (valor)="controle.dadosControle.data = $event"
+                      [value]="controle.dadosControle.data"
+                      name="dataInicio"
+                    ></date-input>
+                </div>
+
+                <div class="col-md-3">
+                    <text-input-autocomplete
+                        #equip
+                        label="Procedimento"  
+                        colecao="{{ procedimento_collection }}"
+                        selectLabel="nome"
+                        (valor)="controle.dadosControle.procedimento = $event; equip.realizarFiltragem($event.id); "
+                        [value]="controle.dadosControle.procedimento"
+                        [filtro]="['grupo', '==', 'Reprodução']"
+                    ></text-input-autocomplete>      
+                </div>
+
+                <div class="col-md-3">
+                    <text-input
+                        label="Descrição"
+                        [(ngModel)]="controle.dadosControle.descricao"
+                        name="descricao"
+                    ></text-input>
+                </div>
+
+                <div class="col-md-3">
+                    <text-input
+                        label="Útero"
+                        [(ngModel)]="controle.dadosControle.utero"
+                        name="utero"
+                    ></text-input>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <text-input
+                        label="Ovário Esquerdo"
+                        [(ngModel)]="controle.dadosControle.ovarioEsquerdo"
+                        name="ovarioEsquerdo"
+                    ></text-input>
+                </div>
+
+                <div class="col-md-3">
+                    <text-input
+                        label="Ovário Direito"
+                        [(ngModel)]="controle.dadosControle.ovarioDireito"
+                        name="ovarioDireito"
+                    ></text-input>
+                </div>
+
+                <div class="col-md-6">
+                    <text-input
+                        label="Observações"
+                        [(ngModel)]="controle.dadosControle.observacoes"
+                        name="dadosControle.observacoes"
+                    ></text-input>
+                </div>
+            </div>
+        </mat-tab>
+      </mat-tab-group>
+    </form>
+  
+      <p *ngIf="this.controle.ultimaEdicao">Ultima Edição {{this.controle.ultimaEdicao}}</p>
+      <div class="text-center m-3">
+        <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+      </div>
+  </div>

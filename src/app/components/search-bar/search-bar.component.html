@@ -1,0 +1,6 @@
+<mat-form-field class="example-full-width" appearance="fill">
+    <button mat-button matPrefix mat-icon-button (click)="clear()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    <input matInput placeholder="{{label}}" (change)="filter.emit($event)" [(ngModel)]="value"> 
+</mat-form-field>

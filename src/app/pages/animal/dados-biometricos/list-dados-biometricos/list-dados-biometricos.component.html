@@ -1,0 +1,13 @@
+<div>
+    <list 
+    [cabecalhos]="['Editar', 'Data','Animal', 'Peso' , 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O']"
+    [valores]="dados" 
+    [campos]="['data', ['animal', 'nome'], 'peso', 'cernelha', 'alturaGarupa', 'codilhoSolo', 'toracico', 'comprimentoCabeca', 'pescoco', 'espadua', 'dorsoLombo', 'comprimentoGarupa', 'corpo', 'antebraco', 'joelho', 'canela', 'larguraCabeca', 'anca']"
+    (editFunction)="edit($event)"
+    (deleteFunction)="delete($event)"
+    (clickFunction)="resumo($event)"></list>
+</div>
+
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">Adicionar Controle</button>
+</div>

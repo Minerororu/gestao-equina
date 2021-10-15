@@ -1,0 +1,14 @@
+<div>
+
+    <list 
+        [cabecalhos]="['Editar', 'Animal', 'Responsável', 'Data', 'Descrição', 'Anotações/Materiais', 'Período']"
+        [valores]="ferrageamentos"
+        [campos]="[['animal', 'nome'], 'responsavel', 'data', 'descricao', 'anotacoes_materiais', 'periodo']"
+        (deleteFunction)="delete($event)"
+        (editFunction)="edit($event)">
+    </list> 
+</div>
+
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">Adicionar Ferrageamento</button>
+</div>

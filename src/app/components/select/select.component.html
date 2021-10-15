@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" class="w-100">
+    <mat-label>{{ label }}</mat-label>
+    <mat-select
+        [disabled]="disabled"
+        [(ngModel)]="value"
+        (selectionChange)="emitirValor($event)"
+        [multiple]="multiple"
+        [required]="isRequired"
+    >
+        <mat-option *ngFor="let item of itens" [value]="item">
+            <div *ngIf="!!colecao || !!selectLabel">
+                {{ item[selectLabel] }}
+            </div>
+            <div *ngIf="!colecao && !selectLabel">
+                {{ item }}
+            </div>
+        </mat-option>
+    </mat-select>
+</mat-form-field>

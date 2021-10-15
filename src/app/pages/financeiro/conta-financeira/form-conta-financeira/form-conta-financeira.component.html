@@ -1,0 +1,61 @@
+<div class="m-5">
+  
+  <form #f="ngForm">
+    <div class="row">
+        <div class="col-md-4">
+            <select-input
+            #equip
+            label="Tipo"
+            [itens]="['Conta Corrente', 'Poupança', 'Carteira', 'Investimento', 'Cartão de crédito', 'Outro']"
+            (valor)="contaFinanceira.tipo = $event"
+            [value]="contaFinanceira.tipo" 
+            ></select-input>
+        </div>
+      
+        <div class="col-md-4">
+          <text-input
+          label="Nome da Conta"
+          [(ngModel)]="contaFinanceira.nome"
+          name="nome"
+          ></text-input>
+        </div>
+
+        <div class="col-md-4">
+          <text-input
+          label="Nome do Titular"
+          [(ngModel)]="contaFinanceira.nomeTitular"
+          name="nomeTitular"
+          ></text-input>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <text-input
+          label="Agência"
+          [(ngModel)]="contaFinanceira.agencia"
+          name="agencia"
+          ></text-input>
+        </div>
+
+        <div class="col-md-4">
+          <number-input
+          label="Número da Conta"
+          [(ngModel)]="contaFinanceira.numeroConta"
+          name="numeroConta"
+          ></number-input>
+        </div>
+
+        <div class="col-md-4">
+          <number-input
+          label="Saldo da Conta"
+          [(ngModel)]="contaFinanceira.saldo"
+          name="saldo"
+          ></number-input>
+        </div>
+      </div>
+    </form>
+    <div class="text-center m-4">
+      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    </div>
+</div>

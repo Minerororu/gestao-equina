@@ -1,0 +1,9 @@
+<mat-checkbox name="filtrado"[(ngModel)]="filtrado" class="example-margin" (click)="filtrar()">Apenas Pendentes</mat-checkbox>
+
+
+<list [cabecalhos]="['Editar','Nome', 'Responsável', 'Metódo de Concepção', 'Transferência de Embrião', 'Data', 'Parto', 'Sexo', 'Comunicada']"
+[valores]="nascimentosFiltrados"
+[campos]="['nome', 'responsavel', 'metodoConcepcao', 'transferenciaEmbriao', 'data', 'parto', 'sexo', 'comunicada']"
+usagem ="nEditar"
+(deleteFunction)="delete($event)"
+></list>

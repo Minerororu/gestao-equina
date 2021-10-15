@@ -1,0 +1,14 @@
+<mat-checkbox name="filtrado"[(ngModel)]="filtrado" class="example-margin" (click)="filtrar()">Apenas Pendentes</mat-checkbox>
+
+<div>
+    <list 
+    [cabecalhos]="['Editar', 'Responsável', 'Macho', 'Femêa', 'Data', 'Método de Concepção', 'Situação', 'Comunicada', 'Numéro CC']"
+    [valores]="controlesFiltrados" 
+    [campos]="['responsavel', ['macho', 'nome'], ['femea', 'nome'], 'data', 'metodoConcepcao', 'situacao', 'comunicada', 'numeroCC']"
+    (editFunction)="edit($event)"
+    (deleteFunction)="delete($event)"></list>
+</div>
+
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">Adicionar controle de reprodução</button>
+</div>

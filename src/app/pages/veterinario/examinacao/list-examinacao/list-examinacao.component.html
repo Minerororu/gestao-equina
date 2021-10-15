@@ -1,0 +1,12 @@
+<div>
+    <list 
+    [cabecalhos]="['Editar', 'Animal','Responsável', 'Data', 'Exame', 'Laboratório']"
+    [valores]="examinacoes" 
+    [campos]="[['animal', 'nome'], 'responsavel', 'data', ['exame', 'exame'], 'laboratorio']"
+    (editFunction)="edit($event)"
+    (deleteFunction)="delete($event)"></list>
+</div>  
+
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">Adicionar Examinação</button>
+</div>

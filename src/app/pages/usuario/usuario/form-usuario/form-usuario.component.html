@@ -1,0 +1,51 @@
+<div class="m-5">
+  <form #f="ngForm" (ngSubmit)="submit(f)">
+    <div class="row">
+      <div class="col-md-3">
+        <text-input
+          label="Nome"
+          [(ngModel)]="usuario.displayName"
+          name="nome"
+          [isRequired]="true"
+          required
+        ></text-input>
+      </div>
+
+      <div class="col-md-3">
+        <text-input
+          label="Email"
+          [(ngModel)]="usuario.email"
+          name="email"
+          [isRequired]="true"
+          required
+        ></text-input>
+      </div>
+
+      <div class="col-md-3">
+        <number-input
+          label="Telefone"
+          [(ngModel)]="usuario.telefone"
+          name="telefone"
+          [isRequired]="true"
+          required
+        ></number-input>
+      </div>
+
+      <div class="col-md-2">
+        <select-input
+          label="Permissoes"
+          [itens]="permissoes"
+          (valor)="usuario.permission = $event"
+          [value]="usuario.permission"
+          name="permissoes"
+          [isRequired]="true"
+          required
+        ></select-input>
+      </div>
+    </div>
+
+    <div class="text-center m-3">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</div>

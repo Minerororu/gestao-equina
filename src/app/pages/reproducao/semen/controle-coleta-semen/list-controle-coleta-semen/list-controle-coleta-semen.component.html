@@ -1,0 +1,9 @@
+<list [cabecalhos]="['Editar', 'Animal', 'Destinatário', 'Data', 'Número de doses', 'Doses Confirmadas']"
+[valores]="controles"
+[campos]="[['animal', 'nome'], 'destinatario', 'data', 'numeroDoses', 'dosesConfirmadas']"
+(editFunction)="editar($event)"
+(deleteFunction)="delete($event)"></list>
+
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">Adicionar Controle de Coleta</button>
+</div>

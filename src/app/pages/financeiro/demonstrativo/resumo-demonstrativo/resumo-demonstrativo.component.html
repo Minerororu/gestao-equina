@@ -1,0 +1,27 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Centro de custo</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">Valor do documento</th>
+            <th scope="col">Pagamento Efetuado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lancamento of lancamentosFiltrados" >
+            <td>{{lancamento?.data}}</td>
+            <td>{{lancamento?.descricao}}</td>
+            <td>{{lancamento?.centroDeCusto.nome}}</td>
+            <td>{{lancamento?.centroDeCusto.grupo?.nome}}</td>
+            <td>{{lancamento?.valorDocumento}}</td>
+            <td>{{lancamento?.pagamentoEfetuado ? 'sim' : ''}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="divChart" style="margin-left: 250px; margin-right: 250px">
+    <canvas id="myChart1"></canvas>
+</div>

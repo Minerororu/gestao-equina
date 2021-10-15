@@ -1,0 +1,41 @@
+<div class="displayTable text-center">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Log In</h3>
+      <div class="formGroup">
+        <input type="text" class="formControl" placeholder="Email" #userName required />
+      </div>
+
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Senha" #userPassword required />
+      </div>
+
+      <div class="formGroup">
+        <button
+          class="btn-primary"
+          value="Login"
+          (click)="authService.SignIn(userName.value, userPassword.value)"
+        >
+          Logar
+        </button>
+      </div>
+
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Ou</span></span>
+      </div>
+
+
+      <div class="forgotPassword">
+        <span routerLink="/forgot-password">Esqueceu sua senha?</span>
+      </div>
+    </div>
+
+    <div class="redirectToLogin">
+      <span
+        >Não tem uma conta?<button class="btn-secondary" routerLink="/register-user">
+          Criar Conta
+        </button></span
+      >
+    </div>
+  </div>
+</div>

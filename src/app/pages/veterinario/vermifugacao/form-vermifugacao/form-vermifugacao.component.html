@@ -1,0 +1,64 @@
+<div class="m-5">
+    <form #f="ngForm">
+        <div class="row">
+            <div class="col-md-3">
+                <text-input
+                    label="Responsável"
+                    [(ngModel)]="vermifugacao.responsavel"
+                    name="responsavel"
+              ></text-input>
+            </div>
+
+            <div class="col-md-3">
+                <text-input-autocomplete
+                #equip
+                [value]="vermifugacao.animal"
+                label="Animal"
+                colecao="{{animal_collection}}"
+                selectLabel="nome"
+                (valor)="vermifugacao.animal = $event; equip.realizarFiltragem($event.id)"
+                [filtro]="['referencia', '!=', true]"
+                ></text-input-autocomplete>
+            </div>
+
+            <div class="col-md-3">
+                <date-input
+                label="Data da vermifugação"
+                (valor)="vermifugacao.data = $event"
+                [value]="vermifugacao.data"
+                name="data">
+                </date-input>
+            </div>
+
+            <div class="col-md-3">
+                <select-input
+                #equip
+                label="Vermifugo"
+                selectLabel="vermifugo"
+                colecao="{{ vermifugo_collection }}"
+                (valor)="vermifugacao.vermifugo = $event"
+                [value]="vermifugacao.vermifugo"
+                ></select-input>
+              </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9">
+                <text-input
+                    label="Anotações/Materias"
+                    [(ngModel)]="vermifugacao.anotacoesMateriais"
+                    name="anotacoesMaterias"
+              ></text-input>
+            </div>
+
+            <div class="col-md-3">
+                <mat-checkbox name="bloquearEdicao"[(ngModel)]="vermifugacao.bloquearEdicao" class="example-margin">Bloquear Edição</mat-checkbox>
+              </div>
+        </div>
+    </form>
+
+    <p *ngIf="this.vermifugacao.ultimaEdicao">Ultima Edição {{this.vermifugacao.ultimaEdicao}}</p>
+    <div class="text-center m-3">
+      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    </div>
+</div>

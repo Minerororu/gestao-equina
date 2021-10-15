@@ -1,0 +1,27 @@
+<div class="m-5">
+    <form #f="ngForm">
+        <div class="row">
+            <div class="col-md-6">
+                <text-input
+                    label="Vacina"
+                    [(ngModel)]="vacina.vacina"
+                    name="vacina">
+                </text-input>
+            </div>
+            
+            <div class="col-md-6" *ngIf="vacina.periodica">
+                <number-input
+                    label="Período entre vacinações (em meses)"
+                    [(ngModel)]="vacina.periodo"
+                    name="periodo">
+                </number-input>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <mat-checkbox name="periodica"[(ngModel)]="vacina.periodica" class="example-margin">Periódica</mat-checkbox>
+        </div>
+    </form>
+</div>
+<div class="text-center">
+    <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+</div>

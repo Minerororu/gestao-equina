@@ -1,0 +1,11 @@
+<list-component
+  [cabecalhos]="['Editar ', 'Nome', 'Email', 'Telefone', 'Permissões']"
+  [valores]="usuarios"
+  [campos]="['nome', 'email', 'telefone', 'permissoes']"
+  (deleteFunction)="deleteUsuario($event)"
+  (editFunction)="editUsuario($event)"
+></list-component>
+
+<div class="text-center m-3">
+  <button (click)="adicionar()" class="btn btn-primary">Adicionar</button>
+</div>

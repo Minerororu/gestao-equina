@@ -1,0 +1,33 @@
+<div>
+    <div class="col-md-3">
+        <select-filter
+        label="Filtrar Movimento"
+        [itens]="['Saída', 'Entrada']"
+        usagem="nLimpar"
+        (filtrarFunc)="filtrar($event)"></select-filter>
+    </div>
+    
+    <div *ngIf="movimento == 'Saída'">
+        <list
+        [cabecalhos]="['Editar', 'Animal', 'Motivo', 'Data', 'Data de retorno','Observações']"
+        [valores]="controlesSaida" 
+        [campos]="[['animal', 'nome'], 'motivo', 'data', 'dataRetorno','observacoes']"
+        (editFunction)="edit($event)"
+        (deleteFunction)="delete($event)"
+        ></list>
+    </div>
+    
+    <div *ngIf="movimento == 'Entrada'">
+        <list
+        [cabecalhos]="['Animal', 'Data de entrada', 'Livro', 'Num.Registro', 'Controle', 'Data de Nascimento', 'Sexo', 'Pelagem']"
+        [valores]="controleEntrada" 
+        [campos]="['animal', 'data', 'livro',  'registro', 'controle', 'dataNascimento', 'sexo', 'pelagem']"
+        (editFunction)="edit($event)"
+        (deleteFunction)="delete($event)"
+        usagem="nEditar"></list>
+    </div>
+    
+    <div style="text-align: center" *ngIf="movimento == 'Saída'">
+        <button (click)="adicionar()" class="btn btn-primary">Adicionar Controle</button>
+    </div>
+</div>

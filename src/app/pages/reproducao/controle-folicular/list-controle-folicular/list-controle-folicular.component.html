@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Editar</th>
+            <th scope="col">Data de Início</th>
+            <th scope="col">Responsável</th>
+            <th scope="col">Animal</th>
+            <th scope="col">Procedimento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let controle of controles">
+            <td>
+                <mat-icon title="Deletar" style="cursor: pointer" (click)="delete(controle)">delete</mat-icon>
+                <mat-icon title="Editar" style="cursor: pointer" (click)="edit(controle)">edit</mat-icon>
+            </td>
+
+            <td>{{controle.dataInicio}}</td>
+            <td>{{controle.responsavel}}</td>
+            <td>{{controle.animal.nome}}</td>
+            <td>{{controle.dadosControle.procedimento.nome}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">Adicionar controle folicular</button>
+</div>

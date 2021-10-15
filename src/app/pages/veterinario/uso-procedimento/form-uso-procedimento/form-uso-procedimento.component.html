@@ -1,0 +1,75 @@
+<div class="m-5">
+    <form #f="ngForm">
+        <div class="row">
+            <div class="col-md-3">
+                <select-input
+                #equip
+                label="Categoria"
+                [itens]="['Procedimento Geral', 'Odontológico', 'Clínico', 'Reprodução']"
+                (valor)="procedimento.categoria = $event"
+                [value]="procedimento.categoria" 
+                ></select-input>
+            </div>
+
+            <div class="col-md-3">
+                <text-input-autocomplete
+                #equip
+                [value]="procedimento.animal"
+                label="Animal"
+                colecao="{{animal_collection}}"
+                selectLabel="nome"
+                (valor)="procedimento.animal = $event; equip.realizarFiltragem($event.id)"
+                [filtro]="['referencia', '!=', true]"
+                ></text-input-autocomplete>
+            </div>
+
+            <div class="col-md-3">
+                <text-input
+                label="Responsável"
+                [(ngModel)]="procedimento.responsavel"
+                name="responsavel"></text-input>
+            </div>
+
+            <div class="col-md-3">
+                <date-input
+                label="Data do Procedimento"
+                (valor)="procedimento.data = $event"
+                [value]="procedimento.data"
+                name="data">
+                </date-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <text-input
+                label="Descrição"
+                [(ngModel)]="procedimento.descricao"
+                name="descricao"></text-input>
+            </div>
+
+            <div class="col-md-4" *ngIf="procedimento.categoria">
+                <text-input-autocomplete
+                #equip
+                label="Procedimento"
+                [value]="procedimento.procedimento"
+                colecao="{{cadastro_procedimento_collection}}"
+                selectLabel="nome"
+                (valor)="procedimento.procedimento = $event; equip.realizarFiltragem($event.id)"
+                [filtro]="['grupo', '==', procedimento.categoria]"
+                ></text-input-autocomplete>
+            </div>
+            
+            <div class="col-md-4">
+                <text-input
+                label="Anotações/Materiais"
+                [(ngModel)]="procedimento.anotacoes_materiais"
+                name="anotacoes_materiais"></text-input>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="text-center m-3">
+    <p *ngIf="this.procedimento.ultimaEdicao">{{this.procedimento.ultimaEdicao}}</p>
+    <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+</div>

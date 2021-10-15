@@ -1,0 +1,162 @@
+<div class="m-5">
+    <div class="col-md-12">
+        <select-input
+        #equip
+        label="Operação"
+        [itens]="['Crédito', 'Débito']"
+        (valor)="lancamento.operacao = $event; filtrar()"
+        [value]="lancamento.operacao" 
+        ></select-input>
+    </div>
+
+    <form #f="ngForm" *ngIf="lancamento.operacao">
+      <div class="row">
+          <div class="col-md-4">
+            <date-input
+            label="Data"
+            (valor)="lancamento.data = $event"
+            [value]="lancamento.data"
+            name="data">
+            </date-input>
+          </div>
+
+          <div class="col-md-4">
+            <number-input
+            label="Número do documento"
+            [(ngModel)]="lancamento.docNum"
+            name="docNum"
+            ></number-input>
+          </div>
+
+          <div class="col-md-4">
+            <text-input
+            label="Descrição"
+            [(ngModel)]="lancamento.descricao"
+            name="descricao"
+            ></text-input>
+          </div>
+
+        </div>
+        
+        
+        <div class="row">
+          <div [ngClass]="{'col-md-3': lancamento.repetir && lancamento.repetir != 'Não Repetir', 'col-md-4': !lancamento.repetir || lancamento.repetir == 'Não Repetir' }">
+            <number-input
+            label="Valor do documento"
+            [(ngModel)]="lancamento.valorDocumento"
+            name="valorDocumento"
+            ></number-input>
+          </div>
+          
+          <div [ngClass]="{'col-md-3': lancamento.repetir && lancamento.repetir != 'Não Repetir', 'col-md-4': !lancamento.repetir || lancamento.repetir == 'Não Repetir' }">
+            <select-input
+            #equip
+            label="Repetir"
+            [itens]="['Não Repetir', 'Semanalmente', 'Quinzenalmente', 'Mensalmente', 'Bimestralmente', 'Trimestralmente', 'Semestralmente' , 'Anualmente']"
+            (valor)="lancamento.repetir = $event"
+            [value]="lancamento.repetir" 
+            ></select-input>
+          </div>
+          
+          <div class="col-md-3" *ngIf="lancamento.repetir && lancamento.repetir != 'Não Repetir'">
+            <number-input
+            label="Quantidade de Repetições"
+            [(ngModel)]="lancamento.quantidadeRepeticao"
+            name="quantidadeRepeticao"
+            ></number-input>
+          </div>
+          
+          <div class="col-md-3" *ngIf="lancamento.repetir && lancamento.repetir != 'Não Repetir'">
+            <number-input
+            label="Pagamentos Efetuados"
+            [(ngModel)]="lancamento.pagamentosEfetuados"
+            name="pagamentosEfetuados"
+            ></number-input>
+          </div>
+          
+          <div class="col-md-3" *ngIf="!lancamento.repetir || lancamento.repetir == 'Não Repetir'">
+            <mat-checkbox name="pagamentoEfetuado"[(ngModel)]="lancamento.pagamentoEfetuado" class="example-margin">Pagamento Efetuado</mat-checkbox>
+          </div>
+        </div>
+
+        <div class="row">
+          <div [ngClass]="{'col-md-3': lancamento.centroDeCusto && lancamento.centroDeCusto.vincularAnimal, 'col-md-4': !lancamento.centroDeCusto|| !lancamento.centroDeCusto.vincularAnimal}" *ngIf="lancamento.operacao == 'Débito'">
+            <text-input-autocomplete
+            #equip
+            [value]="lancamento.centroDeCusto"
+            label="Centro De Custo"
+            colecao="{{ centro_de_custo_collection }}"
+            selectLabel="nome"
+            (valor)="lancamento.centroDeCusto = $event; equip.realizarFiltragem($event.id)"
+            [filtro]="['categoria', '==', 'Despesa']"
+            ></text-input-autocomplete>
+          </div>
+          
+          <div [ngClass]="{'col-md-3': lancamento.centroDeCusto && lancamento.centroDeCusto.vincularAnimal, 'col-md-4': !lancamento.centroDeCusto|| !lancamento.centroDeCusto.vincularAnimal}" *ngIf="lancamento.operacao == 'Crédito'">
+            <text-input-autocomplete
+            #equip
+            [value]="lancamento.centroDeCusto"
+            label="Centro De Custo"
+            colecao="{{ centro_de_custo_collection }}"
+            selectLabel="nome"
+            (valor)="lancamento.centroDeCusto = $event; equip.realizarFiltragem($event.id)"
+            [filtro]="['categoria', '==', 'Receita']"
+            ></text-input-autocomplete>
+          </div>
+    
+          <div class="col-md-3" *ngIf="lancamento.centroDeCusto?.vincularAnimal">
+            <text-input-autocomplete
+            #equip
+            label="Animal"
+            colecao="{{ animal_collection }}"
+            selectLabel="nome"
+            (valor)="lancamento.animal = $event; equip.realizarFiltragem($event.id)"
+            [value]="lancamento.animal"
+            [filtro]="['referencia', '!=', true]"
+            ></text-input-autocomplete>
+          </div>
+          
+          <div [ngClass]="{'col-md-3': lancamento.centroDeCusto && lancamento.centroDeCusto.vincularAnimal, 'col-md-4': !lancamento.centroDeCusto|| !lancamento.centroDeCusto.vincularAnimal}" *ngIf="lancamento.operacao == 'Débito'">
+              <text-input-autocomplete
+              #equip
+              [value]="lancamento.contaFinanceira"
+              label="Debitar Na Conta:"
+              colecao="{{ conta_financeira_collection }}"
+              selectLabel="nome"
+              (valor)="lancamento.contaFinanceira = $event; equip.realizarFiltragem($event.id)"
+              ></text-input-autocomplete>
+          </div>
+        
+          <div [ngClass]="{'col-md-3': lancamento.centroDeCusto && lancamento.centroDeCusto.vincularAnimal, 'col-md-4': !lancamento.centroDeCusto|| !lancamento.centroDeCusto.vincularAnimal}" *ngIf="lancamento.operacao == 'Crédito'">
+              <text-input-autocomplete
+              #equip
+              [value]="lancamento.contaFinanceira"
+              label="Creditar Na Conta:"
+              colecao="{{ conta_financeira_collection }}"
+              selectLabel="nome"
+              (valor)="lancamento.contaFinanceira = $event; equip.realizarFiltragem($event.id)"
+              ></text-input-autocomplete>
+          </div>
+      
+          <div [ngClass]="{'col-md-3': lancamento.centroDeCusto && lancamento.centroDeCusto.vincularAnimal, 'col-md-4': !lancamento.centroDeCusto|| !lancamento.centroDeCusto.vincularAnimal}" *ngIf="lancamento.operacao == 'Crédito'">
+              <text-input
+              label="Recebimento De:"
+              [(ngModel)]="lancamento.pagamento_recebimento"
+              name="pagamento_recebimentoCredito"
+              ></text-input>
+          </div>
+      
+          <div [ngClass]="{'col-md-3': lancamento.centroDeCusto && lancamento.centroDeCusto.vincularAnimal, 'col-md-4': !lancamento.centroDeCusto|| !lancamento.centroDeCusto.vincularAnimal}" *ngIf="lancamento.operacao == 'Débito'">
+            <text-input
+            label="Pagamento De:"
+            [(ngModel)]="lancamento.pagamento_recebimento"
+            name="pagamento_recebimentoCredito"
+            ></text-input>
+          </div>
+        </div>
+      </form>
+
+      <div class="text-center m-4">
+        <button type="submit" (click)="submit(this.lancamento)" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>

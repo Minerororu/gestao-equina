@@ -1,0 +1,35 @@
+<div class="displayTable text-center">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Sign Up</h3>
+
+      <div class="formGroup">
+        <input type="email" class="formControl" placeholder="Email" #userEmail required />
+      </div>
+
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Senha" #userPwd required />
+      </div>
+
+      <div class="formGroup">
+        <button
+          type="button"
+          class="btn-primary"
+          (click)="authService.SignUp(userEmail.value, userPwd.value)"
+        >
+          Criar Conta
+        </button>
+      </div>
+
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Ou</span></span>
+      </div>
+
+      <div class="redirectToLogin">
+        <span
+          >Já tem uma conta? <button class="redirect" routerLink="/log-in">Log In</button></span
+        >
+      </div>
+    </div>
+  </div>
+</div>

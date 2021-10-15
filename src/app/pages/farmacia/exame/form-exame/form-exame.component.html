@@ -1,0 +1,11 @@
+<div class="m-5">
+    <form #f="ngForm">
+        <text-input
+        label="Exame"
+        [(ngModel)]="exame.exame"
+        name="exame"></text-input>
+    </form>
+</div>
+<div class="text-center m-3">
+    <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+</div>

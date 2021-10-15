@@ -1,0 +1,100 @@
+<div class="m-5">
+    <form #f="ngForm">
+        <div class="row">
+            <div class="col-md-3">
+                <text-input
+                    label="Responsável"
+                    [(ngModel)]="examinacao.responsavel"
+                    name="responsavel"
+              ></text-input>
+            </div>
+
+            <div class="col-md-3">
+                <text-input-autocomplete
+                #equip
+                [value]="examinacao.animal"
+                label="Animal"
+                colecao="{{animal_collection}}"
+                selectLabel="nome"
+                (valor)="examinacao.animal = $event; equip.realizarFiltragem($event.id)"
+                [filtro]="['referencia', '!=', true]"
+                ></text-input-autocomplete>
+            </div>
+
+            <div class="col-md-3">
+                <date-input
+                label="Data do examinacao"
+                (valor)="examinacao.data = $event"
+                [value]="examinacao.data"
+                name="data">
+                </date-input>
+            </div>
+
+            <div class="col-md-3">
+                <select-input
+                #equip
+                label="Exame"
+                selectLabel="exame"
+                colecao="{{ exame_collection }}"
+                (valor)="examinacao.exame = $event"
+                [value]="examinacao.exame"
+                ></select-input>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <date-input
+                    label="Data de Coleta"
+                    (valor)="examinacao.dataColeta = $event"                            
+                    [value]="examinacao.dataColeta"
+                    name="dataColeta">
+                </date-input>
+            </div>
+
+            <div class="col-md-3">
+                <date-input
+                    label="Data de Validade do examinacao"
+                    (valor)="examinacao.dataValidade = $event"                            
+                    [value]="examinacao.dataValidade"
+                    name="dataValidade">
+                </date-input>
+            </div>
+            
+            <div class="col-md-3">
+                <date-input
+                    label="Data do Resultado"
+                    (valor)="examinacao.dataResultado = $event"                            
+                    [value]="examinacao.dataResultado"
+                    name="dataResultado">
+                </date-input>
+            </div>
+
+            <div class="col-md-3">
+                <text-input
+                label="Laboratório"
+                [(ngModel)]="examinacao.laboratorio"
+                name="laboratorio"
+                ></text-input>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <text-input
+                label="Resultado"
+                [(ngModel)]="examinacao.resultado"
+                name="resultado"
+                ></text-input>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <mat-checkbox (change)="set(this.examinacao.bloquearEdicao)" name="bloquearEdicao"[(ngModel)]="examinacao.bloquearEdicao" class="example-margin">Bloquear Edição</mat-checkbox>
+        </div>
+    </form>
+
+    <p *ngIf="this.examinacao.ultimaEdicao">Ultima Edição {{this.examinacao.ultimaEdicao}}</p>
+    <div class="text-center m-3">
+      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    </div>
+</div>
