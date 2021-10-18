@@ -8,9 +8,8 @@ describe('FormControleColetaSemenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormControleColetaSemenComponent ]
-    })
-    .compileComponents();
+      declarations: [FormControleColetaSemenComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

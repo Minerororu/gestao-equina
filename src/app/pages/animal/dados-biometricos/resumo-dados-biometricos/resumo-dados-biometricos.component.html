@@ -1,78 +1,157 @@
-<div style="max-height: 710px;" id='tabela' class="m-3"     >
-    <div class="d-flex justify-content-center">
-        <h1 class="border border-dark" > Data da Medida {{dado.data}} </h1>
-        <h1 class="border border-dark" > {{dado.animal.nome}} </h1>
-        <h1 class="border border-dark" > Responsável {{dado?.responsavel}} </h1>
-        <h1 class="border border-dark" > Peso {{dado?.peso}} kg </h1>
+<div style="max-height: 710px" id="tabela" class="m-3">
+  <div class="d-flex justify-content-center">
+    <h1 class="border border-dark">Data da Medida {{ dado.data }}</h1>
+    <h1 class="border border-dark">{{ dado.animal.nome }}</h1>
+    <h1 class="border border-dark">Responsável {{ dado?.responsavel }}</h1>
+    <h1 class="border border-dark">Peso {{ dado?.peso }} kg</h1>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Altura na Cernelha</b>
     </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Altura na Garupa</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Distância Codilho-Solo</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Perímetro Torácico</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Comprimento da Cabeca</b>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.cernelha }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.alturaGarupa }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.codilhoSolo }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.toracico }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.comprimentoCabeca }} cm
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Comprimento do Pescoco</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Comprimento da Espádua</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Comprimento Dorso-Lombo</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Comprimento da Garupa</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Comprimento do Corpo</b>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.pescoco }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.espadua }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.dorsoLombo }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.comprimentoGarupa }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.corpo }} cm
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Perímetro do Antebraço</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Perímetro do Joelho</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Perímetro da Canela</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Largura da Cabeça</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Perímetro da Anca</b>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.antebraco }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.joelho }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.canela }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.larguraCabeca }} cm
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.anca }} cm
+    </div>
+  </div>
+
+  <div class="m-2 border border-dark">
+    <div><b>Índices calculados</b></div>
 
     <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Altura na Cernelha</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Altura na Garupa</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Distância Codilho-Solo</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Perímetro Torácico</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Comprimento da Cabeca</b></div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Índice Corporal</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Índice Meloscópico</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Índice Dáctilo-Torácico</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Índice de Carga na Canela</b>
+      </div>
     </div>
     <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.cernelha}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.alturaGarupa}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.codilhoSolo}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.toracico}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.comprimentoCabeca}} cm</div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ dado?.IC }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ dado?.IM }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ dado?.IDT }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ dado?.ICC }}
+      </div>
     </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Comprimento do Pescoco</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Comprimento da Espádua</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Comprimento Dorso-Lombo</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Comprimento da Garupa</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Comprimento do Corpo</b></div>
-    </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.pescoco}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.espadua}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.dorsoLombo}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.comprimentoGarupa}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.corpo}} cm</div>
-    </div>
-    
-    <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Perímetro do Antebraço</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Perímetro do Joelho</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Perímetro da Canela</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Largura da Cabeça</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Perímetro da Anca</b></div>
-    </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.antebraco}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.joelho}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.canela}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.larguraCabeca}} cm</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.anca}} cm</div>
-    </div>
-    
-    
-    <div class="m-2 border border-dark">
-        <div><b>Índices calculados</b></div>
-        
-        <div class="d-flex">
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Índice Corporal</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Índice Meloscópico</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Índice Dáctilo-Torácico</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Índice de Carga na Canela</b></div>
-        </div>
-        <div class="d-flex">
-            <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.IC}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.IM}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.IDT}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.ICC}}</div>
-        </div>
-    </div>
+  </div>
 
-    <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Observações</b></div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Observações</b>
     </div>
-    
-    <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{dado?.observacoes}}</div>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ dado?.observacoes }}
     </div>
+  </div>
 </div>

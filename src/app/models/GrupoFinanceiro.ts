@@ -1,4 +1,4 @@
-export class GrupoFinanceiro{
-    id: string;
-    nome: string;
+export class GrupoFinanceiro {
+  id: string;
+  nome: string;
 }

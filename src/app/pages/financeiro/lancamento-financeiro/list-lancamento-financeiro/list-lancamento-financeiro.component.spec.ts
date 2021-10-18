@@ -8,9 +8,8 @@ describe('ListLancamentoFinanceiroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListLancamentoFinanceiroComponent ]
-    })
-    .compileComponents();
+      declarations: [ListLancamentoFinanceiroComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

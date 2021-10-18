@@ -4,16 +4,22 @@ import { DatabaseService } from 'src/app/helpers/database.service';
 import { CadastroProcedimento } from 'src/app/models/CadastroProcedimento';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CadastroProcedimentoService {
   procedimento: CadastroProcedimento;
   bloquearEdicao: boolean;
   constructor(private db: DatabaseService) {}
 
-  salvar<T>(procedimento: CadastroProcedimento, oldValue?: CadastroProcedimento) {
-    return this.db
-      .save<T>(CADASTRO_PROCEDIMENTO_CL + '', procedimento, oldValue)
+  salvar<T>(
+    procedimento: CadastroProcedimento,
+    oldValue?: CadastroProcedimento
+  ) {
+    return this.db.save<T>(
+      CADASTRO_PROCEDIMENTO_CL + '',
+      procedimento,
+      oldValue
+    );
   }
 
   atualizar(id: string, valor: CadastroProcedimento) {

@@ -8,9 +8,8 @@ describe('ListContaFinanceiraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListContaFinanceiraComponent ]
-    })
-    .compileComponents();
+      declarations: [ListContaFinanceiraComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

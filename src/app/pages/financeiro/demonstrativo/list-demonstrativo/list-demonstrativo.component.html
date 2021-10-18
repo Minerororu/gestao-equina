@@ -1,10 +1,14 @@
-<list [cabecalhos]="['Editar', 'Título', 'Descrição', 'Componentes']"
-[valores]="demonstrativos"
-[campos]="['titulo', 'descricao', 'componentes']"
-(editFunction)="edit($event)"
-(deleteFunction)="delete($event)"
-(clickFunction)="resumo($event)"></list>
+<list
+  [cabecalhos]="['Editar', 'Título', 'Descrição', 'Componentes']"
+  [valores]="demonstrativos"
+  [campos]="['titulo', 'descricao', 'componentes']"
+  (editFunction)="edit($event)"
+  (deleteFunction)="delete($event)"
+  (clickFunction)="resumo($event)"
+></list>
 
 <div style="text-align: center">
-    <button (click)="adicionar()" class="btn btn-primary">Adicionar Demonstrativo</button>
+  <button (click)="adicionar()" class="btn btn-primary">
+    Adicionar Demonstrativo
+  </button>
 </div>

@@ -6,30 +6,33 @@ import { RegistroClinicoService } from '../registro-clinico.service';
 @Component({
   selector: 'app-list-registro-clinico',
   templateUrl: './list-registro-clinico.component.html',
-  styleUrls: ['./list-registro-clinico.component.css']
+  styleUrls: ['./list-registro-clinico.component.css'],
 })
 export class ListRegistroClinicoComponent implements OnInit {
-  registros:  RegistroClinico[]
-  constructor(private service: RegistroClinicoService, private router: Router) { }
+  registros: RegistroClinico[];
+  constructor(
+    private service: RegistroClinicoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.service.listar().then(doc => {
-      this.registros = doc as RegistroClinico[]
-    })
+    this.service.listar().then((doc) => {
+      this.registros = doc as RegistroClinico[];
+    });
   }
 
-  adicionar(){
-    this.service.registroClinico = new RegistroClinico()
-    this.router.navigate(['form-registro'])
+  adicionar() {
+    this.service.registroClinico = new RegistroClinico();
+    this.router.navigate(['form-registro']);
   }
 
-  delete(registro: RegistroClinico){
-    this.service.remover(registro)
-    this.ngOnInit()
+  delete(registro: RegistroClinico) {
+    this.service.remover(registro);
+    this.ngOnInit();
   }
 
-  edit(registro: RegistroClinico){
-    this.service.registroClinico = registro
-    this.router.navigate(['form-registro'])
+  edit(registro: RegistroClinico) {
+    this.service.registroClinico = registro;
+    this.router.navigate(['form-registro']);
   }
 }

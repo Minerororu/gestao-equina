@@ -27,6 +27,8 @@ export class FormUsuarioComponent implements OnInit {
   submit(a: any) {
     a.invalid
       ? alert('Informações importantes não foram informadas')
-      : this.service.salvar(this.usuario).finally(() => this.router.navigate(['list-usuario']));
+      : this.service
+          .salvar(this.usuario)
+          .finally(() => this.router.navigate(['list-usuario']));
   }
 }

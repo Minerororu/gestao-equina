@@ -6,30 +6,30 @@ import { ExameService } from '../vacina.service';
 @Component({
   selector: 'app-list-exame',
   templateUrl: './list-exame.component.html',
-  styleUrls: ['./list-exame.component.css']
+  styleUrls: ['./list-exame.component.css'],
 })
 export class ListExameComponent implements OnInit {
-  exames: Exame[]
-  constructor(private service: ExameService, private router: Router) { }
+  exames: Exame[];
+  constructor(private service: ExameService, private router: Router) {}
 
   ngOnInit(): void {
-    this.service.listar().then(doc => {
-      this.exames = doc as Exame[]
-    })
+    this.service.listar().then((doc) => {
+      this.exames = doc as Exame[];
+    });
   }
 
-  edit(exame: Exame){
+  edit(exame: Exame) {
     this.service.exame = exame;
-    this.router.navigate(['form-exame'])
+    this.router.navigate(['form-exame']);
   }
 
-  delete(exame: Exame){
+  delete(exame: Exame) {
     this.service.remover(exame);
     this.ngOnInit();
   }
 
-  adicionar(){
+  adicionar() {
     this.service.exame = new Exame();
-    this.router.navigate(['form-exame'])
+    this.router.navigate(['form-exame']);
   }
 }

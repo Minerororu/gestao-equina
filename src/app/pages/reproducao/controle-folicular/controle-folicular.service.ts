@@ -13,8 +13,7 @@ export class ControleFolicularService {
   constructor(private db: DatabaseService, private router: Router) {}
 
   salvar<T>(controle: ControleFolicular, oldValue?: ControleFolicular) {
-    return this.db
-      .save<T>(CONTROLE_FOLICULAR_CL + '', controle, oldValue)
+    return this.db.save<T>(CONTROLE_FOLICULAR_CL + '', controle, oldValue);
   }
 
   atualizar(id: string, valor: ControleFolicular) {

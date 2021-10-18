@@ -13,8 +13,7 @@ export class VacinacaoService {
   constructor(private db: DatabaseService) {}
 
   salvar<T>(vacinacao: Vacinacao, oldValue?: Vacinacao) {
-    return this.db
-      .save<T>(VACINACAO_CL + '', vacinacao, oldValue)
+    return this.db.save<T>(VACINACAO_CL + '', vacinacao, oldValue);
   }
 
   atualizar(id: string, valor: Vacinacao) {

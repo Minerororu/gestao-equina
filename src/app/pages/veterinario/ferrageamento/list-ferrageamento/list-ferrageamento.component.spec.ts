@@ -8,9 +8,8 @@ describe('ListFerrageamentoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListFerrageamentoComponent ]
-    })
-    .compileComponents();
+      declarations: [ListFerrageamentoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

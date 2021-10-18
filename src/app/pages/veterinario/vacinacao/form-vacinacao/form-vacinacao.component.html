@@ -1,72 +1,84 @@
 <div class="m-5">
-    <form #f="ngForm">
-        <div class="row">
-            <div class="col-md-3">
-                <text-input
-                    label="Responsável"
-                    [(ngModel)]="vacinacao.responsavel"
-                    name="responsavel"
-              ></text-input>
-            </div>
+  <form #f="ngForm">
+    <div class="row">
+      <div class="col-md-3">
+        <text-input
+          label="Responsável"
+          [(ngModel)]="vacinacao.responsavel"
+          name="responsavel"
+        ></text-input>
+      </div>
 
-            <div class="col-md-3">
-                <text-input-autocomplete
-                #equip
-                [value]="vacinacao.animal"
-                label="Animal"
-                colecao="{{animal_collection}}"
-                selectLabel="nome"
-                (valor)="vacinacao.animal = $event; equip.realizarFiltragem($event.id)"
-                [filtro]="['referencia', '!=', true]"
-                ></text-input-autocomplete>
-            </div>
+      <div class="col-md-3">
+        <text-input-autocomplete
+          #equip
+          [value]="vacinacao.animal"
+          label="Animal"
+          colecao="{{ animal_collection }}"
+          selectLabel="nome"
+          (valor)="
+            vacinacao.animal = $event; equip.realizarFiltragem($event.id)
+          "
+          [filtro]="['referencia', '!=', true]"
+        ></text-input-autocomplete>
+      </div>
 
-            <div class="col-md-3">
-                <date-input
-                label="Data da Vacinação"
-                (valor)="vacinacao.data = $event"
-                [value]="vacinacao.data"
-                name="data">
-                </date-input>
-            </div>
+      <div class="col-md-3">
+        <date-input
+          label="Data da Vacinação"
+          (valor)="vacinacao.data = $event"
+          [value]="vacinacao.data"
+          name="data"
+        >
+        </date-input>
+      </div>
 
-            <div class="col-md-3">
-                <select-input
-                    #equip
-                    label="Vacina"
-                    selectLabel="vacina"
-                    colecao="{{ vacina_collection }}"
-                    (valor)="vacinacao.vacina = $event"
-                    [value]="vacinacao.vacina"
-                ></select-input>
-              </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <text-input
-                    label="Descrição"
-                    [(ngModel)]="vacinacao.descricao"
-                    name="descricao"
-              ></text-input>
-            </div>
-
-            <div class="col-md-6">
-                <text-input
-                    label="Anotações/Materias"
-                    [(ngModel)]="vacinacao.anotacoesMaterias"
-                    name="anotacoesMaterias"
-              ></text-input>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <mat-checkbox name="bloquearEdicao"[(ngModel)]="vacinacao.bloquearEdicao" class="example-margin">Bloquear Edição</mat-checkbox>
-        </div>
-    </form>
-
-    <p *ngIf="this.vacinacao.ultimaEdicao">Ultima Edição {{this.vacinacao.ultimaEdicao}}</p>
-    <div class="text-center m-3">
-      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+      <div class="col-md-3">
+        <select-input
+          #equip
+          label="Vacina"
+          selectLabel="vacina"
+          colecao="{{ vacina_collection }}"
+          (valor)="vacinacao.vacina = $event"
+          [value]="vacinacao.vacina"
+        ></select-input>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <text-input
+          label="Descrição"
+          [(ngModel)]="vacinacao.descricao"
+          name="descricao"
+        ></text-input>
+      </div>
+
+      <div class="col-md-6">
+        <text-input
+          label="Anotações/Materias"
+          [(ngModel)]="vacinacao.anotacoesMaterias"
+          name="anotacoesMaterias"
+        ></text-input>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <mat-checkbox
+        name="bloquearEdicao"
+        [(ngModel)]="vacinacao.bloquearEdicao"
+        class="example-margin"
+        >Bloquear Edição</mat-checkbox
+      >
+    </div>
+  </form>
+
+  <p *ngIf="this.vacinacao.ultimaEdicao">
+    Ultima Edição {{ this.vacinacao.ultimaEdicao }}
+  </p>
+  <div class="text-center m-3">
+    <button type="submit" (click)="submit()" class="btn btn-primary">
+      Enviar
+    </button>
+  </div>
 </div>

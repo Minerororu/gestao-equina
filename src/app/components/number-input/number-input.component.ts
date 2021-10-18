@@ -1,5 +1,5 @@
-import {Component, forwardRef, Input, NgZone, OnInit} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import { Component, forwardRef, Input, NgZone, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'number-input',
@@ -10,8 +10,8 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
       provide: NG_VALUE_ACCESSOR,
       multi: true,
       useExisting: forwardRef(() => NumberInputComponent),
-    }
-  ]
+    },
+  ],
 })
 export class NumberInputComponent implements OnInit, ControlValueAccessor {
   @Input() label: string;
@@ -22,15 +22,14 @@ export class NumberInputComponent implements OnInit, ControlValueAccessor {
   @Input() disabled: boolean;
   @Input() isRequired: boolean;
 
-  private propagateChange = (_: any) => { };
-  private propagateTouch = (_: any) => { };
+  private propagateChange = (_: any) => {};
+  private propagateTouch = (_: any) => {};
 
-  constructor(private _ngZone: NgZone) { }
+  constructor(private _ngZone: NgZone) {}
 
   ngOnInit() {
     this.isRequired = this.required != null;
   }
-
 
   writeValue(value: any): void {
     this.value = value;
@@ -43,12 +42,11 @@ export class NumberInputComponent implements OnInit, ControlValueAccessor {
     this.propagateTouch = fn;
   }
 
-  onChange(event : any) {
+  onChange(event: any) {
     this.propagateChange(this.value);
   }
 
-  onTouch(event : any) {
+  onTouch(event: any) {
     this.propagateTouch(event);
   }
 }
-

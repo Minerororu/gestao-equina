@@ -4,7 +4,7 @@ import { DatabaseService } from 'src/app/helpers/database.service';
 import { ContaFinanceira } from 'src/app/models/ContaFinanceira';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ContaFinanceiraService {
   contaFinanceira: ContaFinanceira;
@@ -12,8 +12,7 @@ export class ContaFinanceiraService {
   constructor(private db: DatabaseService) {}
 
   salvar<T>(contaFinanceira: ContaFinanceira, oldValue?: ContaFinanceira) {
-    return this.db
-      .save<T>(CONTA_CL + '', contaFinanceira, oldValue)
+    return this.db.save<T>(CONTA_CL + '', contaFinanceira, oldValue);
   }
 
   atualizar(id: string, valor: ContaFinanceira) {

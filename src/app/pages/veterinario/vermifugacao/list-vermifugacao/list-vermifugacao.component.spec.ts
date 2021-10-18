@@ -8,9 +8,8 @@ describe('ListVermifugacaoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListVermifugacaoComponent ]
-    })
-    .compileComponents();
+      declarations: [ListVermifugacaoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

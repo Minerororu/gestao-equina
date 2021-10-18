@@ -1,28 +1,37 @@
 <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Editar</th>
-            <th scope="col">Grupo</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Tipo da Conta</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let centro of centros" >
-                <td>
-                    <mat-icon title="Deletar" style="cursor: pointer" (click)="delete(centro)">delete</mat-icon>
-                    <mat-icon title="Editar" style="cursor: pointer" (click)="edit(centro)">edit</mat-icon>
-                </td>
+  <thead>
+    <tr>
+      <th scope="col">Editar</th>
+      <th scope="col">Grupo</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Categoria</th>
+      <th scope="col">Tipo da Conta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let centro of centros">
+      <td>
+        <mat-icon
+          title="Deletar"
+          style="cursor: pointer"
+          (click)="delete(centro)"
+          >delete</mat-icon
+        >
+        <mat-icon title="Editar" style="cursor: pointer" (click)="edit(centro)"
+          >edit</mat-icon
+        >
+      </td>
 
-                <td>{{centro?.grupo?.nome}}</td>
-                <td>{{centro.nome}}</td>
-                <td>{{centro.categoria}}</td>
-                <td>{{centro.tipoConta}}</td>
-        </tr>
-    </tbody>
+      <td>{{ centro?.grupo?.nome }}</td>
+      <td>{{ centro.nome }}</td>
+      <td>{{ centro.categoria }}</td>
+      <td>{{ centro.tipoConta }}</td>
+    </tr>
+  </tbody>
 </table>
 
 <div style="text-align: center">
-    <button (click)="adicionar()" class="btn btn-primary">Adicionar Conta Financeira</button>
+  <button (click)="adicionar()" class="btn btn-primary">
+    Adicionar Conta Financeira
+  </button>
 </div>

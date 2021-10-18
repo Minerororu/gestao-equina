@@ -1,12 +1,30 @@
 <div>
-    <list 
-    [cabecalhos]="['Editar', 'Animal', 'Categoria' ,'Responsável', 'Data', 'Procedimento', 'Anotações/Materiais']"
-    [valores]="procedimentos" 
-    [campos]="[['animal', 'nome'], 'categoria' ,'responsavel', 'data', ['procedimento', 'nome'], 'anotacoes_materiais']"
+  <list
+    [cabecalhos]="[
+      'Editar',
+      'Animal',
+      'Categoria',
+      'Responsável',
+      'Data',
+      'Procedimento',
+      'Anotações/Materiais'
+    ]"
+    [valores]="procedimentos"
+    [campos]="[
+      ['animal', 'nome'],
+      'categoria',
+      'responsavel',
+      'data',
+      ['procedimento', 'nome'],
+      'anotacoes_materiais'
+    ]"
     (editFunction)="edit($event)"
-    (deleteFunction)="delete($event)"></list>
-</div>  
+    (deleteFunction)="delete($event)"
+  ></list>
+</div>
 
 <div style="text-align: center">
-    <button (click)="adicionar()" class="btn btn-primary">Adicionar Examinação</button>
+  <button (click)="adicionar()" class="btn btn-primary">
+    Adicionar Examinação
+  </button>
 </div>

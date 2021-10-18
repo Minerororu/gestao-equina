@@ -1,95 +1,119 @@
 <div class="m-5">
-    <form #f="ngForm">
-        <mat-tab-group>
-            <mat-tab label="Cadastro">
-          <div class="row">
-              <div class="col-md-4">
-                <text-input-autocomplete
-                    #equip
-                    label="Animal"  
-                    colecao="{{ animal_collection }}"
-                    selectLabel="nome"
-                    (valor)="controle.animal = $event; equip.realizarFiltragem($event.id); "
-                    [value]="controle.animal"
-                    [filtro]="['referencia', '!=', true]"
-                ></text-input-autocomplete>      
-              </div>
-  
-              <div class="col-md-4">
-                <date-input
-                  label="Data do controle"
-                  (valor)="controle.data = $event"
-                  [value]="controle.data"
-                  name="data"
-                ></date-input>
-              </div>
+  <form #f="ngForm">
+    <mat-tab-group>
+      <mat-tab label="Cadastro">
+        <div class="row">
+          <div class="col-md-4">
+            <text-input-autocomplete
+              #equip
+              label="Animal"
+              colecao="{{ animal_collection }}"
+              selectLabel="nome"
+              (valor)="
+                controle.animal = $event; equip.realizarFiltragem($event.id)
+              "
+              [value]="controle.animal"
+              [filtro]="['referencia', '!=', true]"
+            ></text-input-autocomplete>
+          </div>
 
-              <div class="col-md-4">
-                <text-input
-                    label="Destinatário"
-                    [(ngModel)]="controle.destinatario"
-                    name="destinatario"
-                ></text-input>
-              </div>
-            </div>
+          <div class="col-md-4">
+            <date-input
+              label="Data do controle"
+              (valor)="controle.data = $event"
+              [value]="controle.data"
+              name="data"
+            ></date-input>
+          </div>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <number-input
-                        label="Número de Doses"
-                        [(ngModel)]="controle.numeroDoses"
-                        name="numeroDoses"
-                    ></number-input>
-                </div>
+          <div class="col-md-4">
+            <text-input
+              label="Destinatário"
+              [(ngModel)]="controle.destinatario"
+              name="destinatario"
+            ></text-input>
+          </div>
+        </div>
 
-                <div class="col-md-4">
-                    <number-input
-                        [disabled]="true"
-                        label="Doses Confirmadas"
-                        [(ngModel)]="controle.dosesConfirmadas"
-                        name="dosesConfirmadas"
-                    ></number-input>
-                </div>
+        <div class="row">
+          <div class="col-md-4">
+            <number-input
+              label="Número de Doses"
+              [(ngModel)]="controle.numeroDoses"
+              name="numeroDoses"
+            ></number-input>
+          </div>
 
-                <div class="col-md-4">
-                    <date-input
-                      label="Data do limite"
-                      (valor)="controle.dataLimite = $event"
-                      [value]="controle.dataLimite"
-                      name="dataLimite"
-                    ></date-input>
-                  </div>
-            </div>
-            
+          <div class="col-md-4">
+            <number-input
+              [disabled]="true"
+              label="Doses Confirmadas"
+              [(ngModel)]="controle.dosesConfirmadas"
+              name="dosesConfirmadas"
+            ></number-input>
+          </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                <text-input
-                    label="Observações"
-                    [(ngModel)]="controle.observacoes"
-                    name="observacoes"
-                ></text-input>
-                </div>
-            </div>
-        </mat-tab>
-    
-        <mat-tab label="Doses Coletadas">
-            <list [cabecalhos]="['Editar', 'Responsável', 'Data', 'Volume Ejaculado', 'Coloração', 'Comunicada']"
-            [valores]="controle.dosesColetadas"
-            [campos]="['responsavel', 'data', 'volumeEjaculado', 'coloracao', 'comunicada']"
-            (editFunction)="editarDose($event)"
-            (deleteFunction)="deletarDose($event)"
-            ></list>
+          <div class="col-md-4">
+            <date-input
+              label="Data do limite"
+              (valor)="controle.dataLimite = $event"
+              [value]="controle.dataLimite"
+              name="dataLimite"
+            ></date-input>
+          </div>
+        </div>
 
-            <div style="text-align: center" *ngIf="controle.dosesColetadas.length < controle.numeroDoses">
-                <button (click)="adicionarDose()" class="btn btn-primary">Adicionar Dose</button>
-            </div>
-        </mat-tab>
-      </mat-tab-group>
-    </form>
-  
-      <p *ngIf="this.controle.ultimaEdicao">Ultima Edição {{this.controle.ultimaEdicao}}</p>
-      <div class="text-center m-4">
-        <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <text-input
+              label="Observações"
+              [(ngModel)]="controle.observacoes"
+              name="observacoes"
+            ></text-input>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Doses Coletadas">
+        <list
+          [cabecalhos]="[
+            'Editar',
+            'Responsável',
+            'Data',
+            'Volume Ejaculado',
+            'Coloração',
+            'Comunicada'
+          ]"
+          [valores]="controle.dosesColetadas"
+          [campos]="[
+            'responsavel',
+            'data',
+            'volumeEjaculado',
+            'coloracao',
+            'comunicada'
+          ]"
+          (editFunction)="editarDose($event)"
+          (deleteFunction)="deletarDose($event)"
+        ></list>
+
+        <div
+          style="text-align: center"
+          *ngIf="controle.dosesColetadas.length < controle.numeroDoses"
+        >
+          <button (click)="adicionarDose()" class="btn btn-primary">
+            Adicionar Dose
+          </button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+
+  <p *ngIf="this.controle.ultimaEdicao">
+    Ultima Edição {{ this.controle.ultimaEdicao }}
+  </p>
+  <div class="text-center m-4">
+    <button type="submit" (click)="submit()" class="btn btn-primary">
+      Enviar
+    </button>
   </div>
+</div>

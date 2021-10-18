@@ -1,66 +1,72 @@
 <div class="m-5">
-    <form #f="ngForm">
-        <div class="row">
-            <div class="col-md-3">
-                <text-input
-                    label="Responsável"
-                    [(ngModel)]="ferrageamento.responsavel"
-                    name="responsavel"
-              ></text-input>
-            </div>
+  <form #f="ngForm">
+    <div class="row">
+      <div class="col-md-3">
+        <text-input
+          label="Responsável"
+          [(ngModel)]="ferrageamento.responsavel"
+          name="responsavel"
+        ></text-input>
+      </div>
 
-            <div class="col-md-3">
-                <text-input-autocomplete
-                #equip
-                [value]="ferrageamento.animal"
-                label="Animal"
-                colecao="{{animal_collection}}"
-                selectLabel="nome"
-                (valor)="ferrageamento.animal = $event; equip.realizarFiltragem($event.id)"
-                [filtro]="['referencia', '!=', true]"
-                ></text-input-autocomplete>
-            </div>
+      <div class="col-md-3">
+        <text-input-autocomplete
+          #equip
+          [value]="ferrageamento.animal"
+          label="Animal"
+          colecao="{{ animal_collection }}"
+          selectLabel="nome"
+          (valor)="
+            ferrageamento.animal = $event; equip.realizarFiltragem($event.id)
+          "
+          [filtro]="['referencia', '!=', true]"
+        ></text-input-autocomplete>
+      </div>
 
-            <div class="col-md-3">
-                <date-input
-                label="Data do ferrageamento"
-                (valor)="ferrageamento.data = $event"
-                [value]="ferrageamento.data"
-                name="data">
-                </date-input>
-            </div>
+      <div class="col-md-3">
+        <date-input
+          label="Data do ferrageamento"
+          (valor)="ferrageamento.data = $event"
+          [value]="ferrageamento.data"
+          name="data"
+        >
+        </date-input>
+      </div>
 
-            <div class="col-md-3">
-                <number-input
-                label="Período em Meses"
-                [(ngModel)]="ferrageamento.periodo"
-                name="periodo"
-                ></number-input>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-6">
-                <text-input
-                label="Anotações/Materiais"
-                [(ngModel)]="ferrageamento.anotacoes_materiais"
-                name="anotacoes_materiais"
-                ></text-input>
-            </div>
-
-            <div class="col-md-6">
-                <text-input
-                label="Descrição"
-                [(ngModel)]="ferrageamento.descricao"
-                name="descricao"
-                ></text-input>
-            </div>
-        </div>
-
-    </form>
-
-    <p *ngIf="this.ferrageamento.ultimaEdicao">Ultima Edição {{this.ferrageamento.ultimaEdicao}}</p>
-    <div class="text-center m-3">
-      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+      <div class="col-md-3">
+        <number-input
+          label="Período em Meses"
+          [(ngModel)]="ferrageamento.periodo"
+          name="periodo"
+        ></number-input>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <text-input
+          label="Anotações/Materiais"
+          [(ngModel)]="ferrageamento.anotacoes_materiais"
+          name="anotacoes_materiais"
+        ></text-input>
+      </div>
+
+      <div class="col-md-6">
+        <text-input
+          label="Descrição"
+          [(ngModel)]="ferrageamento.descricao"
+          name="descricao"
+        ></text-input>
+      </div>
+    </div>
+  </form>
+
+  <p *ngIf="this.ferrageamento.ultimaEdicao">
+    Ultima Edição {{ this.ferrageamento.ultimaEdicao }}
+  </p>
+  <div class="text-center m-3">
+    <button type="submit" (click)="submit()" class="btn btn-primary">
+      Enviar
+    </button>
+  </div>
 </div>

@@ -1,12 +1,20 @@
 <div>
-    <list 
-    [cabecalhos]="['Editar', 'Animal','Responsável', 'Data', 'Vermifugo']"
-    [valores]="vermifugacoes" 
-    [campos]="[['animal', 'nome'], 'responsavel', 'data', ['vermifugo', 'vermifugo']]"
+  <list
+    [cabecalhos]="['Editar', 'Animal', 'Responsável', 'Data', 'Vermifugo']"
+    [valores]="vermifugacoes"
+    [campos]="[
+      ['animal', 'nome'],
+      'responsavel',
+      'data',
+      ['vermifugo', 'vermifugo']
+    ]"
     (editFunction)="edit($event)"
-    (deleteFunction)="delete($event)"></list>
-</div>  
+    (deleteFunction)="delete($event)"
+  ></list>
+</div>
 
 <div style="text-align: center">
-    <button (click)="adicionar()" class="btn btn-primary">Adicionar Vermífugação</button>
+  <button (click)="adicionar()" class="btn btn-primary">
+    Adicionar Vermífugação
+  </button>
 </div>

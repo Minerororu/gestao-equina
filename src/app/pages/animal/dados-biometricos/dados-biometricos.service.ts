@@ -23,10 +23,13 @@ export class DadosBiometricosService {
     return this.db.update(DADOS_BIOMETRICOS_CL + '', id + '', { ...valor });
   }
 
-  listar<T>(where?: Array<{op: WhereFilterOp; value: any; key: string; }>,
-    orderBy?: string
-    | Array<string>
-    | { key: string; direction: 'asc' | 'desc' },) {
+  listar<T>(
+    where?: Array<{ op: WhereFilterOp; value: any; key: string }>,
+    orderBy?:
+      | string
+      | Array<string>
+      | { key: string; direction: 'asc' | 'desc' }
+  ) {
     return this.db.list<T>(DADOS_BIOMETRICOS_CL + '', orderBy, where);
   }
 

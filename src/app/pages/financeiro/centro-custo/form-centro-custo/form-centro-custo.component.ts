@@ -9,30 +9,34 @@ import { CentroCustoService } from '../centro-custo.service';
 @Component({
   selector: 'app-form-centro-custo',
   templateUrl: './form-centro-custo.component.html',
-  styleUrls: ['./form-centro-custo.component.css']
+  styleUrls: ['./form-centro-custo.component.css'],
 })
 export class FormCentroCustoComponent implements OnInit {
   centro: CentroCusto;
   grupo_collection = GRUPO_CENTRO_CL;
-  constructor(private service: CentroCustoService, private router: Router, private db: DatabaseService) { }
+  constructor(
+    private service: CentroCustoService,
+    private router: Router,
+    private db: DatabaseService
+  ) {}
 
   ngOnInit(): void {
-    if(this.service.centroCusto){
+    if (this.service.centroCusto) {
       this.centro = this.service.centroCusto;
       this.centro.grupo = this.service.centroCusto?.grupo;
-    }else{
+    } else {
       this.centro = new CentroCusto();
       this.centro.grupo = new GrupoFinanceiro();
     }
   }
 
-  submit(){
+  submit() {
     this.service.salvar(this.centro);
-    this.db.list(GRUPO_CENTRO_CL + '', '').then(doc => {
-      if(!doc.includes(this.centro.grupo.nome)){
+    this.db.list(GRUPO_CENTRO_CL + '', '').then((doc) => {
+      if (!doc.includes(this.centro.grupo.nome)) {
         this.db.save(GRUPO_CENTRO_CL + '', this.centro.grupo);
       }
-    })
+    });
     this.router.navigate(['list-centro-custo']);
   }
 }

@@ -7,41 +7,43 @@ import { ControleMovimentoService } from '../controle-saida.service';
 @Component({
   selector: 'app-list-controle-movimento',
   templateUrl: './list-controle-movimento.component.html',
-  styleUrls: ['./list-controle-movimento.component.css']
+  styleUrls: ['./list-controle-movimento.component.css'],
 })
 export class ListControleMovimentoComponent implements OnInit {
-  controlesSaida: ControleSaida[]
+  controlesSaida: ControleSaida[];
   movimento: string;
   controleEntrada: ControleEntrada[];
-  constructor(private service: ControleMovimentoService, private router: Router) { }
+  constructor(
+    private service: ControleMovimentoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.service.listarSaida().then(doc => {
-      this.controlesSaida = doc as ControleSaida[]
-    })
+    this.service.listarSaida().then((doc) => {
+      this.controlesSaida = doc as ControleSaida[];
+    });
 
-    this.service.listarEntrada().then(doc => {
-      this.controleEntrada = doc as ControleEntrada[]
-    })
+    this.service.listarEntrada().then((doc) => {
+      this.controleEntrada = doc as ControleEntrada[];
+    });
   }
 
-
-  delete(controle: ControleSaida){
+  delete(controle: ControleSaida) {
     this.service.remover(controle);
-    this.ngOnInit()
+    this.ngOnInit();
   }
 
-  edit(controle: ControleSaida){
+  edit(controle: ControleSaida) {
     this.service.controle = controle;
-    this.router.navigate(['form-controle-saida'])
-  }
-
-  adicionar(){
-    this.service.controle = new ControleSaida()
     this.router.navigate(['form-controle-saida']);
   }
 
-  filtrar(dado: string){
-    this.movimento = dado
+  adicionar() {
+    this.service.controle = new ControleSaida();
+    this.router.navigate(['form-controle-saida']);
+  }
+
+  filtrar(dado: string) {
+    this.movimento = dado;
   }
 }

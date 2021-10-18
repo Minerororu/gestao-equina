@@ -1,52 +1,59 @@
 <div class="m-5">
-    <form #f="ngForm">
-      <div class="row">
-        <div class="col-md-3">
-          <text-input-autocomplete
+  <form #f="ngForm">
+    <div class="row">
+      <div class="col-md-3">
+        <text-input-autocomplete
           #equip
           label="Grupo"
           colecao="{{ grupo_collection }}"
           selectLabel="nome"
           (valor)="centro.grupo = $event; equip.realizarFiltragem($event.id)"
           [value]="centro.grupo"
-          ></text-input-autocomplete>
-        </div>
+        ></text-input-autocomplete>
+      </div>
 
-          <div class="col-md-3">
-            <text-input
-            label="Nome"
-            [(ngModel)]="centro.nome"
-            name="nome"
-            ></text-input>
-          </div>
+      <div class="col-md-3">
+        <text-input
+          label="Nome"
+          [(ngModel)]="centro.nome"
+          name="nome"
+        ></text-input>
+      </div>
 
-          <div class="col-md-3">
-            <select-input
-            #equip
-            label="Categoria"
-            [itens]="['Despesa', 'Receita']"
-            (valor)="centro.categoria = $event"
-            [value]="centro.categoria" 
-            ></select-input>
-        </div>
+      <div class="col-md-3">
+        <select-input
+          #equip
+          label="Categoria"
+          [itens]="['Despesa', 'Receita']"
+          (valor)="centro.categoria = $event"
+          [value]="centro.categoria"
+        ></select-input>
+      </div>
 
-          <div class="col-md-3">
-              <select-input
-              #equip
-              label="Tipo Da Conta"
-              [itens]="['Analítica', 'Sintética']"
-              (valor)="centro.tipoConta = $event"
-              [value]="centro.tipoConta" 
-              ></select-input>
-          </div>  
-        </div>
-
-        <div class="col-md-4">
-          <mat-checkbox name="vincularAnimal"[(ngModel)]="centro.vincularAnimal" class="example-margin">Vincular a Animal</mat-checkbox>
-        </div>
-    </form>
-    <div class="text-center m-3">
-        <p *ngIf="centro.ultimaEdicao">{{centro.ultimaEdicao}}</p>
-      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+      <div class="col-md-3">
+        <select-input
+          #equip
+          label="Tipo Da Conta"
+          [itens]="['Analítica', 'Sintética']"
+          (valor)="centro.tipoConta = $event"
+          [value]="centro.tipoConta"
+        ></select-input>
+      </div>
     </div>
+
+    <div class="col-md-4">
+      <mat-checkbox
+        name="vincularAnimal"
+        [(ngModel)]="centro.vincularAnimal"
+        class="example-margin"
+        >Vincular a Animal</mat-checkbox
+      >
+    </div>
+  </form>
+  <div class="text-center m-3">
+    <p *ngIf="centro.ultimaEdicao">{{ centro.ultimaEdicao }}</p>
+    <button type="submit" (click)="submit()" class="btn btn-primary">
+      Enviar
+    </button>
+  </div>
 </div>

@@ -12,63 +12,80 @@ import { DemonstrativoService } from '../demonstrativo.service';
 @Component({
   selector: 'app-form-demonstrativo',
   templateUrl: './form-demonstrativo.component.html',
-  styleUrls: ['./form-demonstrativo.component.css']
+  styleUrls: ['./form-demonstrativo.component.css'],
 })
 export class FormDemonstrativoComponent implements OnInit {
   demonstrativo: Demonstrativo;
-  constructor(private service: DemonstrativoService, private router: Router, private dialog: MatDialog, private db: AngularFirestore) { }
+  constructor(
+    private service: DemonstrativoService,
+    private router: Router,
+    private dialog: MatDialog,
+    private db: AngularFirestore
+  ) {}
 
   ngOnInit(): void {
-    this.demonstrativo = this.service.demonstrativo? this.service.demonstrativo: new Demonstrativo(), this.demonstrativo.centrosDeCustos = [];
-    if(this.service.demonstrativo){
-      this.db.collection('demonstrativos').doc(this.demonstrativo.id).ref.get().then(doc => {
-        this.demonstrativo = doc.data() as Demonstrativo;
-      });
+    (this.demonstrativo = this.service.demonstrativo
+      ? this.service.demonstrativo
+      : new Demonstrativo()),
+      (this.demonstrativo.centrosDeCustos = []);
+    if (this.service.demonstrativo) {
+      this.db
+        .collection('demonstrativos')
+        .doc(this.demonstrativo.id)
+        .ref.get()
+        .then((doc) => {
+          this.demonstrativo = doc.data() as Demonstrativo;
+        });
     }
-  };
+  }
 
-  
-  adicionarCentro(){
+  adicionarCentro() {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '600px',
-      data: { title: 'Formulário de Centro de Custo', formularioCentroCusto: true},
+      data: {
+        title: 'Formulário de Centro de Custo',
+        formularioCentroCusto: true,
+      },
     });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.demonstrativo.centrosDeCustos.push(result);
       }
     });
   }
 
-  adicionarGrupo(){
-    this.demonstrativo.grupos ? '':this.demonstrativo.grupos = [];
+  adicionarGrupo() {
+    this.demonstrativo.grupos ? '' : (this.demonstrativo.grupos = []);
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '600px',
-      data: { title: 'Formulário de Centro de Custo', formularioGrupoFinanceiro: true},
+      data: {
+        title: 'Formulário de Centro de Custo',
+        formularioGrupoFinanceiro: true,
+      },
     });
-    
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.demonstrativo.grupos.push(result);
       }
     });
   }
-  
-  deleteCentro(centro: CentroCusto){
+
+  deleteCentro(centro: CentroCusto) {
     let centroIndex = this.demonstrativo.centrosDeCustos.indexOf(centro);
-    this.demonstrativo.centrosDeCustos.splice(centroIndex, 1,);
+    this.demonstrativo.centrosDeCustos.splice(centroIndex, 1);
   }
 
-  deleteGrupo(grupo){
+  deleteGrupo(grupo) {
     let grupoIndex = this.demonstrativo.grupos.indexOf(grupo);
     this.demonstrativo.grupos.splice(grupoIndex, 1);
   }
 
-  submit(){
-    if(this.demonstrativo.componentes == 'Centro Financeiro'){
+  submit() {
+    if (this.demonstrativo.componentes == 'Centro Financeiro') {
       this.demonstrativo.grupos = [];
-    }else if(this.demonstrativo.componentes == 'Grupos de Centros'){
+    } else if (this.demonstrativo.componentes == 'Grupos de Centros') {
       this.demonstrativo.centrosDeCustos = [];
     }
     this.demonstrativo.id = this.service.demonstrativo.id;

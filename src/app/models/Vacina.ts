@@ -1,5 +1,5 @@
 export class Vacina {
-    vacina: string;
-    periodica: boolean;
-    periodo: number;
+  vacina: string;
+  periodica: boolean;
+  periodo: number;
 }

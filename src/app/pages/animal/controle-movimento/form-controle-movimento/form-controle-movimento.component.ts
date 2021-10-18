@@ -8,28 +8,49 @@ import { ControleMovimentoService } from '../controle-saida.service';
 @Component({
   selector: 'app-form-controle-movimento',
   templateUrl: './form-controle-movimento.component.html',
-  styleUrls: ['./form-controle-movimento.component.css']
+  styleUrls: ['./form-controle-movimento.component.css'],
 })
 export class FormControleSaidaComponent implements OnInit {
-  controle: ControleSaida
-  constructor(private service: ControleMovimentoService, private animalService: AnimalService) { }
-  animal_collection = ANIMAIS_CL
-  motivos = ['Competição', 'Condomínio', 'Doação', 'Doma', 'Filial', 'Óbito', 'Reprodução', 'Retorno',
-             'Tratamento Clínico', 'Treinamento', 'Vendido', 'Outro']
+  controle: ControleSaida;
+  constructor(
+    private service: ControleMovimentoService,
+    private animalService: AnimalService
+  ) {}
+  animal_collection = ANIMAIS_CL;
+  motivos = [
+    'Competição',
+    'Condomínio',
+    'Doação',
+    'Doma',
+    'Filial',
+    'Óbito',
+    'Reprodução',
+    'Retorno',
+    'Tratamento Clínico',
+    'Treinamento',
+    'Vendido',
+    'Outro',
+  ];
   ngOnInit(): void {
-    this.controle = this.service.controle ? this.service.controle: new ControleSaida();
+    this.controle = this.service.controle
+      ? this.service.controle
+      : new ControleSaida();
   }
 
   submit() {
-    if(this.controle.animal.referencia){
-      alert('Animais de referências não podem sair')
-    }else{
+    if (this.controle.animal.referencia) {
+      alert('Animais de referências não podem sair');
+    } else {
       this.controle.ultimaEdicao = hoje();
       this.service.salvar(this.controle);
-      if(this.controle.motivo == 'Doação' || this.controle.motivo == 'Óbito' || this.controle.motivo == 'Retorno'||
-        this.controle.motivo == 'Vendido'){
-          this.controle.animal.referencia = true
-          this.animalService.salvar(this.controle.animal)
+      if (
+        this.controle.motivo == 'Doação' ||
+        this.controle.motivo == 'Óbito' ||
+        this.controle.motivo == 'Retorno' ||
+        this.controle.motivo == 'Vendido'
+      ) {
+        this.controle.animal.referencia = true;
+        this.animalService.salvar(this.controle.animal);
       }
     }
   }

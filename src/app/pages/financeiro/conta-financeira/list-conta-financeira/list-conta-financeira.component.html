@@ -1,10 +1,20 @@
-<list [cabecalhos]="['Editar', 'Tipo', 'Nome da Conta', 'Nome do Titular', 'Agência', 'Saldo']"
-[valores]="contaFinanceiras"
-[campos]="['tipo', 'nome', 'nomeTitular', 'agencia','saldo']"
-(editFunction)="edit($event)"
-(deleteFunction)="delete($event)"
+<list
+  [cabecalhos]="[
+    'Editar',
+    'Tipo',
+    'Nome da Conta',
+    'Nome do Titular',
+    'Agência',
+    'Saldo'
+  ]"
+  [valores]="contaFinanceiras"
+  [campos]="['tipo', 'nome', 'nomeTitular', 'agencia', 'saldo']"
+  (editFunction)="edit($event)"
+  (deleteFunction)="delete($event)"
 ></list>
 
 <div style="text-align: center">
-    <button (click)="adicionar()" class="btn btn-primary">Adicionar Conta Financeira</button>
+  <button (click)="adicionar()" class="btn btn-primary">
+    Adicionar Conta Financeira
+  </button>
 </div>

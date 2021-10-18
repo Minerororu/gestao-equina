@@ -22,7 +22,7 @@ export class ListUsuarioComponent implements OnInit {
     this.titleService.titulo = 'Lista de Usuarios';
     this.service.usuario = new Usuario();
 
-    this.service.listar().then(doc => {
+    this.service.listar().then((doc) => {
       this.usuarios = doc as Usuario[];
     });
   }

@@ -8,9 +8,8 @@ describe('ListControleFolicularComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListControleFolicularComponent ]
-    })
-    .compileComponents();
+      declarations: [ListControleFolicularComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

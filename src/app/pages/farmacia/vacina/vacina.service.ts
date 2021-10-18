@@ -4,7 +4,7 @@ import { DatabaseService } from 'src/app/helpers/database.service';
 import { Vacina } from 'src/app/models/Vacina';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VacinaService {
   vacina: Vacina;
@@ -12,8 +12,7 @@ export class VacinaService {
   constructor(private db: DatabaseService) {}
 
   salvar<T>(vacina: Vacina, oldValue?: Vacina) {
-    return this.db
-      .save<T>(VACINA_CL + '', vacina, oldValue)
+    return this.db.save<T>(VACINA_CL + '', vacina, oldValue);
   }
 
   atualizar(id: string, valor: Vacina) {

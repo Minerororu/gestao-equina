@@ -54,62 +54,97 @@ const routes: Routes = [
   { path: '', redirectTo: 'log-in', pathMatch: 'full' },
 
   { path: 'form-animal', component: FormAnimalComponent },
-  { path: 'list-animal', component: ListAnimalComponent},
-  { path: 'resumo-animal', component: ResumoAnimalComponent},
-  { path: 'resumo-custo-animal', component: ResumoCustoAnimalComponent},
+  { path: 'list-animal', component: ListAnimalComponent },
+  { path: 'resumo-animal', component: ResumoAnimalComponent },
+  { path: 'resumo-custo-animal', component: ResumoCustoAnimalComponent },
 
   { path: 'form-controle-movimento', component: FormControleSaidaComponent },
-  { path: 'list-controle-movimento', component: ListControleMovimentoComponent},
+  {
+    path: 'list-controle-movimento',
+    component: ListControleMovimentoComponent,
+  },
 
-  { path: 'form-dados-biometricos', component: FormDadosBiometricosComponent},
-  { path: 'list-dados-biometricos', component: ListDadosBiometricosComponent},
-  { path: 'resumo-dados-biometricos', component: ResumoDadosBiometricosComponent},
-  { path: 'resumo-crescimento', component: ResumoCrescimentoComponent},
-
+  { path: 'form-dados-biometricos', component: FormDadosBiometricosComponent },
+  { path: 'list-dados-biometricos', component: ListDadosBiometricosComponent },
+  {
+    path: 'resumo-dados-biometricos',
+    component: ResumoDadosBiometricosComponent,
+  },
+  { path: 'resumo-crescimento', component: ResumoCrescimentoComponent },
 
   { path: 'form-registro', component: FormRegistroClinicoComponent },
-  { path: 'list-registro', component: ListRegistroClinicoComponent},
+  { path: 'list-registro', component: ListRegistroClinicoComponent },
 
   { path: 'form-vacinacao', component: FormVacinacaoComponent },
-  { path: 'list-vacinacao', component: ListVacinacaoComponent},
+  { path: 'list-vacinacao', component: ListVacinacaoComponent },
 
   { path: 'form-vermifugacao', component: FormVermifugacaoComponent },
-  { path: 'list-vermifugacao', component: ListVermifugacaoComponent},
+  { path: 'list-vermifugacao', component: ListVermifugacaoComponent },
 
   { path: 'form-ferrageamento', component: FormFerrageamentoComponent },
-  { path: 'list-ferrageamento', component: ListFerrageamentoComponent},
+  { path: 'list-ferrageamento', component: ListFerrageamentoComponent },
 
   { path: 'form-uso-procedimento', component: FormUsoProcedimentoComponent },
-  { path: 'list-uso-procedimento', component: ListUsoProcedimentoComponent},
+  { path: 'list-uso-procedimento', component: ListUsoProcedimentoComponent },
 
   { path: 'form-examinacao', component: FormExaminacaoComponent },
-  { path: 'list-examinacao', component: ListExaminacaoComponent},
+  { path: 'list-examinacao', component: ListExaminacaoComponent },
 
   { path: 'form-vacina', component: FormVacinaComponent },
-  { path: 'list-vacina', component: ListVacinaComponent},
+  { path: 'list-vacina', component: ListVacinaComponent },
 
   { path: 'form-vermifugo', component: FormVermifugoComponent },
-  { path: 'list-vermifugo', component: ListVermifugoComponent},
+  { path: 'list-vermifugo', component: ListVermifugoComponent },
 
   { path: 'form-exame', component: FormExameComponent },
-  { path: 'list-exame', component: ListExameComponent},
+  { path: 'list-exame', component: ListExameComponent },
 
-  { path: 'form-cadastro-procedimento', component: FormCadastroProcedimentoComponent },
-  { path: 'list-cadastro-procedimento', component: ListCadastroProcedimentoComponent},
+  {
+    path: 'form-cadastro-procedimento',
+    component: FormCadastroProcedimentoComponent,
+  },
+  {
+    path: 'list-cadastro-procedimento',
+    component: ListCadastroProcedimentoComponent,
+  },
 
-  { path: 'form-controle-reproducao', component: FormControleReproducaoComponent },
-  { path: 'list-controle-reproducao', component: ListControleReproducaoComponent},
+  {
+    path: 'form-controle-reproducao',
+    component: FormControleReproducaoComponent,
+  },
+  {
+    path: 'list-controle-reproducao',
+    component: ListControleReproducaoComponent,
+  },
 
-  { path: 'nascimentos', component: NascimentosComponent},
+  { path: 'nascimentos', component: NascimentosComponent },
 
-  { path: 'form-controle-coleta-semen', component: FormControleColetaSemenComponent },
-  { path: 'list-controle-coleta-semen', component: ListControleColetaSemenComponent },
+  {
+    path: 'form-controle-coleta-semen',
+    component: FormControleColetaSemenComponent,
+  },
+  {
+    path: 'list-controle-coleta-semen',
+    component: ListControleColetaSemenComponent,
+  },
 
-  { path: 'form-controle-folicular', component: FormControleFolicularComponent },
-  { path: 'list-controle-folicular', component: ListControleFolicularComponent },
+  {
+    path: 'form-controle-folicular',
+    component: FormControleFolicularComponent,
+  },
+  {
+    path: 'list-controle-folicular',
+    component: ListControleFolicularComponent,
+  },
 
-  { path: 'form-lancamento-financeiro', component: FormLancamentoFinanceiroComponent },
-  { path: 'list-lancamento-financeiro', component: ListLancamentoFinanceiroComponent },
+  {
+    path: 'form-lancamento-financeiro',
+    component: FormLancamentoFinanceiroComponent,
+  },
+  {
+    path: 'list-lancamento-financeiro',
+    component: ListLancamentoFinanceiroComponent,
+  },
 
   { path: 'form-conta-financeira', component: FormContaFinanceiraComponent },
   { path: 'list-conta-financeira', component: ListContaFinanceiraComponent },
@@ -117,18 +152,18 @@ const routes: Routes = [
   { path: 'form-centro-custo', component: FormCentroCustoComponent },
   { path: 'list-centro-custo', component: ListCentroCustoComponent },
 
-  { path: 'form-demonstrativo', component: FormDemonstrativoComponent},
-  { path: 'list-demonstrativo', component: ListDemonstrativoComponent},
-  { path: 'resumo-demonstrativo', component: ResumoDemonstrativoComponent},
-  { path: 'dre-anual', component: DreAnualComponent},
+  { path: 'form-demonstrativo', component: FormDemonstrativoComponent },
+  { path: 'list-demonstrativo', component: ListDemonstrativoComponent },
+  { path: 'resumo-demonstrativo', component: ResumoDemonstrativoComponent },
+  { path: 'dre-anual', component: DreAnualComponent },
 
-  { path: 'log-in', component: LoginComponent},
+  { path: 'log-in', component: LoginComponent },
 
-  { path: 'register-user', component: SignUpComponent},
+  { path: 'register-user', component: SignUpComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

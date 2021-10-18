@@ -22,14 +22,14 @@ export class Animal {
     dataColeta: string;
     responsavel: string;
     ordem: string;
-    resenha: any //documento;
+    resenha: any; //documento;
   };
   registroAssociacao: {
     tipo: string;
     numero: number;
     livro: string;
     numeroChip: number;
-    registro: any // documento;
+    registro: any; // documento;
     grauPureza: number;
   };
   classificacao: string;
@@ -45,5 +45,5 @@ export class Animal {
   preco: number;
   parcelas: number;
   ultimaEdicao: string;
-  idade: number
+  idade: number;
 }

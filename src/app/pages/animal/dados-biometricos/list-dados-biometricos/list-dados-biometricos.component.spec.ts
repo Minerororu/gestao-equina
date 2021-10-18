@@ -8,9 +8,8 @@ describe('ListDadosBiometricosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListDadosBiometricosComponent ]
-    })
-    .compileComponents();
+      declarations: [ListDadosBiometricosComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

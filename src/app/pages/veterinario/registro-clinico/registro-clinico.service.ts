@@ -12,8 +12,7 @@ export class RegistroClinicoService {
   constructor(private db: DatabaseService, private router: Router) {}
 
   salvar<T>(registroClinico: RegistroClinico, oldValue?: RegistroClinico) {
-    return this.db
-      .save<T>(REGISTRO_CLINICO_CL + '', registroClinico, oldValue)
+    return this.db.save<T>(REGISTRO_CLINICO_CL + '', registroClinico, oldValue);
   }
 
   atualizar(id: string, valor: RegistroClinico) {

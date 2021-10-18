@@ -5,14 +5,13 @@ import { DadosBiometricosService } from '../dados-biometricos.service';
 @Component({
   selector: 'app-resumo-dados-biometricos',
   templateUrl: './resumo-dados-biometricos.component.html',
-  styleUrls: ['./resumo-dados-biometricos.component.css']
+  styleUrls: ['./resumo-dados-biometricos.component.css'],
 })
 export class ResumoDadosBiometricosComponent implements OnInit {
-  dado : DadosBiometricos
-  constructor(private service: DadosBiometricosService) { }
+  dado: DadosBiometricos;
+  constructor(private service: DadosBiometricosService) {}
 
   ngOnInit(): void {
-    this.dado = this.service.dado
+    this.dado = this.service.dado;
   }
-
 }

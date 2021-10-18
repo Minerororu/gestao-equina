@@ -6,35 +6,35 @@ import { DemonstrativoService } from '../demonstrativo.service';
 @Component({
   selector: 'app-list-demonstrativo',
   templateUrl: './list-demonstrativo.component.html',
-  styleUrls: ['./list-demonstrativo.component.css']
+  styleUrls: ['./list-demonstrativo.component.css'],
 })
 export class ListDemonstrativoComponent implements OnInit {
   demonstrativos: Demonstrativo[];
 
-  constructor(private service: DemonstrativoService, private router: Router) { }
+  constructor(private service: DemonstrativoService, private router: Router) {}
 
   ngOnInit(): void {
-    this.service.listar().then(doc => {
+    this.service.listar().then((doc) => {
       this.demonstrativos = doc as Demonstrativo[];
-    })
+    });
   }
 
-  delete(demonstrativo: Demonstrativo){
+  delete(demonstrativo: Demonstrativo) {
     this.service.remover(demonstrativo);
     this.ngOnInit();
   }
-  
-  edit(demonstrativo: Demonstrativo){
+
+  edit(demonstrativo: Demonstrativo) {
     this.service.demonstrativo = demonstrativo;
     this.router.navigate(['form-demonstrativo']);
   }
 
-  adicionar(){
+  adicionar() {
     this.service.demonstrativo = new Demonstrativo();
     this.router.navigate(['form-demonstrativo']);
   }
 
-  resumo(demonstrativo: Demonstrativo){
+  resumo(demonstrativo: Demonstrativo) {
     this.service.demonstrativo = demonstrativo;
     this.router.navigate(['resumo-demonstrativo']);
   }

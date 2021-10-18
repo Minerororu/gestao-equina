@@ -8,9 +8,8 @@ describe('FormDadosBiometricosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormDadosBiometricosComponent ]
-    })
-    .compileComponents();
+      declarations: [FormDadosBiometricosComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

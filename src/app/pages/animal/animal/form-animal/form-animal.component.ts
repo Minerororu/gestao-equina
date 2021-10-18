@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from '../animal.service';
 import { Animal } from 'src/app/models/Animal';
-import { ANIMAIS_CL} from 'src/app/components/constants/constants';
+import { ANIMAIS_CL } from 'src/app/components/constants/constants';
 import { Router } from '@angular/router';
 import { ControleMovimentoService } from '../../controle-movimento/controle-saida.service';
 import { ControleEntrada } from 'src/app/models/ControleEntrada';
@@ -13,60 +13,85 @@ import { hoje } from 'src/app/helpers/function';
   styleUrls: ['./form-animal.component.css'],
 })
 export class FormAnimalComponent implements OnInit {
-  animal: Animal
+  animal: Animal;
   ultimaEdicao: Date;
-  venda = false
+  venda = false;
 
   animal_collection = ANIMAIS_CL;
-  tipos = ['Sem Registro', 'Aguardando', 'Provisório', 'Denifitivo', 'Receptora']
-  metodosConcepcao = ['Não Informado', 'MN-Monta Natural', 'IA-Inseminação Artificial']
-  opcoesVenda=['Sim', 'Não', 'Vendido']
+  sexos: string[] = ['Macho', 'Fêmea'];
+  papeisFem = ['Matriz', 'Doadora', 'Potra', 'Receptora', 'Mula', 'Jumenta'];
+  papeisMacho = ['Garanhão', 'Castrado', 'Potro', 'Burro', 'Jumento'];
+  temperamentos = ['Calmo', 'Agitado', 'Nervoso'];
+  tipos = [
+    'Sem Registro',
+    'Aguardando',
+    'Provisório',
+    'Denifitivo',
+    'Receptora',
+  ];
+  metodosConcepcao = [
+    'Não Informado',
+    'MN-Monta Natural',
+    'IA-Inseminação Artificial',
+    'Transferência de embrião',
+  ];
+  opcoesVenda = ['Sim', 'Não', 'Vendido'];
 
-  constructor(private service: AnimalService, private router: Router, private controleService: ControleMovimentoService) {}
+  constructor(
+    private service: AnimalService,
+    private router: Router,
+    private controleService: ControleMovimentoService
+  ) {}
 
   ngOnInit(): void {
-    this.animal = this.service.animal ? this.service.animal: new Animal();
-    this.service?.animal?.exameDna ? '' : this.animal.exameDna = { 
-      dataColeta: null,
-      responsavel: null,
-      ordem: null,
-      resenha: null
-    }
-    this.service?.animal?.registroAssociacao ? '' : this.animal.registroAssociacao= {
-      tipo: null,
-      numero: null,
-      livro: null,
-      numeroChip: null,
-      registro: null,
-      grauPureza: null
-    };
+    this.animal = this.service.animal ? this.service.animal : new Animal();
+    this.service.animal == undefined ? (this.animal.vivo = true) : '';
+    this.service?.animal?.exameDna
+      ? ''
+      : (this.animal.exameDna = {
+          dataColeta: null,
+          responsavel: null,
+          ordem: null,
+          resenha: null,
+        });
+    this.service?.animal?.registroAssociacao
+      ? ''
+      : (this.animal.registroAssociacao = {
+          tipo: null,
+          numero: null,
+          livro: null,
+          numeroChip: null,
+          registro: null,
+          grauPureza: null,
+        });
   }
 
-  set(param: any){
+  set(param: any) {
     param = !param;
   }
 
-  setParam(mudado, param){
+  setParam(mudado, param) {
     mudado = param;
   }
 
-  setDadosbasicos(){
+  setDadosbasicos() {
     this.animal.ultimaEdicao = hoje();
     let pai = this.animal.pai;
     let mae = this.animal.mae;
-    if(!pai?.filhos?.includes(this.animal.nome)){
+    if (!pai?.filhos?.includes(this.animal.nome)) {
       pai?.filhos?.push(this.animal.nome);
-    }if(!mae?.filhos.includes(this.animal.nome)){
+    }
+    if (!mae?.filhos.includes(this.animal.nome)) {
       mae?.filhos.push(this.animal.nome);
     }
-    this.animal.filhos? '': this.animal.filhos = [];
+    this.animal.filhos ? '' : (this.animal.filhos = []);
     this.animal.id = this.animal.nome;
     this.service.salvar(this.animal);
     this.service.salvar(pai);
     this.service.salvar(mae);
   }
 
-  criarControleEntrada(){
+  criarControleEntrada() {
     let CE: ControleEntrada = new ControleEntrada();
     CE.animal = this.animal?.nome;
     CE.controle = this.animal?.controlCriador;
@@ -82,7 +107,7 @@ export class FormAnimalComponent implements OnInit {
 
   submit() {
     this.setDadosbasicos();
-    this.animal.dataEntrada ? this.criarControleEntrada() :'';
-    this.router.navigate(['list-animal'])
+    this.animal.dataEntrada ? this.criarControleEntrada() : '';
+    this.router.navigate(['list-animal']);
   }
 }

@@ -1,18 +1,16 @@
 <mat-form-field appearance="outline" style="width: 100%">
-    <mat-label>{{ label }}</mat-label>
-    <input
-        matInput
-        [placeholder]="placeholder"
-        (change)="onChange($event)"
-        (ngModelChange)="value = $event.toUpperCase()"
-        [disabled]="disabled"
-        [readonly]="readonly"
-        [required]="isRequired"
-        [(ngModel)]="value"
-    />
-    <div class="d-flex align-items-top" *ngIf="filtragem">
-        <button mat-button (click)="filtrar.emit()">
-            Ok
-        </button>
-    </div>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [placeholder]="placeholder"
+    (change)="onChange($event)"
+    (ngModelChange)="value = $event.toUpperCase()"
+    [disabled]="disabled"
+    [readonly]="readonly"
+    [required]="isRequired"
+    [(ngModel)]="value"
+  />
+  <div class="d-flex align-items-top" *ngIf="filtragem">
+    <button mat-button (click)="filtrar.emit()">Ok</button>
+  </div>
 </mat-form-field>

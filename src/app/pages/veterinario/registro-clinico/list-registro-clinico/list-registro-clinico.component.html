@@ -1,12 +1,30 @@
 <div>
-    <list 
-    [cabecalhos]="['Editar', 'Animal','Responsável', 'Data', 'Motivo', 'Doença', 'Situação']"
-    [valores]="registros" 
-    [campos]="[['animal', 'nome'], 'responsavel', 'data', 'motivo', 'doenca', 'situacao']"
+  <list
+    [cabecalhos]="[
+      'Editar',
+      'Animal',
+      'Responsável',
+      'Data',
+      'Motivo',
+      'Doença',
+      'Situação'
+    ]"
+    [valores]="registros"
+    [campos]="[
+      ['animal', 'nome'],
+      'responsavel',
+      'data',
+      'motivo',
+      'doenca',
+      'situacao'
+    ]"
     (editFunction)="edit($event)"
-    (deleteFunction)="delete($event)"></list>
-</div>  
+    (deleteFunction)="delete($event)"
+  ></list>
+</div>
 
 <div style="text-align: center">
-    <button (click)="adicionar()" class="btn btn-primary">Adicionar Registro Clínico</button>
+  <button (click)="adicionar()" class="btn btn-primary">
+    Adicionar Registro Clínico
+  </button>
 </div>

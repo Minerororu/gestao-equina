@@ -1,146 +1,336 @@
-<div style="max-height: 710px;" id='tabela' class="m-3">
-    <div class="d-flex justify-content-center">
-        <h1 class="border border-dark" *ngIf="animal?.dataNascimento"> Nascimento {{animal?.dataNascimento}} </h1>
-        <h1 class="border border-dark" > {{animal.nome}} </h1>
-        <h1 class="border border-dark" *ngIf="animal?.dataEntrada"> Data de Entrada {{animal?.dataEntrada}} </h1>
+<div style="max-height: 710px" id="tabela" class="m-3">
+  <div class="d-flex justify-content-center">
+    <h1 class="border border-dark" *ngIf="animal?.dataNascimento">
+      Nascimento {{ animal?.dataNascimento }}
+    </h1>
+    <h1 class="border border-dark">{{ animal.nome }}</h1>
+    <h1 class="border border-dark" *ngIf="animal?.dataEntrada">
+      Data de Entrada {{ animal?.dataEntrada }}
+    </h1>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Pai</b>
     </div>
-    <div class="d-flex ">
-        <div scope="col" class="border border-dark" style="width: 100%"><b>Pai</b></div>
-        <div scope="col" class="border border-dark"  style="width: 100%;"><b>Mãe</b></div>
-        <div scope="col" class="border border-dark" style="width: 100%;" ><b>Receptora</b></div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Mãe</b>
     </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.pai?.nome}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.mae?.nome}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.receptora?.nome}}</div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Receptora</b>
     </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Proprietário</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Criador</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Controle de Criador</b></div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.pai?.nome }}
     </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.proprietario}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.criador}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.controlCriador}}</div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.mae?.nome }}
     </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Categoria</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Temperamento</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Pelagem</b></div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.receptora?.nome }}
     </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.categoria}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.temperamento}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.pelagem}}</div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Proprietário</b>
     </div>
-    
-    <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Nacionalidade</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Vivo</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Referência</b></div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Criador</b>
     </div>
-    <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.nacionalidade}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.vivo == true">Sim</div>
-        <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.vivo == false">Não</div>
-        <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.referencia == true">Sim</div>
-        <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.referencia == false">Não</div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Controle de Criador</b>
     </div>
-    
-    
-    <div class="d-flex">
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Classificação</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Método Concepção</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Transfêrencia Embrião</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>DataDesmame</b></div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.proprietario }}
     </div>
-    <div class="d-flex">
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.classificacao}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.metodoConcepcao}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.transferenciaEmbriao == true">Sim</div>
-            <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.transferenciaEmbriao == false">Não</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.dataDesmame}}</div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.criador }}
     </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.controlCriador }}
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Categoria</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Temperamento</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Pelagem</b>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.categoria }}
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.temperamento }}
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.pelagem }}
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Nacionalidade</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Vivo</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Referência</b>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.nacionalidade }}
+    </div>
+    <div
+      scope="col"
+      class="border border-dark"
+      style="width: 100%"
+      *ngIf="animal.vivo == true"
+    >
+      Sim
+    </div>
+    <div
+      scope="col"
+      class="border border-dark"
+      style="width: 100%"
+      *ngIf="animal.vivo == false"
+    >
+      Não
+    </div>
+    <div
+      scope="col"
+      class="border border-dark"
+      style="width: 100%"
+      *ngIf="animal.referencia == true"
+    >
+      Sim
+    </div>
+    <div
+      scope="col"
+      class="border border-dark"
+      style="width: 100%"
+      *ngIf="animal.referencia == false"
+    >
+      Não
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Classificação</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Método Concepção</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Transfêrencia Embrião</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>DataDesmame</b>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.classificacao }}
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.metodoConcepcao }}
+    </div>
+    <div
+      scope="col"
+      class="border border-dark"
+      style="width: 100%"
+      *ngIf="animal.transferenciaEmbriao == true"
+    >
+      Sim
+    </div>
+    <div
+      scope="col"
+      class="border border-dark"
+      style="width: 100%"
+      *ngIf="animal.transferenciaEmbriao == false"
+    >
+      Não
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.dataDesmame }}
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>À venda</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Descrição do Negócio</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Preço</b>
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Parcelas</b>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.aVenda }}
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.descricaoNegocio }}
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.preco }}
+    </div>
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.parcelas }}
+    </div>
+  </div>
+
+  <div class="border border-dark p-1">
+    <div><b>Exame de DNA</b></div>
 
     <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>À venda</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Descrição do Negócio</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Preço</b></div>
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Parcelas</b></div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Data de coleta</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Responsável</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Número da Ordem Para o Exame de DNA</b>
+      </div>
     </div>
     <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.aVenda}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.descricaoNegocio}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.preco}}</div>
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.parcelas}}</div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.exameDna?.dataColeta }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.exameDna?.responsavel }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.exameDna?.ordem }}
+      </div>
     </div>
-    
-    <div class="border border-dark p-1">
-        <div><b>Exame de DNA</b></div>
-        
-        <div class="d-flex">
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Data de coleta</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Responsável</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Número da Ordem Para o Exame de DNA</b></div>
-        </div>
-        <div class="d-flex">
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.exameDna?.dataColeta}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.exameDna?.responsavel}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.exameDna?.ordem}}</div>
-        </div>
-    </div>
+  </div>
 
-    <div class="border border-dark p-1">
-        <div><b>Registro na Associação</b></div>
-        
-        <div class="d-flex">
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Tipo</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Número</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Livro</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Número do Chip</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Grau de pureza</b></div>
-        </div>
-        <div class="d-flex">
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.registroAssociacao?.tipo}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.registroAssociacao?.numero}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.registroAssociacao?.livro}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.registroAssociacao?.numeroChip}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.registroAssociacao?.grauPureza}}</div>
-        </div>
-    </div>
-
-    <div class="border border-dark p-1">
-        <div><b>Documentos</b></div>
-        
-        <div class="d-flex">
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Seguro</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Data de Validade Seguro</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Número do Passaporte</b></div>
-            <div scope="col" class="border border-dark " style="width: 100%;"><b>Data de Validade Passaporte</b></div>
-        </div>
-        <div class="d-flex">
-            <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.segurado == true">Sim</div>
-            <div scope="col" class="border border-dark" style="width: 100%;" *ngIf="animal.segurado == false">Não</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.seguroValidade}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.passaporte}}</div>
-            <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.passaporteValidade}}</div>
-        </div>
-    </div>
-
-    <div class="border border-dark p-1">
-        <div><b>Filhos</b></div>
-        
-        <div class="d-flex">
-            <div scope="col" class="border border-dark " style="width: 100%;" *ngFor="let filho of animal?.filhos"><b>{{filho}}</b></div>
-        </div>
-    </div>
+  <div class="border border-dark p-1">
+    <div><b>Registro na Associação</b></div>
 
     <div class="d-flex">
-        <div scope="col" class="border border-dark " style="width: 100%;"><b>Observações</b></div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Tipo</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Número</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Livro</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Número do Chip</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Grau de pureza</b>
+      </div>
     </div>
-    
     <div class="d-flex">
-        <div scope="col" class="border border-dark" style="width: 100%;">{{animal?.observacoes}}</div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.registroAssociacao?.tipo }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.registroAssociacao?.numero }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.registroAssociacao?.livro }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.registroAssociacao?.numeroChip }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.registroAssociacao?.grauPureza }}
+      </div>
     </div>
+  </div>
+
+  <div class="border border-dark p-1">
+    <div><b>Documentos</b></div>
+
+    <div class="d-flex">
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Seguro</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Data de Validade Seguro</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Número do Passaporte</b>
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        <b>Data de Validade Passaporte</b>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div
+        scope="col"
+        class="border border-dark"
+        style="width: 100%"
+        *ngIf="animal.segurado == true"
+      >
+        Sim
+      </div>
+      <div
+        scope="col"
+        class="border border-dark"
+        style="width: 100%"
+        *ngIf="animal.segurado == false"
+      >
+        Não
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.seguroValidade }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.passaporte }}
+      </div>
+      <div scope="col" class="border border-dark" style="width: 100%">
+        {{ animal?.passaporteValidade }}
+      </div>
+    </div>
+  </div>
+
+  <div class="border border-dark p-1">
+    <div><b>Filhos</b></div>
+
+    <div class="d-flex">
+      <div
+        scope="col"
+        class="border border-dark"
+        style="width: 100%"
+        *ngFor="let filho of animal?.filhos"
+      >
+        {{ filho }}
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      <b>Observações</b>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div scope="col" class="border border-dark" style="width: 100%">
+      {{ animal?.observacoes }}
+    </div>
+  </div>
 </div>

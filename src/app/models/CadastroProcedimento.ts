@@ -1,5 +1,5 @@
-export class CadastroProcedimento{
-    grupo:     string;
-    nome:      string;
-    descricao: string;
+export class CadastroProcedimento {
+  grupo: string;
+  nome: string;
+  descricao: string;
 }

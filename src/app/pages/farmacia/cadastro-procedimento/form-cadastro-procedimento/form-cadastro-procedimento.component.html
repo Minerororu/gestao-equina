@@ -1,33 +1,42 @@
 <div class="m-5">
-    <form #f="ngForm">
-        <div class="row">
-            <div class="col-md-4">
-                <select-input
-                #equip
-                label="Grupo"
-                [itens]="['Procedimento Geral', 'Odontólogico', 'Cliníco', 'Reprodução']"
-                (valor)="procedimento.grupo = $event"
-                [value]="procedimento.grupo" 
-                ></select-input>
-            </div>
+  <form #f="ngForm">
+    <div class="row">
+      <div class="col-md-4">
+        <select-input
+          #equip
+          label="Grupo"
+          [itens]="[
+            'Procedimento Geral',
+            'Odontólogico',
+            'Cliníco',
+            'Reprodução'
+          ]"
+          (valor)="procedimento.grupo = $event"
+          [value]="procedimento.grupo"
+        ></select-input>
+      </div>
 
-            <div class="col-md-4">
-                <text-input
-                label="Nome"
-                [(ngModel)]="procedimento.nome"
-                name="nome"></text-input>
-            </div>
-            
-            <div class="col-md-4">
-                <text-input
-                label="Descrição"
-                [(ngModel)]="procedimento.descricao"
-                name="descricao"></text-input>
-            </div>
-        </div>
-    </form>
+      <div class="col-md-4">
+        <text-input
+          label="Nome"
+          [(ngModel)]="procedimento.nome"
+          name="nome"
+        ></text-input>
+      </div>
+
+      <div class="col-md-4">
+        <text-input
+          label="Descrição"
+          [(ngModel)]="procedimento.descricao"
+          name="descricao"
+        ></text-input>
+      </div>
+    </div>
+  </form>
 </div>
 
 <div class="text-center m-4">
-    <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+  <button type="submit" (click)="submit()" class="btn btn-primary">
+    Enviar
+  </button>
 </div>

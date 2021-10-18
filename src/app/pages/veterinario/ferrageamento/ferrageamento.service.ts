@@ -12,8 +12,7 @@ export class FerrageamentoService {
   constructor(private db: DatabaseService, private router: Router) {}
 
   salvar<T>(ferrageamento: Ferrageamento, oldValue?: Ferrageamento) {
-    return this.db
-      .save<T>(FERRAGEAMENTO_CL + '', ferrageamento, oldValue)
+    return this.db.save<T>(FERRAGEAMENTO_CL + '', ferrageamento, oldValue);
   }
 
   atualizar(id: string, valor: Ferrageamento) {

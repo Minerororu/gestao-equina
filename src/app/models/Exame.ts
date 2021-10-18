@@ -1,3 +1,3 @@
 export class Exame {
-    exame: string;
+  exame: string;
 }

@@ -6,30 +6,30 @@ import { VermifugoService } from '../vermifugo.service';
 @Component({
   selector: 'app-list-vermifugo',
   templateUrl: './list-vermifugo.component.html',
-  styleUrls: ['./list-vermifugo.component.css']
+  styleUrls: ['./list-vermifugo.component.css'],
 })
 export class ListVermifugoComponent implements OnInit {
-  vermifugos: Vermifugo[]
-  constructor(private service: VermifugoService, private router: Router) { }
+  vermifugos: Vermifugo[];
+  constructor(private service: VermifugoService, private router: Router) {}
 
   ngOnInit(): void {
-    this.service.listar().then(doc => {
-      this.vermifugos = doc as Vermifugo[]
-    })
+    this.service.listar().then((doc) => {
+      this.vermifugos = doc as Vermifugo[];
+    });
   }
 
-  edit(vermifugo: Vermifugo){
+  edit(vermifugo: Vermifugo) {
     this.service.vermifugo = vermifugo;
-    this.router.navigate(['form-exame'])
+    this.router.navigate(['form-exame']);
   }
 
-  delete(vermifugo: Vermifugo){
+  delete(vermifugo: Vermifugo) {
     this.service.remover(vermifugo);
     this.ngOnInit();
   }
 
-  adicionar(){
+  adicionar() {
     this.service.vermifugo = new Vermifugo();
-    this.router.navigate(['form-vermifugo'])
+    this.router.navigate(['form-vermifugo']);
   }
 }

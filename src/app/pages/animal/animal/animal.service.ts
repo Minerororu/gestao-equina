@@ -12,8 +12,7 @@ export class AnimalService {
   constructor(private db: DatabaseService, private router: Router) {}
 
   salvar<T>(animal: Animal, oldValue?: Animal) {
-    return this.db
-      .save<T>(ANIMAIS_CL + '', animal, oldValue)
+    return this.db.save<T>(ANIMAIS_CL + '', animal, oldValue);
   }
 
   atualizar(id: string, valor: Animal) {

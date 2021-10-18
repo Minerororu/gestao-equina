@@ -15,7 +15,7 @@ import { SelectFilterComponent } from './select-filter/select-filter.component';
 @NgModule({
   declarations: [
     NavBarComponent,
-    ListComponent, 
+    ListComponent,
     TextInputComponent,
     SelectComponent,
     TextInputAutocompleteComponent,
@@ -25,13 +25,10 @@ import { SelectFilterComponent } from './select-filter/select-filter.component';
     SearchBarComponent,
     SelectFilterComponent,
   ],
-    imports: [
-    CommonModule,
-    ImportModule,
-  ],
+  imports: [CommonModule, ImportModule],
   exports: [
     NavBarComponent,
-    ListComponent, 
+    ListComponent,
     TextInputComponent,
     SelectComponent,
     TextInputAutocompleteComponent,
@@ -39,6 +36,7 @@ import { SelectFilterComponent } from './select-filter/select-filter.component';
     CadastroAnimalComponent,
     SearchBarComponent,
     SelectFilterComponent,
-    DateInputComponent],
+    DateInputComponent,
+  ],
 })
-export class ComponentModule { }
+export class ComponentModule {}

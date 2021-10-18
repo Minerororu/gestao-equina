@@ -4,7 +4,7 @@ import { DatabaseService } from 'src/app/helpers/database.service';
 import { Lancamento } from 'src/app/models/Lancamento';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LancamentoFinanceiroService {
   lancamento: Lancamento;
@@ -13,15 +13,14 @@ export class LancamentoFinanceiroService {
   constructor(private db: DatabaseService) {}
 
   salvar<T>(lancamento: Lancamento, oldValue?: Lancamento) {
-    return this.db
-      .save<T>(LANCAMENTO_FINANCEIRO_CL + '', lancamento, oldValue)
+    return this.db.save<T>(LANCAMENTO_FINANCEIRO_CL + '', lancamento, oldValue);
   }
 
   atualizar(id: string, valor: Lancamento) {
     return this.db.update(LANCAMENTO_FINANCEIRO_CL + '', id + '', { ...valor });
   }
 
-  listar<T>(where?: {key: string, op: any, value: any}[]) {
+  listar<T>(where?: { key: string; op: any; value: any }[]) {
     return this.db.list<T>(LANCAMENTO_FINANCEIRO_CL + '', '', where);
   }
 

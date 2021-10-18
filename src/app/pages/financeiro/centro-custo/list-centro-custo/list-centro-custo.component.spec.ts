@@ -8,9 +8,8 @@ describe('ListCentroCustoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListCentroCustoComponent ]
-    })
-    .compileComponents();
+      declarations: [ListCentroCustoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

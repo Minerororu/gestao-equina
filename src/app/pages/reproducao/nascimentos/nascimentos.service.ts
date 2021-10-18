@@ -12,8 +12,7 @@ export class NascimentoService {
   constructor(private db: DatabaseService, private router: Router) {}
 
   salvar<T>(nascimento: Parto, oldValue?: Parto) {
-    return this.db
-      .save<T>(PARTO_CL + '', nascimento, oldValue)
+    return this.db.save<T>(PARTO_CL + '', nascimento, oldValue);
   }
 
   atualizar(id: string, valor: Parto) {

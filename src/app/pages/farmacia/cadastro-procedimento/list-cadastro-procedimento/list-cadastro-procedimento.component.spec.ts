@@ -8,9 +8,8 @@ describe('ListCadastroProcedimentoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListCadastroProcedimentoComponent ]
-    })
-    .compileComponents();
+      declarations: [ListCadastroProcedimentoComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

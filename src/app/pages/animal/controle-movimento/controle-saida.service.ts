@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { CONTROLE_ENTRADA_CL, CONTROLE_SAIDA_CL } from 'src/app/components/constants/constants';
+import {
+  CONTROLE_ENTRADA_CL,
+  CONTROLE_SAIDA_CL,
+} from 'src/app/components/constants/constants';
 import { DatabaseService } from 'src/app/helpers/database.service';
 import { ControleEntrada } from 'src/app/models/ControleEntrada';
 import { ControleSaida } from 'src/app/models/ControleSaida';
@@ -19,8 +22,7 @@ export class ControleMovimentoService {
   }
 
   salvarEntrada<T>(controle: ControleEntrada, oldValue?: ControleEntrada) {
-    return this.db
-      .save<T>(CONTROLE_ENTRADA_CL + '', controle, oldValue)
+    return this.db.save<T>(CONTROLE_ENTRADA_CL + '', controle, oldValue);
   }
 
   atualizar(id: string, valor: ControleSaida) {

@@ -8,10 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AuthService } from './helpers/auth.service';
 
-
 @NgModule({
-  declarations: [
-    AppComponent],
+  declarations: [AppComponent],
   imports: [
     ImportModule,
     PagesModule,

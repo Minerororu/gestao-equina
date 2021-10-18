@@ -1,11 +1,13 @@
 <list
-    [cabecalhos]="['Editar', 'Grupo', 'Nome', 'Descrição']"
-    [valores]="procedimentos"
-    [campos]="['grupo', 'nome', 'descricao']"
-    (editFunction)="edit($event)"
-    (deleteFunction)="delete($event)"
+  [cabecalhos]="['Editar', 'Grupo', 'Nome', 'Descrição']"
+  [valores]="procedimentos"
+  [campos]="['grupo', 'nome', 'descricao']"
+  (editFunction)="edit($event)"
+  (deleteFunction)="delete($event)"
 ></list>
 
 <div style="text-align: center">
-    <button (click)="adicionar()" class="btn btn-primary">Adicionar Examinação</button>
+  <button (click)="adicionar()" class="btn btn-primary">
+    Adicionar Examinação
+  </button>
 </div>

@@ -1,43 +1,43 @@
 <form class="example-form">
-    <mat-form-field appearance="outline" style="width: 100%" required>
-        <mat-label>{{ label }}</mat-label>
-        <div *ngIf="!selectLabel">
-            <input
-                type="text"
-                (change)="change()"
-                [(ngModel)]="stringValue.nome"
-                placeholder="{{ label }}"
-                aria-label="Digite aqui"
-                matInput
-                [(ngModel)]="value"
-                [formControl]="myControl"
-                [matAutocomplete]="auto"
-                [required]="isRequired"
-            />
-        </div>
-        <div *ngIf="!!selectLabel">
-            <input
-                type="text"
-                [(ngModel)]="stringValue.nome"
-                (change)="change"
-                placeholder="{{ label }}"
-                aria-label="Digite aqui"
-                matInput
-                [(ngModel)]="value[selectLabel]"
-                [formControl]="myControl"
-                [matAutocomplete]="auto"
-                [required]="isRequired"
-            />
-        </div>
-        <mat-autocomplete #auto="matAutocomplete" required>
-            <mat-option
-                *ngFor="let option of filteredOptions"
-                [value]="option[selectLabel]"
-                (onSelectionChange)="valor.emit(option)"
-                title="{{ option[selectLabel] }}"
-            >
-                {{ option[selectLabel] }}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
+  <mat-form-field appearance="outline" style="width: 100%" required>
+    <mat-label>{{ label }}</mat-label>
+    <div *ngIf="!selectLabel">
+      <input
+        type="text"
+        (change)="change()"
+        [(ngModel)]="stringValue.nome"
+        placeholder="{{ label }}"
+        aria-label="Digite aqui"
+        matInput
+        [(ngModel)]="value"
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+        [required]="isRequired"
+      />
+    </div>
+    <div *ngIf="!!selectLabel">
+      <input
+        type="text"
+        [(ngModel)]="stringValue.nome"
+        (change)="(change)"
+        placeholder="{{ label }}"
+        aria-label="Digite aqui"
+        matInput
+        [(ngModel)]="value[selectLabel]"
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+        [required]="isRequired"
+      />
+    </div>
+    <mat-autocomplete #auto="matAutocomplete" required>
+      <mat-option
+        *ngFor="let option of filteredOptions"
+        [value]="option[selectLabel]"
+        (onSelectionChange)="valor.emit(option)"
+        title="{{ option[selectLabel] }}"
+      >
+        {{ option[selectLabel] }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </form>

@@ -6,29 +6,32 @@ import { UsoProcedimentoService } from '../uso-procedimento.service';
 @Component({
   selector: 'app-list-uso-procedimento',
   templateUrl: './list-uso-procedimento.component.html',
-  styleUrls: ['./list-uso-procedimento.component.css']
+  styleUrls: ['./list-uso-procedimento.component.css'],
 })
 export class ListUsoProcedimentoComponent implements OnInit {
-  procedimentos: UsoProcedimento[]
-  constructor(private service: UsoProcedimentoService, private router: Router) { }
+  procedimentos: UsoProcedimento[];
+  constructor(
+    private service: UsoProcedimentoService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.service.listar().then(doc => {
-      this.procedimentos = doc as UsoProcedimento[]
-    })
+    this.service.listar().then((doc) => {
+      this.procedimentos = doc as UsoProcedimento[];
+    });
   }
 
-  edit(procedimento: UsoProcedimento){
+  edit(procedimento: UsoProcedimento) {
     this.service.procedimento = procedimento;
     this.router.navigate(['form-uso-procedimento']);
   }
 
-  delete(procedimento: UsoProcedimento){
+  delete(procedimento: UsoProcedimento) {
     this.service.remover(procedimento);
     this.ngOnInit();
   }
 
-  adicionar(){
+  adicionar() {
     this.service.procedimento = new UsoProcedimento();
     this.router.navigate(['form-uso-procedimento']);
   }

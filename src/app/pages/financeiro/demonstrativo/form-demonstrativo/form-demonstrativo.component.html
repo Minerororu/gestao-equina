@@ -1,11 +1,11 @@
-<div class="m-5">  
+<div class="m-5">
   <div class="col-md-12">
     <select-input
-    #equip
-    label="Componentes"
-    [itens]="['Centros Financeiros', 'Grupos de Centros']"
-    (valor)="demonstrativo.componentes = $event;"
-    [value]="demonstrativo.componentes" 
+      #equip
+      label="Componentes"
+      [itens]="['Centros Financeiros', 'Grupos de Centros']"
+      (valor)="demonstrativo.componentes = $event"
+      [value]="demonstrativo.componentes"
     ></select-input>
   </div>
 
@@ -16,75 +16,89 @@
           label="Título"
           [(ngModel)]="demonstrativo.titulo"
           name="titulo"
-          ></text-input>
-        </div>
+        ></text-input>
+      </div>
 
-        <div class="col-md-6">
-          <text-input
+      <div class="col-md-6">
+        <text-input
           label="Descrição"
           [(ngModel)]="demonstrativo.descricao"
           name="descricao"
-          ></text-input>
-        </div>
+        ></text-input>
       </div>
+    </div>
 
-      <div *ngIf="demonstrativo.componentes == 'Centros Financeiros'">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Editar</th>
-              <th scope="col">Grupo</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Categoria</th>
-              <th scope="col">Tipo da Conta</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let centro of demonstrativo.centrosDeCustos" >
-              <td>
-                <mat-icon title="Deletar" style="cursor: pointer" (click)="deleteCentro(centro)">delete</mat-icon>
-              </td>
-            
-              <td>{{centro?.grupo?.nome}}</td>
-              <td>{{centro.nome}}</td>
-              <td>{{centro.categoria}}</td>
-              <td>{{centro.tipoConta}}</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style="text-align: center">
-          <button (click)="adicionarCentro()" class="btn btn-primary">Adicionar Centro de Custo</button>
-        </div>
+    <div *ngIf="demonstrativo.componentes == 'Centros Financeiros'">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Editar</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Tipo da Conta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let centro of demonstrativo.centrosDeCustos">
+            <td>
+              <mat-icon
+                title="Deletar"
+                style="cursor: pointer"
+                (click)="deleteCentro(centro)"
+                >delete</mat-icon
+              >
+            </td>
+
+            <td>{{ centro?.grupo?.nome }}</td>
+            <td>{{ centro.nome }}</td>
+            <td>{{ centro.categoria }}</td>
+            <td>{{ centro.tipoConta }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align: center">
+        <button (click)="adicionarCentro()" class="btn btn-primary">
+          Adicionar Centro de Custo
+        </button>
       </div>
+    </div>
 
-      <div *ngIf="demonstrativo.componentes == 'Grupos de Centros'">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Editar</th>
-              <th scope="col">Nome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let grupo of demonstrativo.grupos" >
-              <td>
-                <mat-icon title="Deletar" style="cursor: pointer" (click)="deleteGrupo(grupo)">delete</mat-icon>
-              </td>
-            
-              <td>{{grupo.nome}}</td>
-            </tr>
-          </tbody>
-        </table>
+    <div *ngIf="demonstrativo.componentes == 'Grupos de Centros'">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Editar</th>
+            <th scope="col">Nome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let grupo of demonstrativo.grupos">
+            <td>
+              <mat-icon
+                title="Deletar"
+                style="cursor: pointer"
+                (click)="deleteGrupo(grupo)"
+                >delete</mat-icon
+              >
+            </td>
 
-        <div style="text-align: center">
-          <button (click)="adicionarGrupo()" class="btn btn-primary">Adicionar Grupo</button>
-        </div>
+            <td>{{ grupo.nome }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="text-align: center">
+        <button (click)="adicionarGrupo()" class="btn btn-primary">
+          Adicionar Grupo
+        </button>
       </div>
-
-
+    </div>
   </form>
-  
+
   <div class="text-center m-4">
-    <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+    <button type="submit" (click)="submit()" class="btn btn-primary">
+      Enviar
+    </button>
   </div>
 </div>

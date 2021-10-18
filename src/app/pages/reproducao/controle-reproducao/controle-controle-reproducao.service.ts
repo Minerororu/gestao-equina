@@ -12,8 +12,7 @@ export class ControleReproducaoService {
   constructor(private db: DatabaseService, private router: Router) {}
 
   salvar<T>(controle: ControleReproducao, oldValue?: ControleReproducao) {
-    return this.db
-      .save<T>(CONTROLE_REPRODUCAO_CL + '', controle, oldValue)
+    return this.db.save<T>(CONTROLE_REPRODUCAO_CL + '', controle, oldValue);
   }
 
   atualizar(id: string, valor: ControleReproducao) {

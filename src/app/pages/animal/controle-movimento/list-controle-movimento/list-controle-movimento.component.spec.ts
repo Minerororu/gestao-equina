@@ -8,9 +8,8 @@ describe('ListControleSaidaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListControleSaidaComponent ]
-    })
-    .compileComponents();
+      declarations: [ListControleSaidaComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

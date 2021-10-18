@@ -4,7 +4,7 @@ import { DatabaseService } from 'src/app/helpers/database.service';
 import { ControleColetaSemen } from 'src/app/models/ControleColetaSemen';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ControleColetaSemenService {
   controle: ControleColetaSemen;
@@ -12,8 +12,7 @@ export class ControleColetaSemenService {
   constructor(private db: DatabaseService) {}
 
   salvar<T>(controle: ControleColetaSemen, oldValue?: ControleColetaSemen) {
-    return this.db
-      .save<T>(CONTROLE_COLETA_SEMEN + '', controle, oldValue)
+    return this.db.save<T>(CONTROLE_COLETA_SEMEN + '', controle, oldValue);
   }
 
   atualizar(id: string, valor: ControleColetaSemen) {

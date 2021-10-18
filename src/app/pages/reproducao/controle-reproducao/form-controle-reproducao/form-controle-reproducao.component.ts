@@ -12,59 +12,87 @@ import { ControleReproducaoService } from '../controle-controle-reproducao.servi
 @Component({
   selector: 'form-controle-reproducao',
   templateUrl: './form-controle-reproducao.component.html',
-  styleUrls: ['./form-controle-reproducao.component.css']
+  styleUrls: ['./form-controle-reproducao.component.css'],
 })
 export class FormControleReproducaoComponent implements OnInit {
-  controle : ControleReproducao;
+  controle: ControleReproducao;
   animal_collection = ANIMAIS_CL;
   partos: Parto[];
   oldParto: Parto;
-  situacoes = ['Aguardando Confirmação', 'Em Gestação', 'Não Confirmada (Falha)', 'Coleta embrião  Negativada', 'Embrião Negociado', 'Embrião Congelado', 'Aborto']
-  constructor(private service: ControleReproducaoService,
-              private router: Router,
-              private dialog: MatDialog,
-              private animalService: AnimalService,
-              private nascimentoService: NascimentoService) { }
+  situacoes = [
+    'Aguardando Confirmação',
+    'Em Gestação',
+    'Não Confirmada (Falha)',
+    'Coleta embrião  Negativada',
+    'Embrião Negociado',
+    'Embrião Congelado',
+    'Aborto',
+  ];
+  constructor(
+    private service: ControleReproducaoService,
+    private router: Router,
+    private dialog: MatDialog,
+    private animalService: AnimalService,
+    private nascimentoService: NascimentoService
+  ) {}
 
   ngOnInit(): void {
-    this.controle = this.service.controle ? this.service.controle : new ControleReproducao();
-    this.oldParto =  JSON.parse(JSON.stringify(this.controle.partos[0]));
-    this.controle.transferenciaEmbriao ? '' : this.controle.transferenciaEmbriao = {
-      responsavel: null, receptora: null, data: null, estado: null, anotacoes: null,
-    }
-    this.partos = this.service?.controle?.partos ? this.service?.controle?.partos : []
+    this.controle = this.service.controle
+      ? this.service.controle
+      : new ControleReproducao();
+    this.oldParto = JSON.parse(JSON.stringify(this.controle.partos[0]));
+    this.controle.transferenciaEmbriao
+      ? ''
+      : (this.controle.transferenciaEmbriao = {
+          responsavel: null,
+          receptora: null,
+          data: null,
+          estado: null,
+          anotacoes: null,
+        });
+    this.partos = this.service?.controle?.partos
+      ? this.service?.controle?.partos
+      : [];
   }
 
-  adicionarParto(){
+  adicionarParto() {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '500px',
-      data: { title: 'Formulário de Partos', formularioParto: true, metodoConcepcao: this.controle.metodoConcepcao },
-  });
+      data: {
+        title: 'Formulário de Partos',
+        formularioParto: true,
+        metodoConcepcao: this.controle.metodoConcepcao,
+      },
+    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.partos.push(result);
         this.controle.metodoConcepcao = result?.metodoConcepcao;
       }
-  });
+    });
   }
 
-  editParto(){
+  editParto() {
     const dialogRef = this.dialog.open(ModalComponent, {
       width: '500px',
-      data: { title: 'Formulário de Partos', formularioParto: true, parto: this.partos[0]},
-  });
+      data: {
+        title: 'Formulário de Partos',
+        formularioParto: true,
+        parto: this.partos[0],
+      },
+    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.partos.splice(0, 1, result);
         this.controle.metodoConcepcao = result?.metodoConcepcao;
       }
     });
   }
 
-  deleteParto(){
-    this.partos.pop()
+  deleteParto() {
+    this.partos.pop();
   }
 
   nascerAnimal() {
@@ -81,12 +109,13 @@ export class FormControleReproducaoComponent implements OnInit {
     animalParto.pelagem = parto.pelagem;
     animalParto.dataNascimento = parto.data;
     animalParto.id = this.controle.id;
-    animalParto.sexo == 'Macho'? animalParto.categoria = 'Potro':'';
-    animalParto.sexo == 'Fêmea'? animalParto.categoria = 'Potra':'';
-    if(!animalParto?.pai?.filhos.includes(animalParto.nome)){
-      animalParto?.pai?.filhos.push(animalParto.nome)
-    }if(!animalParto?.mae?.filhos.includes(animalParto.nome)){
-      animalParto?.mae?.filhos.push(animalParto.nome)
+    animalParto.sexo == 'Macho' ? (animalParto.categoria = 'Potro') : '';
+    animalParto.sexo == 'Fêmea' ? (animalParto.categoria = 'Potra') : '';
+    if (!animalParto?.pai?.filhos.includes(animalParto.nome)) {
+      animalParto?.pai?.filhos.push(animalParto.nome);
+    }
+    if (!animalParto?.mae?.filhos.includes(animalParto.nome)) {
+      animalParto?.mae?.filhos.push(animalParto.nome);
     }
     this.animalService.salvar(animalParto);
     this.animalService.salvar(animalParto.pai);
@@ -95,19 +124,24 @@ export class FormControleReproducaoComponent implements OnInit {
     alert(`O animal ${animalParto.nome}, foi salvo com sucesso!`);
   }
 
-  submit(){
+  submit() {
     this.controle.partos = this.partos;
     this.service.salvar(this.controle);
     let partoMudou = false;
-    Object.entries(this.partos[0]).map(parto => {
-      Object.entries(this.oldParto).map(oldParto => {
-        if(parto[0] == oldParto[0] && parto[1] != oldParto[1]){
+    Object.entries(this.partos[0]).map((parto) => {
+      Object.entries(this.oldParto).map((oldParto) => {
+        if (parto[0] == oldParto[0] && parto[1] != oldParto[1]) {
           partoMudou = true;
         }
-      })
-    })
-    if(!this.partos[0].natimorto && this.partos[0] && this.controle.situacao != 'Aborto' && partoMudou){
-      this.nascerAnimal()
+      });
+    });
+    if (
+      !this.partos[0].natimorto &&
+      this.partos[0] &&
+      this.controle.situacao != 'Aborto' &&
+      partoMudou
+    ) {
+      this.nascerAnimal();
     }
     this.router.navigate(['list-controle-reproducao']);
   }

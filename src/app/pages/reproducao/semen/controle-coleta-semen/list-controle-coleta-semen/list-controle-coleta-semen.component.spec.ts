@@ -8,9 +8,8 @@ describe('ListControleColetaSemenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListControleColetaSemenComponent ]
-    })
-    .compileComponents();
+      declarations: [ListControleColetaSemenComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

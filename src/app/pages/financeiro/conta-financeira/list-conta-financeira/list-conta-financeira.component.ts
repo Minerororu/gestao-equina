@@ -6,30 +6,33 @@ import { ContaFinanceiraService } from '../conta-financeira.service';
 @Component({
   selector: 'app-list-conta-financeira',
   templateUrl: './list-conta-financeira.component.html',
-  styleUrls: ['./list-conta-financeira.component.css']
+  styleUrls: ['./list-conta-financeira.component.css'],
 })
 export class ListContaFinanceiraComponent implements OnInit {
-  contaFinanceiras: ContaFinanceira[]
-  constructor(private service: ContaFinanceiraService, private router: Router) { }
+  contaFinanceiras: ContaFinanceira[];
+  constructor(
+    private service: ContaFinanceiraService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.service.listar().then(doc => {
-      this.contaFinanceiras = doc as ContaFinanceira[]
-    })
+    this.service.listar().then((doc) => {
+      this.contaFinanceiras = doc as ContaFinanceira[];
+    });
   }
 
-  edit(contaFinanceira: ContaFinanceira){
+  edit(contaFinanceira: ContaFinanceira) {
     this.service.contaFinanceira = contaFinanceira;
     this.router.navigate(['form-conta-financeira']);
   }
 
-  delete(contaFinanceira: ContaFinanceira){
+  delete(contaFinanceira: ContaFinanceira) {
     this.service.remover(contaFinanceira);
     this.ngOnInit();
   }
 
-  adicionar(){
+  adicionar() {
     this.service.contaFinanceira = new ContaFinanceira();
-    this.router.navigate(['form-conta-financeira'])
+    this.router.navigate(['form-conta-financeira']);
   }
 }

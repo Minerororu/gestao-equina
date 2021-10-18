@@ -1,15 +1,15 @@
 <div class="m-5">
-    <div>
-        <list 
-        [cabecalhos]="['Data','Animal', 'Peso' , 'Altura Cernelha', ]"
-        [valores]="dados" 
-        [campos]="['data', ['animal', 'nome'], 'peso', 'cernelha']"
-        usagem="nEditar"
-        ></list>
-    </div>
-    
-    <div class="divChart" >
-        <canvas style="align-items: center;" id="myChart1"></canvas>
-        <canvas style="align-items: center;" id="myChart2"></canvas>
-    </div>
+  <div>
+    <list
+      [cabecalhos]="['Data', 'Animal', 'Peso', 'Altura Cernelha']"
+      [valores]="dados"
+      [campos]="['data', ['animal', 'nome'], 'peso', 'cernelha']"
+      usagem="nEditar"
+    ></list>
+  </div>
+
+  <div class="divChart">
+    <canvas style="align-items: center" id="myChart1"></canvas>
+    <canvas style="align-items: center" id="myChart2"></canvas>
+  </div>
 </div>

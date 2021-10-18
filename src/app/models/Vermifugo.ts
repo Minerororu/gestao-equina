@@ -1,3 +1,3 @@
 export class Vermifugo {
-    vermifugo: string;
+  vermifugo: string;
 }

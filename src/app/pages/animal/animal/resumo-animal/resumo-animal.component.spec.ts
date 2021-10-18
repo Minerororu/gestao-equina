@@ -8,9 +8,8 @@ describe('ResumoAnimalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResumoAnimalComponent ]
-    })
-    .compileComponents();
+      declarations: [ResumoAnimalComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

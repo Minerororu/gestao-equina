@@ -12,8 +12,7 @@ export class VermifugacaoService {
   constructor(private db: DatabaseService) {}
 
   salvar<T>(vermifugacao: Vermifugacao, oldValue?: Vermifugacao) {
-    return this.db
-      .save<T>(VERMIFUGACAO_CL + '', vermifugacao, oldValue)
+    return this.db.save<T>(VERMIFUGACAO_CL + '', vermifugacao, oldValue);
   }
 
   atualizar(id: string, valor: Vermifugacao) {

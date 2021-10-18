@@ -72,7 +72,7 @@ import { SignUpComponent } from './usuario/signup/signup.component';
     FormVermifugacaoComponent,
     ListVermifugacaoComponent,
     FormExaminacaoComponent,
-    ListExaminacaoComponent, 
+    ListExaminacaoComponent,
     FormRegistroClinicoComponent,
     ListRegistroClinicoComponent,
     FormFerrageamentoComponent,
@@ -106,13 +106,7 @@ import { SignUpComponent } from './usuario/signup/signup.component';
     LoginComponent,
     SignUpComponent,
   ],
-  imports: [
-    ComponentModule,
-    ImportModule,
-    CommonModule,
-  ],
-  providers: [
-    FormLancamentoFinanceiroComponent
-  ]
+  imports: [ComponentModule, ImportModule, CommonModule],
+  providers: [FormLancamentoFinanceiroComponent],
 })
-export class PagesModule { }
+export class PagesModule {}

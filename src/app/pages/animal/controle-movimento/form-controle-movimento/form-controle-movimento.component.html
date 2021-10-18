@@ -1,56 +1,69 @@
 <div class="m-5">
-    <form #f="ngForm">
-      <div class="row">
-        <div class="col-md-3">
-          <text-input-autocomplete
+  <form #f="ngForm">
+    <div class="row">
+      <div class="col-md-3">
+        <text-input-autocomplete
           #equip
           label="Animal"
           colecao="{{ animal_collection }}"
           selectLabel="nome"
           (valor)="controle.animal = $event; equip.realizarFiltragem($event.id)"
           [value]="controle.animal"
-          ></text-input-autocomplete>
-        </div>
-          
-        <div class="col-md-3">
-            <select-input
-            #equip
-            label="Motivo"
-            [itens]="motivos"
-            (valor)="controle.motivo = $event"
-            [value]="controle.motivo" 
-            ></select-input>
-        </div>
-          <div class="col-md-3">
-            <date-input
-            label="Data de Sáida"
-            (valor)="controle.data = $event"
-            [value]="controle.data"
-            name="data">
-            </date-input>
-          </div>
+        ></text-input-autocomplete>
+      </div>
 
-          <div class="col-md-3" *ngIf="controle.motivo != 'Doação' && controle.motivo != 'Óbito' && controle.motivo != 'Retorno'">
-            <date-input
-            label="Data de Retorno"
-            (valor)="controle.dataRetorno = $event"
-            [value]="controle.dataRetorno"
-            name="data">
-            </date-input>
-          </div>
+      <div class="col-md-3">
+        <select-input
+          #equip
+          label="Motivo"
+          [itens]="motivos"
+          (valor)="controle.motivo = $event"
+          [value]="controle.motivo"
+        ></select-input>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <text-input
-            label="Obervações"
-            [(ngModel)]="controle.observacoes"
-            name="observacoes"
-          ></text-input>
-        </div>
+      <div class="col-md-3">
+        <date-input
+          label="Data de Sáida"
+          (valor)="controle.data = $event"
+          [value]="controle.data"
+          name="data"
+        >
+        </date-input>
       </div>
-    </form>
-    <p *ngIf="this.controle.ultimaEdicao">Ultima Edição {{this.controle.ultimaEdicao}}</p>
-    <div class="text-center m-4">
-      <button type="submit" (click)="submit()" class="btn btn-primary">Enviar</button>
+
+      <div
+        class="col-md-3"
+        *ngIf="
+          controle.motivo != 'Doação' &&
+          controle.motivo != 'Óbito' &&
+          controle.motivo != 'Retorno'
+        "
+      >
+        <date-input
+          label="Data de Retorno"
+          (valor)="controle.dataRetorno = $event"
+          [value]="controle.dataRetorno"
+          name="data"
+        >
+        </date-input>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <text-input
+          label="Obervações"
+          [(ngModel)]="controle.observacoes"
+          name="observacoes"
+        ></text-input>
+      </div>
+    </div>
+  </form>
+  <p *ngIf="this.controle.ultimaEdicao">
+    Ultima Edição {{ this.controle.ultimaEdicao }}
+  </p>
+  <div class="text-center m-4">
+    <button type="submit" (click)="submit()" class="btn btn-primary">
+      Enviar
+    </button>
+  </div>
 </div>
