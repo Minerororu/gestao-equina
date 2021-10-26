@@ -21,3 +21,4 @@ export const CENTRO_CUSTO_CL = 'centrosDeCusto';
 export const CONTA_CL = 'contas';
 export const GRUPO_CENTRO_CL = 'gruposDeCentros';
 export const DEMONSTRATIVO_CL = 'demonstrativos';
+export const DOENCA_CL = 'doencas';

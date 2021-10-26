@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Popper from 'popper.js';
+import { AuthService } from 'src/app/helpers/auth.service';
 
 @Component({
   selector: 'nav-bar',
@@ -9,7 +10,7 @@ import Popper from 'popper.js';
 })
 export class NavBarComponent implements OnInit {
   titleService = { titulo: 'a' };
-  constructor(public router: Router) {}
+  constructor(public router: Router, private authService: AuthService) {}
 
   routes = [
     ['list-animal', 'list-controle-movimento', 'list-dados-biometricos'],
@@ -81,4 +82,10 @@ export class NavBarComponent implements OnInit {
   ];
 
   ngOnInit(): void {}
+
+  logOut() {
+    this.authService.userData = null;
+    localStorage.user = {};
+    this.router.navigate(['log-in']);
+  }
 }

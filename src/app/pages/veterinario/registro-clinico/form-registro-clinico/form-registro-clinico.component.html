@@ -9,7 +9,6 @@
           selectLabel="nome"
           (valor)="registro.animal = $event; equip.realizarFiltragem($event.id)"
           [value]="registro.animal"
-          [filtro]="['referencia', '!=', true]"
         ></text-input-autocomplete>
       </div>
 
@@ -24,7 +23,7 @@
 
       <div class="col-md-4">
         <date-input
-          label="Data de Sáida"
+          label="Data do Evento"
           (valor)="registro.data = $event"
           [value]="registro.data"
           name="data"

@@ -60,7 +60,10 @@ export class TextInputAutocompleteComponent implements OnInit {
           .subscribe((doc) => {
             const v = this.value;
             let filteredDoc = (doc as any[]).filter((option) => {
-              return option.uid == this.uid;
+              console.log( option.nome + ' ' + option.uid + ' ' + this.uid) 
+              if(option.uid){
+                return option.uid == this.uid;
+              }else return false
             });
             this.itens ? '' : (this.itens = filteredDoc);
             for (const item of this.itens) {

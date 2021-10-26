@@ -52,6 +52,8 @@ import { ResumoDemonstrativoComponent } from './financeiro/demonstrativo/resumo-
 import { DreAnualComponent } from './financeiro/lancamento-financeiro/dre-anual/dre-anual.component';
 import { LoginComponent } from './usuario/login/login.component';
 import { SignUpComponent } from './usuario/signup/signup.component';
+import { FormDoencaComponent } from './farmacia/doenca/form-doenca/form-doenca.component';
+import { ListDoencaComponent } from './farmacia/doenca/list-doenca/list-doenca.component';
 
 @NgModule({
   declarations: [
@@ -105,6 +107,8 @@ import { SignUpComponent } from './usuario/signup/signup.component';
     DreAnualComponent,
     LoginComponent,
     SignUpComponent,
+    FormDoencaComponent,
+    ListDoencaComponent,
   ],
   imports: [ComponentModule, ImportModule, CommonModule],
   providers: [FormLancamentoFinanceiroComponent],
