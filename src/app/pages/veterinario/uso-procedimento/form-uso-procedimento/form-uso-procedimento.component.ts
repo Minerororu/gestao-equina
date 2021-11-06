@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {
   ANIMAIS_CL,
   CADASTRO_PROCEDIMENTO_CL,
+  RESPONSAVEL_CL,
 } from 'src/app/components/constants/constants';
 import { UsoProcedimento } from 'src/app/models/UsoProcedimento';
 import { UsoProcedimentoService } from '../uso-procedimento.service';
@@ -16,6 +17,7 @@ export class FormUsoProcedimentoComponent implements OnInit {
   procedimento: UsoProcedimento;
   animal_collection = ANIMAIS_CL;
   cadastro_procedimento_collection = CADASTRO_PROCEDIMENTO_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   constructor(
     private service: UsoProcedimentoService,
     private router: Router

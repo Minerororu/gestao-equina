@@ -20,7 +20,7 @@ export class ListVermifugoComponent implements OnInit {
 
   edit(vermifugo: Vermifugo) {
     this.service.vermifugo = vermifugo;
-    this.router.navigate(['form-exame']);
+    this.router.navigate(['form-vermifugo']);
   }
 
   delete(vermifugo: Vermifugo) {

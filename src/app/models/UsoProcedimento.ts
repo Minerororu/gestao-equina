@@ -1,11 +1,12 @@
 import { Animal } from './Animal';
 import { CadastroProcedimento } from './CadastroProcedimento';
+import { Responsavel } from './Responsavel';
 
 export class UsoProcedimento {
   id: string;
   categoria: string;
   animal: Animal;
-  responsavel: string;
+  responsavel: Responsavel;
   data: string;
   procedimento: CadastroProcedimento;
   descricao: string;

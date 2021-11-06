@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from '../animal.service';
 import { Animal } from 'src/app/models/Animal';
-import { ANIMAIS_CL } from 'src/app/components/constants/constants';
+import { ANIMAIS_CL, RESPONSAVEL_CL } from 'src/app/components/constants/constants';
 import { Router } from '@angular/router';
 import { ControleMovimentoService } from '../../controle-movimento/controle-saida.service';
 import { ControleEntrada } from 'src/app/models/ControleEntrada';
@@ -18,6 +18,7 @@ export class FormAnimalComponent implements OnInit {
   venda = false;
 
   animal_collection = ANIMAIS_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   sexos: string[] = ['Macho', 'Fêmea'];
   papeisFem = ['Matriz', 'Doadora', 'Potra', 'Receptora', 'Mula', 'Jumenta'];
   papeisMacho = ['Garanhão', 'Castrado', 'Potro', 'Burro', 'Jumento'];

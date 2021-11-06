@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ANIMAIS_CL } from 'src/app/components/constants/constants';
+import { ANIMAIS_CL, RESPONSAVEL_CL } from 'src/app/components/constants/constants';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { Animal } from 'src/app/models/Animal';
 import { ControleReproducao, Parto } from 'src/app/models/ControleReproducao';
@@ -17,6 +17,7 @@ import { ControleReproducaoService } from '../controle-controle-reproducao.servi
 export class FormControleReproducaoComponent implements OnInit {
   controle: ControleReproducao;
   animal_collection = ANIMAIS_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   partos: Parto[];
   oldParto: Parto;
   situacoes = [

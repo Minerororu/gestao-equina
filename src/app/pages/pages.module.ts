@@ -54,6 +54,8 @@ import { LoginComponent } from './usuario/login/login.component';
 import { SignUpComponent } from './usuario/signup/signup.component';
 import { FormDoencaComponent } from './farmacia/doenca/form-doenca/form-doenca.component';
 import { ListDoencaComponent } from './farmacia/doenca/list-doenca/list-doenca.component';
+import { FormResponsavelComponent } from './responsavel/form-responsavel/form-responsavel.component';
+import { ListResponsavelComponent } from './responsavel/list-responsavel/list-responsavel.component';
 
 @NgModule({
   declarations: [
@@ -109,6 +111,8 @@ import { ListDoencaComponent } from './farmacia/doenca/list-doenca/list-doenca.c
     SignUpComponent,
     FormDoencaComponent,
     ListDoencaComponent,
+    FormResponsavelComponent,
+    ListResponsavelComponent,
   ],
   imports: [ComponentModule, ImportModule, CommonModule],
   providers: [FormLancamentoFinanceiroComponent],

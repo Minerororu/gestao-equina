@@ -1,8 +1,9 @@
 import { Animal } from './Animal';
+import { Responsavel } from './Responsavel';
 
 export class ControleReproducao {
   id: string;
-  responsavel: string;
+  responsavel: Responsavel;
   macho: Animal;
   femea: Animal;
   data: string;
@@ -12,7 +13,7 @@ export class ControleReproducao {
   comunicada: boolean;
   numeroCC: number;
   transferenciaEmbriao: {
-    responsavel: string;
+    responsavel: Responsavel;
     receptora: Animal;
     data: string;
     estado: string;
@@ -25,7 +26,7 @@ export class ControleReproducao {
 
 export class Parto {
   id: string;
-  responsavel: string;
+  responsavel: Responsavel;
   metodoConcepcao: string;
   transferenciaEmbriao: boolean;
   data: string;

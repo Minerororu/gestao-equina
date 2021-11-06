@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   ANIMAIS_CL,
+  RESPONSAVEL_CL,
   VERMIFUGO_CL,
 } from 'src/app/components/constants/constants';
 import { hoje } from 'src/app/helpers/function';
@@ -17,6 +18,7 @@ export class FormVermifugacaoComponent implements OnInit {
   vermifugacao: Vermifugacao;
   animal_collection = ANIMAIS_CL;
   vermifugo_collection = VERMIFUGO_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   constructor(private service: VermifugacaoService, private router: Router) {}
 
   ngOnInit(): void {

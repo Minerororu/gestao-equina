@@ -1,0 +1,12 @@
+<list [cabecalhos]="['Editar', 'Nome', 'Email', 'Telefone', 'Cidade', 'Estado']"
+[valores]="responsaveis"
+[campos]="['nome', 'email', 'telefone1', 'cidade', 'estado']"
+(editFunction)="edit($event)"
+(deleteFunction)="delete($event)"
+></list>
+<div style="text-align: center">
+    <button (click)="adicionar()" class="btn btn-primary">
+      Adicionar Responsável
+    </button>
+</div>
+  

@@ -1,0 +1,120 @@
+<div class="m-5">
+    <form #f="ngForm">
+      <div class="row">
+
+  
+        <div class="col-md-3">
+          <select-input
+            #equip
+            label="Classe"
+            [itens]="['Agronomo', 'Apontador', 'Apresentador', 'Assessor', 'Assistente Geral', 'Auxiliar Geral', 'Consultor', 'Diarista', 'Domador', 'Doméstica', 'Estagiário', 'Ferrageador', 'Gerente Administrativo', 'Gerente Comercial', 'Gerente Equestre', 'Guia de Cavalgadas', 'Instrutor de Equitação', 'Jóquei', 'Médico Veterinário', 'Motorista', 'Outra', 'Preparador', 'Proprietário', 'Secretaria', 'Técnico de Associação', 'Trabalhador Rural', 'Tratador', 'Treinador', 'Vaqueiro', 'Zootecnista']"
+            (valor)="responsavel.classe = $event"
+            [value]="responsavel.classe"
+          ></select-input>
+        </div>
+  
+        <div class="col-md-3">
+          <text-input
+            label="Nome"
+            [(ngModel)]="responsavel.nome"
+            name="nome"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+          <text-input
+            label="Especialidade"
+            [(ngModel)]="responsavel.especialidade"
+            name="especialidade"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+          <text-input
+            label="Email"
+            [(ngModel)]="responsavel.email"
+            name="email"
+          ></text-input>
+        </div>
+      </div>
+  
+      <div class="row">
+  
+        <div class="col-md-3">
+          <number-input
+            label="Telefone(1)"
+            [(ngModel)]="responsavel.telefone1"
+            name="telefone1"
+          ></number-input>
+        </div>
+  
+        <div class="col-md-3">
+            <number-input
+              label="Telefone(2)"
+              [(ngModel)]="responsavel.telefone2"
+              name="telefone2"
+            ></number-input>
+        </div>
+  
+        <div class="col-md-3">
+          <text-input
+            label="Endereço"
+            [(ngModel)]="responsavel.endereco"
+            name="endereco"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+          <text-input
+            label="CEP"
+            [(ngModel)]="responsavel.cep"
+            name="cep"
+          ></text-input>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-3">
+          <text-input
+            label="Cidade"
+            [(ngModel)]="responsavel.cidade"
+            name="cidade"
+          ></text-input>
+        </div>
+  
+        <div class="col-md-3">
+          <text-input
+            label="Estado"
+            [(ngModel)]="responsavel.estado"
+            name="estado"
+          ></text-input>
+        </div>
+  
+        <div class="col-md-3">
+          <text-input
+            label="País"
+            [ngModel]="responsavel.pais"
+            name="pais"
+          ></text-input>
+        </div>
+
+        <div class="col-md-3">
+            <mat-checkbox
+            [(ngModel)]="responsavel.ativo"
+            name="ativo"
+            class="example-margin"
+            >Ativo No Sistema</mat-checkbox>
+        </div>
+      </div>
+    </form>
+  
+    <div class="text-center m-4">
+      <button
+        type="submit"
+        (click)="submit()"
+        class="btn btn-primary"
+      >
+        Enviar
+      </button>
+    </div>
+  </div>  

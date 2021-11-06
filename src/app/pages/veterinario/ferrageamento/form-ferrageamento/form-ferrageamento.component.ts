@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ANIMAIS_CL } from 'src/app/components/constants/constants';
+import { ANIMAIS_CL, RESPONSAVEL_CL } from 'src/app/components/constants/constants';
 import { hoje } from 'src/app/helpers/function';
 import { Ferrageamento } from 'src/app/models/Ferrageamento';
 import { FerrageamentoService } from '../ferrageamento.service';
@@ -13,6 +13,7 @@ import { FerrageamentoService } from '../ferrageamento.service';
 export class FormFerrageamentoComponent implements OnInit {
   ferrageamento: Ferrageamento;
   animal_collection = ANIMAIS_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   constructor(private service: FerrageamentoService, private router: Router) {}
 
   ngOnInit(): void {

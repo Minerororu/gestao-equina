@@ -1,11 +1,13 @@
 import { Animal } from './Animal';
+import { Doenca } from './Doenca';
+import { Responsavel } from './Responsavel';
 
 export class RegistroClinico {
   animal: Animal;
-  responsavel: string;
+  responsavel: Responsavel;
   data: string;
   motivo: string;
-  doenca: string;
+  doenca: Doenca;
   situacao: string;
   anamnese: string;
   exameClinico: string;

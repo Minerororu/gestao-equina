@@ -1,8 +1,9 @@
 import { Animal } from './Animal';
+import { Responsavel } from './Responsavel';
 
 export class Examinacao {
   animal: Animal;
-  responsavel: string;
+  responsavel: Responsavel;
   data: string;
   exame: string;
   dataColeta: string;

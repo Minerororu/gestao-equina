@@ -129,11 +129,17 @@
       <mat-tab label="Associação">
         <div class="row">
           <div class="col-md-6">
-            <text-input
-              label="Responsável Técnico"
-              [(ngModel)]="animal.exameDna.responsavel"
-              name="responsavel"
-            ></text-input>
+            <text-input-autocomplete
+            #equip
+            label="Responsável"
+            colecao="{{ responsavel_collection }}"
+            selectLabel="nome"
+            (valor)="
+              animal.exameDna.responsavel = $event; equip.realizarFiltragem($event.id)
+            "
+            [value]="animal.exameDna.responsavel"
+            [filtro]="['sexo', '==', 'Macho']"
+          ></text-input-autocomplete>
           </div>
 
           <div class="col-md-6">

@@ -49,6 +49,10 @@ import { ResumoDemonstrativoComponent } from './pages/financeiro/demonstrativo/r
 import { DreAnualComponent } from './pages/financeiro/lancamento-financeiro/dre-anual/dre-anual.component';
 import { LoginComponent } from './pages/usuario/login/login.component';
 import { SignUpComponent } from './pages/usuario/signup/signup.component';
+import { FormResponsavelComponent } from './pages/responsavel/form-responsavel/form-responsavel.component';
+import { ListResponsavelComponent } from './pages/responsavel/list-responsavel/list-responsavel.component';
+import { FormDoencaComponent } from './pages/farmacia/doenca/form-doenca/form-doenca.component';
+import { ListDoencaComponent } from './pages/farmacia/doenca/list-doenca/list-doenca.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'log-in', pathMatch: 'full' },
@@ -98,6 +102,9 @@ const routes: Routes = [
 
   { path: 'form-exame', component: FormExameComponent },
   { path: 'list-exame', component: ListExameComponent },
+
+  { path: 'form-doenca', component: FormDoencaComponent },
+  { path: 'list-doenca', component: ListDoencaComponent  },
 
   {
     path: 'form-cadastro-procedimento',
@@ -156,6 +163,9 @@ const routes: Routes = [
   { path: 'list-demonstrativo', component: ListDemonstrativoComponent },
   { path: 'resumo-demonstrativo', component: ResumoDemonstrativoComponent },
   { path: 'dre-anual', component: DreAnualComponent },
+
+  {path: 'form-responsavel', component: FormResponsavelComponent},
+  {path: 'list-responsavel', component: ListResponsavelComponent},
 
   { path: 'log-in', component: LoginComponent },
 

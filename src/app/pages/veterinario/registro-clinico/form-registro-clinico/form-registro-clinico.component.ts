@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ANIMAIS_CL } from 'src/app/components/constants/constants';
+import { ANIMAIS_CL, RESPONSAVEL_CL } from 'src/app/components/constants/constants';
 import { hoje } from 'src/app/helpers/function';
 import { RegistroClinico } from 'src/app/models/RegistroClinico';
 import { RegistroClinicoService } from '../registro-clinico.service';
@@ -13,6 +13,7 @@ import { RegistroClinicoService } from '../registro-clinico.service';
 export class FormRegistroClinicoComponent implements OnInit {
   registro: RegistroClinico;
   animal_collection = ANIMAIS_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   doencas = [
     'Anemia Infecciosa',
     'Arterite Viral Equina',

@@ -1,8 +1,9 @@
 import { Animal } from './Animal';
+import { Responsavel } from './Responsavel';
 
 export class DadosBiometricos {
   data: string;
-  responsavel: string;
+  responsavel: Responsavel;
   animal: Animal;
   peso: number;
   observacoes: string;

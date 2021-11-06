@@ -1,8 +1,9 @@
 import { Animal } from './Animal';
+import { Responsavel } from './Responsavel';
 
 export class DoseSemen {
   id: string;
-  responsavel: string;
+  responsavel: Responsavel;
   data: string;
   volumeEjaculado: number;
   coloracao: string;

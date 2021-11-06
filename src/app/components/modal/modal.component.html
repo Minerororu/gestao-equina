@@ -4,12 +4,16 @@
   <div *ngIf="data.formularioSemen">
     <form #f="ngForm">
       <div class="row">
-        <text-input
-          class="mx-3"
-          label="Responsável"
-          [(ngModel)]="dose.responsavel"
-          name="responsavel"
-        ></text-input>
+        <text-input-autocomplete
+        #equip
+        label="Responsável"
+        colecao="{{ responsavel_collection }}"
+        selectLabel="nome"
+        (valor)="
+          dose.responsavel = $event; equip.realizarFiltragem($event.id)
+        "
+        [value]="dose.responsavel"
+      ></text-input-autocomplete>
 
         <date-input
           class="mx-3"
@@ -187,13 +191,16 @@
   <div *ngIf="data.formularioParto">
     <form #f="ngForm">
       <div class="row">
-        <text-input
-          class="mx-3"
-          label="Responsável"
-          [(ngModel)]="parto.responsavel"
-          name="responsavel"
-          style="width: 100%"
-        ></text-input>
+        <text-input-autocomplete
+        #equip
+        label="Responsável"
+        colecao="{{ responsavel_collection }}"
+        selectLabel="nome"
+        (valor)="
+          parto.responsavel = $event; equip.realizarFiltragem($event.id)
+        "
+        [value]="parto.responsavel"
+      ></text-input-autocomplete>
       </div>
 
       <div class="row">

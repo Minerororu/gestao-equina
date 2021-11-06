@@ -21,7 +21,7 @@ export class VacinacaoService {
   }
 
   listar<T>() {
-    return this.db.list<T>(VACINACAO_CL + '', 'data');
+    return this.db.list<T>(VACINACAO_CL + '', '');
   }
 
   remover(vacinacao: Vacinacao) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ANIMAIS_CL } from 'src/app/components/constants/constants';
+import { ANIMAIS_CL, RESPONSAVEL_CL } from 'src/app/components/constants/constants';
 import { AnimalService } from '../../animal/animal.service';
 import { DadosBiometricosService } from '../dados-biometricos.service';
 import { DadosBiometricos } from 'src/app/models/DadosBiometricos';
@@ -15,6 +15,7 @@ export class FormDadosBiometricosComponent implements OnInit {
   dado: DadosBiometricos;
   constructor(private service: DadosBiometricosService) {}
   animal_collection = ANIMAIS_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   ngOnInit(): void {
     this.dado = this.service.dado ? this.service.dado : new DadosBiometricos();
   }

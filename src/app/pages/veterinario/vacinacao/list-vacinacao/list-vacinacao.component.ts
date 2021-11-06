@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { hoje, strToDate } from 'src/app/helpers/function';
+import { dateToStr, hoje, strToDate } from 'src/app/helpers/function';
 import { Vacinacao } from 'src/app/models/Vacinacao';
 import { VacinacaoService } from '../vacinacao.service';
 
@@ -17,18 +17,25 @@ export class ListVacinacaoComponent implements OnInit {
   constructor(private service: VacinacaoService, private router: Router) {}
 
   ngOnInit(): void {
+    let diasAteVacinacao = 0
+    let hojeDate = strToDate(hoje())
     this.service.listar().then((doc) => {
       this.vacinacoes = doc as Vacinacao[];
       this.vacinacoes.map((vacinacao) => {
         if (vacinacao.vacina.periodo) {
           //criando data
           let dataVacinacao = strToDate(vacinacao.data);
-          let hojeDate = strToDate(hoje());
-          dataVacinacao.setMonth(
-            dataVacinacao.getMonth() + vacinacao?.vacina?.periodo
+          let dataAntedecida = strToDate(dateToStr(hojeDate));
+          console.log(hojeDate)
+          dataAntedecida.setDate(hojeDate.getDate() - 2)
+          console.log(hojeDate)
+          diasAteVacinacao = hojeDate.getDate() - dataVacinacao.getDate()
+          dataVacinacao.setDate(
+            dataVacinacao.getDate() + vacinacao?.vacina?.periodo
           );
           //comparando a data
-          if (dataVacinacao <= hojeDate) {
+          console.log(dataVacinacao)
+          if (dataVacinacao <= dataVacinacao) {
             this.animalTemp = vacinacao.animal.nome;
             this.alerta = true;
             this.vacinaTemp = vacinacao.vacina.vacina;
@@ -36,13 +43,13 @@ export class ListVacinacaoComponent implements OnInit {
             this.animalTemp == vacinacao.animal.nome &&
             this.vacinaTemp == vacinacao.vacina.vacina
           ) {
-            this.alerta = false;
+              this.alerta = false;
           }
         }
       });
       this.alerta
         ? alert(
-            `O animal ${this.animalTemp}, precisa tomar a vacina: '${this.vacinaTemp}'`
+            `O animal ${this.animalTemp}, precisa tomar a vacina: '${this.vacinaTemp}', em ${diasAteVacinacao} dia(s)`
           )
         : '';
     });

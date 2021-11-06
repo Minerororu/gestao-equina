@@ -2,11 +2,16 @@
   <form #f="ngForm">
     <div class="row">
       <div class="col-md-3">
-        <text-input
-          label="Responsável"
-          [(ngModel)]="vermifugacao.responsavel"
-          name="responsavel"
-        ></text-input>
+        <text-input-autocomplete
+        #equip
+        label="Responsável"
+        colecao="{{ responsavel_collection }}"
+        selectLabel="nome"
+        (valor)="
+          vermifugacao.responsavel = $event; equip.realizarFiltragem($event.id)
+        "
+        [value]="vermifugacao.responsavel"
+      ></text-input-autocomplete>
       </div>
 
       <div class="col-md-3">

@@ -1,10 +1,31 @@
 <div class="m-5">
   <form #f="ngForm">
-    <text-input
-      label="Vermifugo"
-      [(ngModel)]="vermifugo.vermifugo"
-      name="vermifugo"
-    ></text-input>
+    <div class="row">
+      <div class="col-md-6">
+        <text-input
+        label="Vermifugo"
+        [(ngModel)]="vermifugo.vermifugo"
+        name="vermifugo"
+        ></text-input>
+      </div>
+      
+      <div class="col-md-6" *ngIf="vermifugo.periodico">
+        <number-input
+        label="Período entre vermifugações (em dias)"
+        [(ngModel)]="vermifugo.periodo"
+        name="periodo"
+        >
+      </number-input>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <mat-checkbox
+        name="periodico"
+        [(ngModel)]="vermifugo.periodico"
+        class="example-margin"
+        >Periódico</mat-checkbox
+      >
+    </div>
   </form>
 </div>
 <div class="text-center m-3">

@@ -2,11 +2,16 @@
   <form #f="ngForm">
     <div class="row">
       <div class="col-md-3">
-        <text-input
-          label="Responsável"
-          [(ngModel)]="ferrageamento.responsavel"
-          name="responsavel"
-        ></text-input>
+        <text-input-autocomplete
+        #equip
+        label="Responsável"
+        colecao="{{ responsavel_collection }}"
+        selectLabel="nome"
+        (valor)="
+          ferrageamento.responsavel = $event; equip.realizarFiltragem($event.id)
+        "
+        [value]="ferrageamento.responsavel"
+      ></text-input-autocomplete>
       </div>
 
       <div class="col-md-3">
@@ -56,6 +61,24 @@
           [(ngModel)]="ferrageamento.descricao"
           name="descricao"
         ></text-input>
+      </div>
+
+      <div class="col-md-6" *ngIf="ferrageamento.periodico">
+        <number-input
+          label="Período entre ferrageamentoções (em dias)"
+          [(ngModel)]="ferrageamento.periodo"
+          name="periodo"
+        >
+        </number-input>
+      </div>
+  
+      <div class="col-md-4">
+        <mat-checkbox
+          name="periodico"
+          [(ngModel)]="ferrageamento.periodico"
+          class="example-margin"
+          >Periódico</mat-checkbox
+        >
       </div>
     </div>
   </form>

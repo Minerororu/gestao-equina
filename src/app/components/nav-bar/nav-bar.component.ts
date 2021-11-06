@@ -16,18 +16,15 @@ export class NavBarComponent implements OnInit {
     ['list-animal', 'list-controle-movimento', 'list-dados-biometricos'],
     [
       'list-registro',
-      'list-examinacao',
       'list-vacinacao',
       'list-vermifugacao',
       'list-ferrageamento',
-      'list-uso-procedimento',
     ],
 
     [
       'list-vacina',
       'list-vermifugo',
-      'list-exame',
-      'list-cadastro-procedimento',
+      'list-doenca',
     ],
 
     [
@@ -44,6 +41,7 @@ export class NavBarComponent implements OnInit {
       'list-demonstrativo',
       'dre-anual',
     ],
+    ['list-responsavel']
   ];
 
   labels = [
@@ -51,18 +49,15 @@ export class NavBarComponent implements OnInit {
     [
       'Veterinário',
       'Registros Clínicos',
-      'Examinações',
       'Vacinações',
       'Vermifugações',
       'Ferrageamentos',
-      'Uso de Procidementos',
     ],
     [
       'Farmácia',
       'Vacinas',
       'Vermifugos',
-      'Exames',
-      'Cadastro de Procedimentos',
+      'Doenças',
     ],
     [
       'Reprodução',
@@ -79,6 +74,9 @@ export class NavBarComponent implements OnInit {
       'Demonstrativos',
       'Relatório Anual',
     ],
+    [
+      'Responsável',
+      'Responsável'],
   ];
 
   ngOnInit(): void {}

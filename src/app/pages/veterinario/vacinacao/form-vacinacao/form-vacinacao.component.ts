@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ANIMAIS_CL, VACINA_CL } from 'src/app/components/constants/constants';
+import { ANIMAIS_CL, RESPONSAVEL_CL, VACINA_CL } from 'src/app/components/constants/constants';
 import { hoje } from 'src/app/helpers/function';
 import { Vacinacao } from 'src/app/models/Vacinacao';
 import { VacinacaoService } from '../vacinacao.service';
@@ -14,6 +14,7 @@ export class FormVacinacaoComponent implements OnInit {
   vacinacao: Vacinacao;
   animal_collection = ANIMAIS_CL;
   vacina_collection = VACINA_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   constructor(private service: VacinacaoService, private router: Router) {}
 
   ngOnInit(): void {

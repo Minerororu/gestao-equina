@@ -2,7 +2,7 @@
   <list
     [cabecalhos]="['Editar', 'Animal', 'Responsável', 'Data', 'Vacina']"
     [valores]="vacinacoes"
-    [campos]="[['animal', 'nome'], 'responsavel', 'data', ['vacina', 'vacina']]"
+    [campos]="[['animal', 'nome'], ['responsavel', 'nome'], 'data', ['vacina', 'vacina']]"
     (editFunction)="edit($event)"
     (deleteFunction)="delete($event)"
   ></list>

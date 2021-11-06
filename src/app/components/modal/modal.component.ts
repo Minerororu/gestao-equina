@@ -8,6 +8,7 @@ import {
   ANIMAIS_CL,
   CENTRO_CUSTO_CL,
   GRUPO_CENTRO_CL,
+  RESPONSAVEL_CL,
 } from '../constants/constants';
 
 @Component({
@@ -23,6 +24,7 @@ export class ModalComponent implements OnInit {
   animal_collection = ANIMAIS_CL;
   centro_de_custo_collection = CENTRO_CUSTO_CL;
   grupo_financeiro_collection = GRUPO_CENTRO_CL;
+  responsavel_collection = RESPONSAVEL_CL;
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,

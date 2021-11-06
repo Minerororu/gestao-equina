@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {
   ANIMAIS_CL,
   CADASTRO_PROCEDIMENTO_CL,
+  RESPONSAVEL_CL,
 } from 'src/app/components/constants/constants';
 import { hoje } from 'src/app/helpers/function';
 import { ControleFolicular } from 'src/app/models/ControleFolicular';
@@ -19,6 +20,7 @@ export class FormControleFolicularComponent implements OnInit {
   controle: ControleFolicular;
   animal_collection = ANIMAIS_CL;
   procedimento_collection = CADASTRO_PROCEDIMENTO_CL;
+  responsavel_collection = RESPONSAVEL_CL;
   constructor(
     private service: ControleFolicularService,
     private router: Router,

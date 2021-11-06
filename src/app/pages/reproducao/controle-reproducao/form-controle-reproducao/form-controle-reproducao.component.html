@@ -4,11 +4,14 @@
       <mat-tab label="Controle Reprodução">
         <div class="row">
           <div class="col-md-3">
-            <text-input
+            <text-input-autocomplete
+              #equip
               label="Responsável"
-              [(ngModel)]="controle.responsavel"
-              name="controle.responsavel"
-            ></text-input>
+              colecao="{{ responsavel_collection }}"
+              selectLabel="nome"
+              (valor)="controle.responsavel = $event; equip.realizarFiltragem($event.id)"
+              [value]="controle.responsavel"
+            ></text-input-autocomplete>
           </div>
 
           <div class="col-md-3">
@@ -114,11 +117,16 @@
       <mat-tab label="Transferência de Embrião">
         <div class="row">
           <div class="col-md-3">
-            <text-input
+            <text-input-autocomplete
+              #equip
               label="Responsável"
-              [(ngModel)]="controle.transferenciaEmbriao.responsavel"
-              name="transferenciaEmbriao.responsavel"
-            ></text-input>
+              colecao="{{ responsavel_collection }}"
+              selectLabel="nome"
+              (valor)="
+                controle.responsavel = $event; equip.realizarFiltragem($event.id)
+              "
+              [value]="controle.responsavel"
+            ></text-input-autocomplete>
           </div>
 
           <div class="col-md-3">
@@ -180,7 +188,7 @@
           [valores]="partos"
           [campos]="[
             'nome',
-            'responsavel',
+            ['responsavel', 'nome'],
             'metodoConcepcao',
             'transferenciaEmbriao',
             'data',

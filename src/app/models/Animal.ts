@@ -1,3 +1,5 @@
+import { Responsavel } from "./Responsavel";
+
 export class Animal {
   id: string;
   nome: string;
@@ -20,7 +22,7 @@ export class Animal {
   nacionalidade: string;
   exameDna: {
     dataColeta: string;
-    responsavel: string;
+    responsavel: Responsavel;
     ordem: string;
     resenha: any; //documento;
   };

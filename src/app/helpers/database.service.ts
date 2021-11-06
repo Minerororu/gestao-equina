@@ -76,7 +76,6 @@ export class DatabaseService {
     newValue: any,
     oldValue?: any
   ): Promise<T> {
-    console.log(newValue);
     newValue.key;
     const docRef: DocumentReference = await this.getDocument(
       collection,

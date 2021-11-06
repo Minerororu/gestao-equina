@@ -13,12 +13,16 @@
       </div>
 
       <div class="col-md-4">
-        <text-input
-          #equip
-          label="Responsável"
-          [(ngModel)]="registro.responsavel"
-          name="responsavel"
-        ></text-input>
+        <text-input-autocomplete
+        #equip
+        label="Responsável"
+        colecao="{{ responsavel_collection }}"
+        selectLabel="nome"
+        (valor)="
+          registro.responsavel = $event; equip.realizarFiltragem($event.id)
+        "
+        [value]="registro.responsavel"
+      ></text-input-autocomplete>
       </div>
 
       <div class="col-md-4">
